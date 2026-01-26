@@ -1,0 +1,13 @@
+{
+  "name": "the-minimalist-kraft-do",
+  "version": "1.0.0",
+  "description": "Minimalist Home Decor & Curated Living Blog",
+  "scripts": {
+    "build": "echo 'No build step required for static site'",
+    "deploy": "wrangler pages deploy . --project-name=tmkdo"
+  },
+  "keywords": ["blog", "minimalist", "home-decor"],
+  "author": "",
+  "license": "MIT"
+}
+
