@@ -31,19 +31,19 @@
             --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
         }
 
-        /* Light Mode Theme */
+        /* Light Mode Theme - Beige Glassy Matt Modern */
         [data-theme="light"] {
-            --bg-dark: #faf8f5;
-            --bg-card: #ffffff;
-            --bg-section: #f5f3f0;
-            --bg-light: #f0ede8;
-            --text-light: #2d2d2d;
-            --text-medium: #4a4a4a;
-            --text-dark: #1a1a1a;
-            --border-color: #e5e3df;
-            --shadow-sm: 0 2px 10px rgba(0,0,0,0.08);
-            --shadow-md: 0 4px 20px rgba(0,0,0,0.12);
-            --shadow-lg: 0 8px 30px rgba(0,0,0,0.16);
+            --bg-dark: #f5f0e8;
+            --bg-card: rgba(255, 252, 248, 0.85);
+            --bg-section: #ebe5dc;
+            --bg-light: #e8e1d7;
+            --text-light: #3d3933;
+            --text-medium: #5c5650;
+            --text-dark: #2a2622;
+            --border-color: rgba(201, 185, 165, 0.25);
+            --shadow-sm: 0 2px 10px rgba(150, 130, 110, 0.12);
+            --shadow-md: 0 4px 20px rgba(150, 130, 110, 0.15);
+            --shadow-lg: 0 8px 30px rgba(150, 130, 110, 0.2);
         }
 
         /* Dark Mode Theme (charcoal with blue undertones) */
@@ -89,7 +89,9 @@
         }
 
         [data-theme="light"] header {
-            background-color: rgba(250, 248, 245, 0.95);
+            background-color: rgba(245, 240, 232, 0.85);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
         }
 
         [data-theme="dark"] header {
