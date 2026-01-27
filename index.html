@@ -36,64 +36,76 @@
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero-section">
         <div class="hero-content">
             <h1>Minimalist Home Decor & Curated Living</h1>
             <p>Discover the art of simple, intentional living through thoughtful design and timeless home decor pieces.</p>
-            <a href="#blog" class="cta-button">Explore Our Blog</a>
+            <div class="hero-buttons">
+                <a href="#blog" class="cta-button btn btn-primary">Explore Our Blog</a>
+            </div>
         </div>
     </section>
 
-    <section id="blog" class="blog-section">
-        <h2 class="section-title">Latest From Our Blog</h2>
+    <section id="blog" class="featured-section">
+        <div class="section-header">
+            <h2>Latest From Our Blog</h2>
+            <p>Deep-dive guides on minimalist living, decluttering, and natural materials for a calmer home.</p>
+        </div>
         <div class="blog-grid">
-            <div class="blog-card" onclick="window.location.href='blog-post-1.html'">
-                <div class="blog-image">
+            <article class="blog-card" onclick="window.location.href='minimalist-living-room-essentials.html'">
+                <div class="blog-card-image">
                     <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&q=80" alt="Minimalist living room with essential furniture pieces" loading="lazy">
                 </div>
-                <div class="blog-content">
-                    <div class="blog-date">January 15, 2026</div>
-                    <h3 class="blog-title">5 Essential Pieces for a Minimalist Living Room</h3>
-                    <p class="blog-excerpt">Creating a minimalist living room doesn't mean sacrificing comfort or style. Discover the five essential furniture and decor pieces that form the foundation of a perfectly balanced space.</p>
-                    <a href="blog-post-1.html" class="read-more">Read More</a>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-category">LIVING ROOM</span>
+                        <span>January 15, 2026</span>
+                    </div>
+                    <h3>5 Essential Pieces for a Minimalist Living Room</h3>
+                    <p>Creating a minimalist living room doesn't mean sacrificing comfort or style. Discover the five essential furniture and decor pieces that form the foundation of a perfectly balanced space.</p>
+                    <a href="minimalist-living-room-essentials.html" class="read-more">Read More →</a>
                 </div>
-            </div>
+            </article>
 
-            <div class="blog-card" onclick="window.location.href='blog-post-2.html'">
-                <div class="blog-image">
+            <article class="blog-card" onclick="window.location.href='art-of-decluttering-room-by-room.html'">
+                <div class="blog-card-image">
                     <img src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&h=600&fit=crop&q=80" alt="Organized and decluttered modern home interior" loading="lazy">
                 </div>
-                <div class="blog-content">
-                    <div class="blog-date">January 10, 2026</div>
-                    <h3 class="blog-title">The Art of Decluttering: A Room-by-Room Guide</h3>
-                    <p class="blog-excerpt">Transform your home into a peaceful sanctuary with our comprehensive decluttering guide. Learn practical strategies to tackle every room and maintain a clutter-free lifestyle.</p>
-                    <a href="blog-post-2.html" class="read-more">Read More</a>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-category">ORGANIZATION</span>
+                        <span>January 10, 2026</span>
+                    </div>
+                    <h3>The Art of Decluttering: A Room-by-Room Guide</h3>
+                    <p>Transform your home into a peaceful sanctuary with our comprehensive decluttering guide. Learn practical strategies to tackle every room and maintain a clutter-free lifestyle.</p>
+                    <a href="art-of-decluttering-room-by-room.html" class="read-more">Read More →</a>
                 </div>
-            </div>
+            </article>
 
-            <div class="blog-card" onclick="window.location.href='blog-post-3.html'">
-                <div class="blog-image">
+            <article class="blog-card" onclick="window.location.href='natural-materials-modern-homes.html'">
+                <div class="blog-card-image">
                     <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&q=80" alt="Natural materials including wood, stone and clay in modern home design" loading="lazy">
                 </div>
-                <div class="blog-content">
-                    <div class="blog-date">January 5, 2026</div>
-                    <h3 class="blog-title">Natural Materials in Modern Homes: Wood, Stone & Clay</h3>
-                    <p class="blog-excerpt">Explore how natural materials bring warmth, texture, and authenticity to contemporary interiors. From reclaimed wood to handcrafted ceramics, discover the beauty of organic elements.</p>
-                    <a href="blog-post-3.html" class="read-more">Read More</a>
+                <div class="blog-card-content">
+                    <div class="blog-card-meta">
+                        <span class="blog-card-category">MATERIALS</span>
+                        <span>January 5, 2026</span>
+                    </div>
+                    <h3>Natural Materials in Modern Homes: Wood, Stone & Clay</h3>
+                    <p>Explore how natural materials bring warmth, texture, and authenticity to contemporary interiors. From reclaimed wood to handcrafted ceramics, discover the beauty of organic elements.</p>
+                    <a href="natural-materials-modern-homes.html" class="read-more">Read More →</a>
                 </div>
-            </div>
+            </article>
         </div>
     </section>
 
-    <section class="newsletter">
-        <div class="newsletter-content">
-            <h2>Join Our Community</h2>
-            <p>Get weekly inspiration, design tips, and exclusive decor finds delivered straight to your inbox.</p>
-            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
+    <section class="newsletter-section">
+        <h2>Join Our Community</h2>
+        <p>Get weekly inspiration, design tips, and exclusive decor finds delivered straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Enter your email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
     </section>
 
     <footer>

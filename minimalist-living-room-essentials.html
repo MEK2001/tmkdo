@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Essential Pieces for a Minimalist Living Room - The Minimalist Kraft & DO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #C97D60;
+            --primary-dark: #B56D50;
+            --bg-dark: #1a1a1a;
+            --bg-card: #2d2d2d;
+            --bg-section: #252525;
+            --bg-light: #1f1f1f;
+            --text-light: #e0e0e0;
+            --text-medium: #b0b0b0;
+            --text-dark: #ffffff;
+            --border-color: #3a3a3a;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Light Mode Theme - Beige Glassy Matt Modern */
+        [data-theme="light"] {
+            --bg-dark: #f5f0e8;
+            --bg-card: rgba(255, 252, 248, 0.85);
+            --bg-section: #ebe5dc;
+            --bg-light: #e8e1d7;
+            --text-light: #3d3933;
+            --text-medium: #5c5650;
+            --text-dark: #2a2622;
+            --border-color: rgba(201, 185, 165, 0.25);
+            --shadow-sm: 0 2px 10px rgba(150, 130, 110, 0.12);
+            --shadow-md: 0 4px 20px rgba(150, 130, 110, 0.15);
+            --shadow-lg: 0 8px 30px rgba(150, 130, 110, 0.2);
+        }
+
+        /* Dark Mode Theme (charcoal with blue undertones) */
+        [data-theme="dark"] {
+            --bg-dark: #1e2329;
+            --bg-card: #2a2f36;
+            --bg-section: #252a31;
+            --bg-light: #23282f;
+            --text-light: #e0e4e8;
+            --text-medium: #a8b0b8;
+            --text-dark: #ffffff;
+            --border-color: #3a4149;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
+            --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Smooth transitions for theme switching */
+        * {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-light);
+            background-color: var(--bg-dark);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        [data-theme="light"] header {
+            background-color: rgba(245, 240, 232, 0.85);
+            backdrop-filter: blur(12px) saturate(180%);
+            -webkit-backdrop-filter: blur(12px) saturate(180%);
+        }
+
+        [data-theme="dark"] header {
+            background-color: rgba(30, 35, 41, 0.95);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .logo span {
+            color: #C97D60;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--border-color);
+            color: var(--text-medium);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin-left: 1rem;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .theme-toggle:active {
+            transform: rotate(15deg) scale(1.05);
+        }
+
+        /* Article Header */
+        .article-header {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-section) 100%);
+            padding: 4rem 2rem 4rem;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .article-header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, 
+                rgba(0, 0, 0, 0.4) 0%, 
+                rgba(0, 0, 0, 0.2) 50%,
+                transparent 100%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        [data-theme="light"] .article-header::before {
+            background: linear-gradient(180deg, 
+                rgba(235, 229, 220, 0.6) 0%, 
+                rgba(235, 229, 220, 0.3) 50%,
+                transparent 100%);
+        }
+
+        .article-meta {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .article-category {
+            display: inline-block;
+            background-color: #C97D60;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .article-info {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            margin-top: 1.5rem;
+        }
+
+        .article-info span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Featured Image */
+        .featured-image {
+            max-width: 1000px;
+            margin: 2rem auto 3rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .featured-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        /* Article Content */
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 2rem 4rem;
+        }
+
+        .article-content p {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-medium);
+            margin-bottom: 1.8rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--text-dark);
+            margin-top: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .article-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-dark);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .article-content ul, .article-content ol {
+            margin-left: 2rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .article-content li {
+            font-size: 1.15rem;
+            line-height: 1.9;
+            color: var(--text-medium);
+            margin-bottom: 0.8rem;
+        }
+
+        .highlight-box {
+            background: var(--bg-card);
+            color: var(--text-light);
+            padding: 2.5rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .highlight-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+
+        .highlight-box p {
+            color: rgba(255,255,255,0.95);
+        }
+
+        .item-card {
+            background: var(--bg-card);
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            margin: 2.5rem 0;
+            border: 1px solid var(--border-color);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .item-card h3 {
+            margin-top: 0;
+            color: #C97D60;
+        }
+
+        .item-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #C97D60 0%, #B56D50 100%);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .callout {
+            background: var(--bg-section);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .callout p {
+            margin: 0;
+            font-style: italic;
+            color: var(--text-medium);
+        }
+
+        /* Share Section */
+        .share-section {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: var(--bg-card);
+            border-radius: 15px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            border: 1px solid var(--border-color);
+        }
+
+        .share-section h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .share-button {
+            padding: 0.8rem 1.5rem;
+            background-color: #C97D60;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .share-button:hover {
+            background-color: #B56D50;
+            transform: translateY(-2px);
+        }
+
+        /* Related Posts */
+        .related-posts {
+            background: linear-gradient(135deg, #2d2d2d 0%, #252525 100%);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .related-posts h2 {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--text-dark);
+            margin-bottom: 3rem;
+        }
+
+        .related-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: var(--bg-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            border: 1px solid var(--border-color);
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-card-content {
+            padding: 1.5rem;
+        }
+
+        .related-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .related-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #151515 0%, #1a1a1a 100%);
+            color: white;
+            padding: 3rem 2rem 2rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #C97D60;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .social-links a:hover {
+            background-color: #C97D60;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .article-header h1 {
+                font-size: 2rem;
+            }
+
+            .article-content p,
+            .article-content li {
+                font-size: 1.05rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .featured-image {
+                margin-top: -1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">The Minimalist <span>Kraft & DO</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Blog</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" onclick="toggleTheme()">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="article-header">
+        <div class="article-meta">
+            <span class="article-category">LIVING ROOM</span>
+            <h1>5 Essential Pieces for a Minimalist Living Room</h1>
+            <div class="article-info">
+                <span>📅 January 15, 2026</span>
+                <span>⏱ 8 min read</span>
+                <span>✍️ By Sarah Mitchell</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="featured-image">
+        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=600&fit=crop" alt="Minimalist living room with neutral tones">
+    </div>
+
+    <article class="article-content">
+        <p>Creating a minimalist living room doesn't mean stripping away warmth and personality. It's about carefully selecting pieces that serve both form and function, creating a space that feels open, calm, and uniquely yours. After years of helping clients transition to minimalist spaces, I've identified five essential furniture pieces that form the foundation of any beautiful minimalist living room.</p>
+
+        <p>These aren't just furniture items—they're investments in your daily comfort and the overall aesthetic of your home. Let's explore what makes each piece essential and how to choose the right one for your space.</p>
+
+        <div class="highlight-box">
+            <h3>The Minimalist Philosophy</h3>
+            <p>"In minimalism, every piece must earn its place. It should be beautiful enough to stand alone, functional enough to serve multiple purposes, and meaningful enough to bring you joy every single day."</p>
+        </div>
+
+        <div class="item-card">
+            <div class="item-number">1</div>
+            <h3>The Perfect Sofa: Your Anchor Piece</h3>
+            <p>Your sofa is the heart of your living room and likely the largest investment you'll make. In a minimalist space, it needs to be exceptional because it can't hide behind decorative distractions.</p>
+            
+            <p><strong>What to Look For:</strong></p>
+            <ul>
+                <li><strong>Clean Lines:</strong> Opt for simple, geometric shapes without excessive tufting or ornate details</li>
+                <li><strong>Neutral Upholstery:</strong> Think linen, cotton, or wool in shades of cream, gray, or warm beige</li>
+                <li><strong>Quality Construction:</strong> A solid hardwood frame and eight-way hand-tied springs ensure longevity</li>
+                <li><strong>Comfortable Depth:</strong> Test before buying—you'll be spending a lot of time here</li>
+            </ul>
+
+            <div class="callout">
+                <p><strong>Pro Tip:</strong> A sofa with removable, washable covers is a game-changer for maintaining that pristine minimalist look over the years.</p>
+            </div>
+
+            <p><strong>Size Matters:</strong> In minimalism, proportion is everything. Your sofa should fill the space without overwhelming it. For a standard living room (12x18 feet), an 84-90 inch sofa works beautifully. Smaller spaces? Consider a 72-inch loveseat instead.</p>
+        </div>
+
+        <div class="item-card">
+            <div class="item-number">2</div>
+            <h3>A Statement Coffee Table: Function Meets Art</h3>
+            <p>Your coffee table is more than a place to rest your tea—it's a sculptural element that defines your space. In minimalist design, it often becomes the room's focal point.</p>
+            
+            <p><strong>Material Choices:</strong></p>
+            <ul>
+                <li><strong>Solid Wood:</strong> Oak, walnut, or teak bring natural warmth and organic texture</li>
+                <li><strong>Stone or Marble:</strong> Adds luxury and timeless elegance</li>
+                <li><strong>Glass with Metal Frame:</strong> Creates visual lightness and doesn't crowd the space</li>
+            </ul>
+
+            <p><strong>Shape Psychology:</strong> Round tables soften angular spaces and improve flow. Rectangular tables complement linear sofas and work well in elongated rooms. Square tables suit cozy, symmetrical layouts.</p>
+
+            <div class="callout">
+                <p><strong>Storage Secret:</strong> Coffee tables with subtle storage compartments help maintain that clutter-free aesthetic without sacrificing functionality.</p>
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="item-number">3</div>
+            <h3>One Exceptional Armchair: The Accent That Matters</h3>
+            <p>While minimalism embraces fewer pieces, one well-chosen armchair can transform your space from sparse to sophisticated. This is your opportunity to introduce personality through design.</p>
+            
+            <p><strong>Style Approaches:</strong></p>
+            <ul>
+                <li><strong>Mid-Century Modern:</strong> Think Eames lounge chair—iconic, comfortable, and timeless</li>
+                <li><strong>Scandinavian Design:</strong> Light wood frames with organic curves and neutral upholstery</li>
+                <li><strong>Contemporary Minimalist:</strong> Clean-lined club chairs in leather or textured fabric</li>
+            </ul>
+
+            <p><strong>Placement Strategy:</strong> Position your armchair at a conversational angle to the sofa, creating an intimate seating area. Add a small side table and floor lamp to make it a complete reading nook.</p>
+        </div>
+
+        <div class="item-card">
+            <div class="item-number">4</div>
+            <h3>Simple Storage Solutions: Beauty in Organization</h3>
+            <p>Minimalism requires masterful storage. The key is choosing pieces that look like furniture first and storage second.</p>
+            
+            <p><strong>Options That Work:</strong></p>
+            <ul>
+                <li><strong>Low-Profile Credenza:</strong> Perfect for media equipment and hidden storage</li>
+                <li><strong>Open Shelving Unit:</strong> Display curated books and objects while maintaining visual lightness</li>
+                <li><strong>Modular Storage System:</strong> Customizable to your needs without overwhelming the space</li>
+            </ul>
+
+            <p>Choose storage in materials that complement your other furniture. A walnut credenza pairs beautifully with a walnut coffee table, creating visual harmony through repetition.</p>
+
+            <div class="callout">
+                <p><strong>The 80/20 Rule:</strong> Keep 80% of storage closed and clutter-free, display only your 20% most beautiful or meaningful items.</p>
+            </div>
+        </div>
+
+        <div class="item-card">
+            <div class="item-number">5</div>
+            <h3>A Thoughtful Rug: Grounding Your Space</h3>
+            <p>A rug might seem like a decorative afterthought, but in minimalist design, it's an essential foundation that ties everything together and adds crucial warmth underfoot.</p>
+            
+            <p><strong>Material Considerations:</strong></p>
+            <ul>
+                <li><strong>Wool:</strong> Durable, naturally stain-resistant, and ages beautifully</li>
+                <li><strong>Jute or Sisal:</strong> Adds organic texture and works well in casual spaces</li>
+                <li><strong>Cotton:</strong> Budget-friendly, easy to clean, perfect for layering</li>
+            </ul>
+
+            <p><strong>Size Guide:</strong> Your rug should be large enough that at least the front legs of all major furniture pieces rest on it. For a living room, 8x10 feet is often the sweet spot, though larger rooms may need 9x12 feet.</p>
+
+            <p><strong>Pattern or Plain?</strong> In minimalist spaces, subtle patterns work best. Consider tone-on-tone geometrics, gentle stripes, or the timeless appeal of a single, solid color that anchors your palette.</p>
+        </div>
+
+        <h2>Bringing It All Together</h2>
+        
+        <p>The magic of minimalist design lies in curation. These five pieces—a quality sofa, statement coffee table, exceptional armchair, smart storage, and thoughtful rug—create a complete living room that feels intentional, not empty.</p>
+
+        <p>Remember, minimalism is personal. While these essentials provide your foundation, the specific pieces you choose should reflect your lifestyle, aesthetic preferences, and how you actually use your space. A home for young professionals might prioritize a convertible sofa, while a family might need more durable upholstery and hidden storage.</p>
+
+        <div class="highlight-box">
+            <h3>Final Thoughts</h3>
+            <p>Start with these five essentials, live with them for a few months, and only then consider additions. You might find that less truly is more, and your thoughtfully curated space brings more peace than any fully furnished room ever could.</p>
+        </div>
+
+        <p>What has your experience been with minimalist furniture? I'd love to hear which pieces you consider essential in your living room. Share your thoughts in the comments or reach out on Instagram—I read every message!</p>
+    </article>
+
+    <div class="share-section">
+        <h3>Enjoyed this article? Share it!</h3>
+        <div class="share-buttons">
+            <a href="#" class="share-button">📌 Pinterest</a>
+            <a href="#" class="share-button">📱 Facebook</a>
+            <a href="#" class="share-button">🐦 Twitter</a>
+            <a href="#" class="share-button">💌 Email</a>
+        </div>
+    </div>
+
+    <section class="related-posts">
+        <h2>Continue Reading</h2>
+        <div class="related-grid">
+            <a href="art-of-decluttering-room-by-room.html" class="related-card">
+                <div class="related-card-content">
+                    <span class="article-category">ORGANIZATION</span>
+                    <h3>The Art of Decluttering: A Room-by-Room Guide</h3>
+                    <p>Transform your home one space at a time with our comprehensive decluttering framework.</p>
+                </div>
+            </a>
+            <a href="natural-materials-modern-homes.html" class="related-card">
+                <div class="related-card-content">
+                    <span class="article-category">MATERIALS</span>
+                    <h3>Natural Materials in Modern Homes: Wood, Stone & Clay</h3>
+                    <p>Discover how organic materials bring warmth and authenticity to minimalist interiors.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Minimalist Kraft & DO</h3>
+                <p>Your guide to intentional living and beautiful, functional spaces that inspire calm and creativity.</p>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <span class="footer-text">Living Room Decor</span>
+                <span class="footer-text">Minimalist Tips</span>
+                <span class="footer-text">Natural Materials</span>
+                <span class="footer-text">Decluttering Guides</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Minimalist Kraft & DO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Management
+        function getTheme() {
+            return localStorage.getItem('theme') || 'dark';
+        }
+
+        function setTheme(theme) {
+            localStorage.setItem('theme', theme);
+            document.documentElement.setAttribute('data-theme', theme);
+            updateThemeIcon(theme);
+        }
+
+        function toggleTheme() {
+            const currentTheme = getTheme();
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        }
+
+        function updateThemeIcon(theme) {
+            const themeIcon = document.getElementById('themeIcon');
+            if (themeIcon) {
+                themeIcon.textContent = theme === 'dark' ? '🌙' : '☀️';
+            }
+        }
+
+        // Initialize theme on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTheme = getTheme();
+            setTheme(savedTheme);
+        });
+    </script>
+</body>
+</html>
+
