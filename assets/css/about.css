@@ -16,12 +16,15 @@
     font-size: 2.2rem;
     margin-bottom: 1.5rem;
     font-weight: 700;
+    text-align: left;
+    color: var(--text-primary);
 }
 
 .about-section p {
     font-size: 1.1rem;
     line-height: 1.9;
     margin-bottom: 1.5rem;
+    color: var(--text-tertiary);
 }
 
 .highlight-box {
@@ -45,6 +48,7 @@
 .highlight-box p {
     font-size: 1.15rem;
     line-height: 1.9;
+    color: var(--text-tertiary);
 }
 
 /* Values Section */
@@ -72,10 +76,12 @@
 .value-card h3 {
     font-size: 1.4rem;
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .value-card p {
     line-height: 1.7;
+    color: var(--text-tertiary);
 }
 
 /* Stats Section */
@@ -107,11 +113,19 @@
     font-size: 1.1rem;
     color: var(--text-secondary);
 }
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.stat-item p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
 
 /* CTA Section */
 .cta-section {
     background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-    color: var(--text-primary);
     padding: 4rem 2rem;
     text-align: center;
     margin-top: 4rem;
@@ -121,6 +135,7 @@
 .cta-section h2 {
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .cta-section p {

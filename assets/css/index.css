@@ -35,11 +35,13 @@
 
 .hero-content h1 {
     margin-bottom: 1.5rem;
+    color: var(--text-primary);
 }
 
 .hero-content p {
     font-size: clamp(1.1rem, 2vw, 1.3rem);
     margin-bottom: 2.5rem;
+    color: var(--text-secondary);
 }
 
 .hero-buttons {
@@ -64,6 +66,7 @@
 .section-header h2 {
     font-size: clamp(2rem, 4vw, 2.8rem);
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .section-header p {
@@ -132,6 +135,7 @@
     font-size: 1.5rem;
     margin-bottom: 0.75rem;
     line-height: 1.3;
+    color: var(--text-primary);
 }
 
 .blog-card p {
@@ -199,6 +203,7 @@
 .featured-post-content h2 {
     font-size: clamp(1.8rem, 3vw, 2.5rem);
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .featured-post-content p {
@@ -250,6 +255,7 @@
 .category-card h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
+    color: var(--text-primary);
 }
 
 .category-card span {
@@ -272,6 +278,7 @@
 .newsletter-section h2 {
     font-size: 2.2rem;
     margin-bottom: 1rem;
+    color: var(--text-primary);
 }
 
 .newsletter-section p {
