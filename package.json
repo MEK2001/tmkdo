@@ -1,12 +1,29 @@
 {
   "name": "the-minimalist-kraft-do",
-  "version": "1.0.0",
-  "description": "Minimalist Home Decor & Curated Living Blog",
+  "version": "2.0.0",
+  "description": "Minimalist Home Decor & Curated Living Blog - Next.js",
   "scripts": {
-    "build": "echo 'No build step required for static site'",
-    "deploy": "wrangler pages deploy . --project-name=tmkdo"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "deploy": "npm run build && wrangler pages deploy out --project-name=tmkdo"
   },
-  "keywords": ["blog", "minimalist", "home-decor"],
+  "dependencies": {
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "gsap": "^3.12.5"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.9",
+    "@types/react-dom": "^19.0.3",
+    "typescript": "^5.7.3",
+    "eslint": "^9.19.0",
+    "eslint-config-next": "^15.1.6"
+  },
+  "keywords": ["blog", "minimalist", "home-decor", "nextjs"],
   "author": "",
   "license": "MIT"
 }

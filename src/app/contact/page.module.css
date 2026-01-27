@@ -1,0 +1,247 @@
+.pageHero {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+  padding: 6rem 2rem 4rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.pageHero h1 {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.pageHero p {
+  font-size: 1.2rem;
+  color: var(--text-tertiary);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contactContainer {
+  max-width: 1200px;
+  margin: 5rem auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contactInfo h2 {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.contactInfo > div:first-child p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-tertiary);
+  margin-bottom: 2.5rem;
+}
+
+.infoCard {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-secondary);
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.infoCard:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-color);
+}
+
+.infoIcon {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.infoContent h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.infoContent p {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+  line-height: 1.6;
+  margin: 0.25rem 0;
+}
+
+.contactForm {
+  background: var(--bg-secondary);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-lg);
+}
+
+.contactForm h2 {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.formGroup {
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  padding: 0.875rem 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(201, 125, 96, 0.1);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submitButton {
+  width: 100%;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submitButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(201, 125, 96, 0.4);
+}
+
+.socialConnect {
+  max-width: 800px;
+  margin: 5rem auto 3rem;
+  padding: 0 2rem;
+  text-align: center;
+}
+
+.socialConnect h2 {
+  font-family: var(--font-playfair), 'Playfair Display', serif;
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.socialConnect > p {
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+  margin-bottom: 3rem;
+}
+
+.socialGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.socialCard {
+  background: var(--bg-secondary);
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: block;
+}
+
+.socialCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary-color);
+}
+
+.socialIcon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.socialCard h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.socialCard p {
+  font-size: 0.95rem;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 968px) {
+  .contactContainer {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin: 3rem auto;
+  }
+
+  .contactForm {
+    padding: 2rem;
+  }
+
+  .socialGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .pageHero {
+    padding: 4rem 1.5rem 3rem;
+  }
+
+  .pageHero h1 {
+    font-size: 2.2rem;
+  }
+
+  .contactContainer {
+    padding: 0 1.5rem;
+  }
+
+  .contactForm {
+    padding: 1.5rem;
+  }
+}
