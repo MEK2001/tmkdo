@@ -1,0 +1,219 @@
+/* ===================================
+   Contact Page Specific Styles
+   =================================== */
+
+.contact-container {
+    max-width: 1200px;
+    margin: 5rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contact-info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info > p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+.info-card {
+    background: var(--bg-secondary);
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    border: 1px solid var(--border-subtle);
+}
+
+.info-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+}
+
+.info-content h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+}
+
+.info-content p,
+.info-content a {
+    color: var(--text-tertiary);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.info-content a:hover {
+    color: var(--primary-color);
+}
+
+/* Contact Form */
+.contact-form {
+    background: var(--bg-secondary);
+    padding: 3.5rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-subtle);
+}
+
+.contact-form h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 0.875rem 1.25rem;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: var(--bg-elevated);
+}
+
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(201, 125, 96, 0.35);
+    transition: all 0.3s var(--transition-smooth);
+    width: 100%;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(201, 125, 96, 0.45);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Social Connect Section */
+.social-connect {
+    max-width: 800px;
+    margin: 5rem auto 0;
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.social-connect h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.social-connect p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text-tertiary);
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.social-card {
+    background: var(--bg-secondary);
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all 0.3s var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.social-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
+}
+
+.social-card-icon {
+    font-size: 2.5rem;
+}
+
+.social-card span {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .contact-container {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin: 3rem auto;
+    }
+
+    .contact-form {
+        padding: 2.5rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .contact-form {
+        padding: 2rem;
+    }
+
+    .info-card {
+        padding: 2rem;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
