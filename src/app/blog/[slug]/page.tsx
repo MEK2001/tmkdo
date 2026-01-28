@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import RelatedPosts from '@/components/RelatedPosts';
+import { siteMetadata } from '@/lib/metadata';
 import styles from './page.module.css';
 
 // Blog post data
@@ -293,6 +295,152 @@ const blogPosts: Record<string, BlogPost> = {
       <p>Natural materials bring irreplaceable beauty, warmth, and authenticity to modern homes. Whether you're incorporating a single wooden bowl or redesigning an entire space around natural elements, these materials create environments that feel grounded, peaceful, and timeless. Start small, choose quality over quantity, and build a home filled with materials that connect you to the natural world.</p>
     `,
   },
+  'shagreen-desk-organizer': {
+    slug: 'shagreen-desk-organizer',
+    title: 'Elevate Your Desk with Shagreen: The Luxury Organizer Trend',
+    date: 'January 20, 2026',
+    image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=1200&h=800&fit=crop&q=80',
+    category: 'Organization',
+    readTime: '4 min read',
+    content: `
+      <p>In the world of interior design, shagreen has emerged as a sophisticated material that bridges the gap between luxury and understated elegance. If you're looking to elevate your workspace without sacrificing minimalist principles, shagreen desk organizers might be exactly what you need.</p>
+
+      <p>This stingray-derived material, with its distinctive granulated texture and warm neutral tones, brings an unexpected layer of sophistication to any desk. Let's explore why shagreen is becoming the go-to choice for those seeking both function and refinement.</p>
+
+      <h2>What is Shagreen?</h2>
+      <p>Shagreen is a luxurious material made from stingray leather, prized for centuries by craftspeople and designers. Its unique texture—tiny, evenly distributed bumps—creates an almost organic, tactile quality that feels wonderful to touch. Modern shagreen products are typically made from sustainable sources, making them an ethical luxury choice.</p>
+
+      <h2>Why Shagreen for Your Desk?</h2>
+      <p>Beyond its undeniable beauty, shagreen offers several practical advantages. Its subtle texture prevents small items from sliding around your desk, making it perfect for pen holders, desk trays, and organizers. The warm beige and taupe tones complement nearly any color palette, from minimalist neutrals to earthy bohemian styles.</p>
+
+      <h3>Key Benefits:</h3>
+      <ul>
+        <li><strong>Visual Interest:</strong> The texture adds depth without visual noise</li>
+        <li><strong>Durability:</strong> Shagreen is surprisingly robust and long-lasting</li>
+        <li><strong>Timeless:</strong> This material has been treasured for centuries</li>
+        <li><strong>Sustainable:</strong> Responsibly sourced and eco-conscious</li>
+      </ul>
+
+      <h2>Styling Your Shagreen Organizers</h2>
+      <p>A single shagreen desk organizer can transform your workspace. Pair it with sleek metal accents, warm wood furniture, and minimal accessories for a curated, sophisticated look. The beauty of shagreen is that it's statement enough on its own—it doesn't need competition from other textured items.</p>
+
+      <h2>Small Luxury Touches, Big Impact</h2>
+      <p>One of the core principles of minimalist design is choosing quality over quantity. Shagreen organizers embody this philosophy perfectly. A single, well-chosen piece elevates your entire desk setup and brings daily joy through its texture and beauty.</p>
+
+      <p>When you invest in a shagreen organizer, you're not just buying a functional item—you're adding a piece of craftsmanship and luxury to your space. In a minimalist environment, such thoughtful touches make all the difference.</p>
+    `,
+  },
+  'pampas-grass-decor': {
+    slug: 'pampas-grass-decor',
+    title: 'Natural Elegance: Decorating with Pampas Grass',
+    date: 'January 18, 2026',
+    image: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=1200&h=800&fit=crop&q=80',
+    category: 'Materials',
+    readTime: '5 min read',
+    content: `
+      <p>Pampas grass has become synonymous with contemporary interior design, and for good reason. This elegant, naturally neutral plant brings a sense of organic sophistication to any space without demanding constant care or attention. Whether your style is minimalist, boho, or modern, pampas grass can elevate your home.</p>
+
+      <p>The rise of pampas grass in modern interiors reflects a broader movement toward natural materials and sustainable living. Unlike fresh flowers that require constant replacement, pampas grass remains beautiful year-round, making it an eco-conscious choice for sustainable home decor.</p>
+
+      <h2>Why Pampas Grass Works</h2>
+      <p>Pampas grass offers several advantages over traditional floral arrangements. The soft, feathery plumes catch light beautifully, creating movement and visual interest. The neutral color palette—typically ivory, champagne, or soft gray—complements any existing décor without introducing new colors into your space.</p>
+
+      <h3>The Appeal:</h3>
+      <ul>
+        <li><strong>Low Maintenance:</strong> No watering, feeding, or constant care</li>
+        <li><strong>Long-Lasting:</strong> Beautiful for years with minimal effort</li>
+        <li><strong>Texture:</strong> Adds depth and visual interest to spaces</li>
+        <li><strong>Light-Catching:</strong> Creates beautiful shadows and highlights</li>
+      </ul>
+
+      <h2>Best Placements for Pampas Grass</h2>
+      <p>The beauty of pampas grass is its versatility. A single tall stem in a minimalist corner creates an elegant focal point, while an abundant arrangement in an entryway makes a bold design statement. Consider the height of your ceilings and the proportions of your space when deciding on placement.</p>
+
+      <h2>The Minimalist Approach</h2>
+      <p>In minimalist design, a single stalk of pampas grass can serve as your room's focal point. Paired with a simple ceramic or glass vessel, it becomes a meditation on form, texture, and the beauty of nature. This approach celebrates the principle that sometimes, less truly is more.</p>
+
+      <p>Pampas grass reminds us that natural beauty doesn't require constant maintenance or complexity. By bringing this elegant plant into our homes, we create spaces that feel grounded, peaceful, and connected to the natural world—core principles of minimalist design.</p>
+    `,
+  },
+  'throw-blanket-styling': {
+    slug: 'throw-blanket-styling',
+    title: 'The Art of Layering: Choosing the Perfect Throw Blanket',
+    date: 'January 17, 2026',
+    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&h=800&fit=crop&q=80',
+    category: 'Living Room',
+    readTime: '4 min read',
+    content: `
+      <p>A throw blanket is more than just a practical item for warmth—it's a design element that can completely transform your living room. The right throw brings texture, color, and comfort to your space while maintaining a minimalist aesthetic when chosen thoughtfully.</p>
+
+      <p>The key to styling throw blankets is understanding that one perfect piece beats multiple mediocre ones. By investing in a high-quality throw that complements your space, you add both functionality and visual appeal without creating clutter.</p>
+
+      <h2>Material Matters</h2>
+      <p>The material you choose affects both the feel and longevity of your throw blanket. Each material brings different qualities to your space and requires different care considerations.</p>
+
+      <h3>Popular Materials:</h3>
+      <ul>
+        <li><strong>Cotton:</strong> Breathable, easy to care for, perfect for any season</li>
+        <li><strong>Linen:</strong> Elegant, durable, softens with washing, ideal for minimalist spaces</li>
+        <li><strong>Wool:</strong> Warm and insulating, naturally resistant to wrinkles and stains</li>
+        <li><strong>Cashmere:</strong> Ultimate luxury, incredibly soft, requires gentle care</li>
+      </ul>
+
+      <h2>Color and Pattern Selection</h2>
+      <p>In a minimalist living room, your throw should complement your existing palette rather than introduce new colors. Neutral tones—cream, gray, taupe, and soft whites—work with nearly any interior. A simple texture or subtle pattern adds visual interest without visual noise.</p>
+
+      <h2>Styling Techniques</h2>
+      <p>The way you drape your throw blanket matters. An artfully draped throw over the arm of a sofa adds both comfort and refinement. For a cleaner look, fold it neatly and place it across the sofa back. In a bedroom, a single throw at the foot of the bed adds warmth and texture without overwhelming the space.</p>
+
+      <h2>Seasonal Swaps</h2>
+      <p>One of the benefits of a quality throw blanket is its versatility across seasons. Lighter cotton or linen throws work well in warmer months, while wool or cashmere provides cozy warmth in winter. By rotating your throw seasonally, you keep your space fresh while maintaining visual consistency.</p>
+
+      <h2>The Minimalist Approach</h2>
+      <p>Rather than collecting multiple throw blankets, choose one exceptional piece that serves both functional and aesthetic purposes. A single, well-made throw in a neutral tone will serve you for years and remain timeless. This approach aligns perfectly with minimalist principles—quality over quantity, intentionality over excess.</p>
+
+      <p>A perfect throw blanket is an investment in both comfort and style. When you choose thoughtfully and style it intentionally, this single item becomes a beloved addition to your home that brings daily warmth and joy.</p>
+    `,
+  },
+  'corner-tv-stand': {
+    slug: 'corner-tv-stand',
+    title: 'Maximize Your Space: The Corner TV Stand Solution',
+    date: 'January 16, 2026',
+    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=1200&h=800&fit=crop&q=80',
+    category: 'Organization',
+    readTime: '5 min read',
+    content: `
+      <p>Small space living doesn't mean compromising on entertainment or comfort. A corner TV stand is a smart furniture solution that maximizes unused space while maintaining a clean, organized aesthetic. If you're looking to optimize your living room without it feeling cramped, a corner stand might be the answer.</p>
+
+      <p>Corner TV stands solve a common design challenge: how to place a television without it dominating a room or consuming precious floor space. By utilizing corner space, you free up the rest of your room for living, which is the heart of minimalist design.</p>
+
+      <h2>Why Corner Stands Work</h2>
+      <p>Corners are typically underutilized in most rooms. By placing your TV stand there, you reclaim central space for seating, movement, and connection. This arrangement naturally creates a better viewing angle and often feels less intrusive than wall-mounted options.</p>
+
+      <h3>Key Advantages:</h3>
+      <ul>
+        <li><strong>Space Efficiency:</strong> Uses otherwise wasted corner space</li>
+        <li><strong>Flexibility:</strong> Easy to rearrange if needed</li>
+        <li><strong>Cable Management:</strong> Corners naturally hide cables and cords</li>
+        <li><strong>Visual Balance:</strong> Keeps the room from feeling TV-centric</li>
+      </ul>
+
+      <h2>Choosing the Right Size</h2>
+      <p>Measure your corner carefully before purchasing. Your TV stand should not be wider than the wall space available, and the depth should allow for proper clearance and ventilation. The height should position your TV at a comfortable viewing level when seated.</p>
+
+      <h2>Organization Strategies</h2>
+      <p>A well-organized corner TV stand keeps cables hidden, media neatly stored, and the area clutter-free. Use cable management solutions, closed storage for devices, and designated spaces for remotes and other necessities. This prevents your entertainment area from becoming a visual clutter zone.</p>
+
+      <h2>Material Choices</h2>
+      <p>Corner TV stands come in various materials—natural wood, metal, glass, and combinations thereof. Choose materials that complement your existing furniture and aesthetic. Natural wood creates warmth, while metal and glass lend a modern, streamlined feel.</p>
+
+      <h2>Multi-Functional Design</h2>
+      <p>The best corner TV stands do double duty. Look for options with storage drawers, shelving, or surfaces that can display plants, art, or other meaningful objects. This maximizes functionality while keeping the piece integral to your room's design.</p>
+
+      <h2>Styling Your Corner Stand</h2>
+      <p>Keep the area around your TV stand minimal. A single plant, a few books, or a meaningful decorative object is sufficient. The goal is to maintain the sense of space and calm that your corner stand provides by freeing up floor space.</p>
+
+      <p>A thoughtfully chosen corner TV stand is an investment in both space and peace of mind. By utilizing this often-wasted corner, you create a functional media center that feels intentional and integrated into your home rather than dominating it.</p>
+    `,
+  },
 };
 
 interface BlogPost {
@@ -303,7 +451,54 @@ interface BlogPost {
   category: string;
   readTime: string;
   content: string;
+  excerpt?: string;
 }
+
+// Posts array for RelatedPosts component
+const postsArray = [
+  {
+    slug: 'minimalist-living-room',
+    title: '5 Essential Pieces for a Minimalist Living Room',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&q=80',
+    excerpt: 'Creating a minimalist living room doesn\'t mean sacrificing comfort or style. Discover the five essential furniture and decor pieces that form the foundation of a perfectly balanced space.',
+  },
+  {
+    slug: 'decluttering-guide',
+    title: 'The Art of Decluttering: A Room-by-Room Guide',
+    image: 'https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=800&h=600&fit=crop&q=80',
+    excerpt: 'Transform your home into a peaceful sanctuary with our comprehensive decluttering guide. Learn practical strategies to tackle every room and maintain a clutter-free lifestyle.',
+  },
+  {
+    slug: 'natural-materials',
+    title: 'Natural Materials in Modern Homes: Wood, Stone & Clay',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&q=80',
+    excerpt: 'Explore how natural materials bring warmth, texture, and authenticity to contemporary interiors. From reclaimed wood to handcrafted ceramics, discover the beauty of organic elements.',
+  },
+  {
+    slug: 'shagreen-desk-organizer',
+    title: 'Elevate Your Desk with Shagreen: The Luxury Organizer Trend',
+    image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&h=600&fit=crop&q=80',
+    excerpt: 'Discover how shagreen desk organizers bring luxury and sophistication to your workspace while maintaining minimalist principles.',
+  },
+  {
+    slug: 'pampas-grass-decor',
+    title: 'Natural Elegance: Decorating with Pampas Grass',
+    image: 'https://images.unsplash.com/photo-1578500494198-246f612d03b3?w=800&h=600&fit=crop&q=80',
+    excerpt: 'Bring natural elegance into your home with pampas grass—a low-maintenance, sustainable way to add texture and beauty to any space.',
+  },
+  {
+    slug: 'throw-blanket-styling',
+    title: 'The Art of Layering: Choosing the Perfect Throw Blanket',
+    image: 'https://images.unsplash.com/photo-1595521624873-40eb57769f00?w=800&h=600&fit=crop&q=80',
+    excerpt: 'Learn how to choose and style the perfect throw blanket to add comfort and visual depth to your living room.',
+  },
+  {
+    slug: 'corner-tv-stand',
+    title: 'Maximize Your Space: The Corner TV Stand Solution',
+    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&q=80',
+    excerpt: 'Discover how a corner TV stand can maximize your space while maintaining a clean, organized aesthetic.',
+  },
+];
 
 export async function generateStaticParams() {
   return Object.keys(blogPosts).map((slug) => ({
@@ -321,9 +516,49 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     };
   }
 
+  const publishedDate = new Date(post.date).toISOString();
+  const modifiedDate = publishedDate;
+  const postUrl = `${siteMetadata.url}/blog/${slug}`;
+  const excerpt = post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
+
   return {
-    title: `${post.title} - The Minimalist Kraft & DO`,
-    description: post.content.substring(0, 160).replace(/<[^>]*>/g, ''),
+    title: post.title,
+    description: excerpt,
+    keywords: [...siteMetadata.keywords],
+    authors: [
+      {
+        name: "TMKDO Team",
+      },
+    ],
+    openGraph: {
+      type: "article",
+      url: postUrl,
+      title: post.title,
+      description: excerpt,
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      publishedTime: publishedDate,
+      modifiedTime: modifiedDate,
+      authors: ["TMKDO Team"],
+      section: "Lifestyle",
+      tags: ["minimalist", "home decor", post.category.toLowerCase()],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: excerpt,
+      images: [post.image],
+      creator: siteMetadata.twitterHandle,
+    },
+    alternates: {
+      canonical: postUrl,
+    },
   };
 }
 
@@ -335,22 +570,64 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
+  const postUrl = `${siteMetadata.url}/blog/${slug}`;
+  const excerpt = post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    image: [post.image],
+    datePublished: new Date(post.date).toISOString(),
+    dateModified: new Date(post.date).toISOString(),
+    author: {
+      "@type": "Organization",
+      name: "TMKDO",
+      url: siteMetadata.url,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: siteMetadata.siteName,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteMetadata.url}/logo.png`,
+      },
+    },
+    description: excerpt,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": postUrl,
+    },
+  };
+
   return (
-    <article className={styles.article}>
-      <header className={styles.articleHeader}>
-        <div className={styles.category}>{post.category}</div>
-        <h1>{post.title}</h1>
-        <div className={styles.articleInfo}>
-          <span>📅 {post.date}</span>
-          <span>⏱️ {post.readTime}</span>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <div className={styles.blogPostContainer}>
+      <article className={styles.article}>
+        <header className={styles.articleHeader}>
+          <div className={styles.category}>{post.category}</div>
+          <h1>{post.title}</h1>
+          <div className={styles.articleInfo}>
+            <span>📅 {post.date}</span>
+            <span>⏱️ {post.readTime}</span>
+          </div>
+        </header>
+
+        <div className={styles.featuredImage}>
+          <img src={post.image} alt={post.title} />
         </div>
-      </header>
 
-      <div className={styles.featuredImage}>
-        <img src={post.image} alt={post.title} />
-      </div>
+        <div className={styles.articleContent} dangerouslySetInnerHTML={{ __html: post.content }} />
+      </article>
 
-      <div className={styles.articleContent} dangerouslySetInnerHTML={{ __html: post.content }} />
-    </article>
+      <aside className={styles.sidebarWrapper}>
+        <RelatedPosts currentSlug={slug} posts={postsArray} />
+      </aside>
+    </div>
+    </>
   );
 }

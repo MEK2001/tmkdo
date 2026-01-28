@@ -1,7 +1,26 @@
+.blogPostContainer {
+  max-width: 100%;
+  margin: 0;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: 2fr minmax(300px, 850px) 1fr minmax(280px, 420px) 0.3fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
 .article {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 2rem 5rem;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0;
+  background: transparent;
+  grid-column: 2;
+}
+
+.sidebarWrapper {
+  grid-column: 4;
+  position: sticky;
+  top: 100px;
+  margin-right: 0.5rem;
 }
 
 .articleHeader {
@@ -47,11 +66,11 @@
 
 .featuredImage {
   max-width: 1000px;
-  margin: 3rem auto;
+  margin: 3rem auto 2rem;
   position: relative;
-  border-radius: 20px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
 .featuredImage img {
@@ -67,8 +86,8 @@
 }
 
 .articleContent p {
-  font-size: 1.15rem;
-  line-height: 1.9;
+  font-size: 1.1rem;
+  line-height: 1.8;
   color: var(--text-tertiary);
   margin-bottom: 1.8rem;
 }
@@ -137,9 +156,56 @@
   font-weight: bold;
 }
 
-@media (max-width: 968px) {
+@media (max-width: 1400px) {
+  .blogPostContainer {
+    grid-template-columns: 1fr minmax(280px, 700px) 350px 1fr;
+    padding: 2.5rem 2rem;
+    gap: 2.5rem;
+  }
+
+  .sidebarWrapper {
+    margin-right: 1.5rem;
+  }
+}
+
+@media (max-width: 1200px) {
+  .blogPostContainer {
+    grid-template-columns: 1fr minmax(250px, 650px) 320px 1fr;
+    gap: 2rem;
+  }
+
+  .sidebarWrapper {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .blogPostContainer {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    gap: 3rem;
+  }
+
   .article {
-    padding: 0 1.5rem 3rem;
+    grid-column: 1;
+  }
+
+  .sidebarWrapper {
+    grid-column: 1;
+    position: static;
+    margin-right: 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (max-width: 968px) {
+  .blogPostContainer {
+    padding: 1.5rem 1rem;
+    gap: 2rem;
   }
 
   .articleHeader {
@@ -178,6 +244,18 @@
   .articleInfo {
     flex-direction: column;
     gap: 0.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .blogPostContainer {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .blogPostContainer {
+    padding: 1rem 0.75rem;
   }
 }
 

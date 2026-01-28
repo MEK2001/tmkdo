@@ -18,44 +18,124 @@
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
   color: var(--text-primary);
+  font-weight: 600;
 }
 
-.footerSection p,
-.footerSection a {
+.footerSection p {
   color: var(--text-tertiary);
   text-decoration: none;
   font-size: 0.95rem;
   line-height: 1.8;
   display: block;
   margin-bottom: 0.75rem;
-  transition: color 0.2s ease;
-}
-
-.footerSection a:hover {
-  color: var(--primary-color);
-  padding-left: 5px;
 }
 
 .footerSection:first-child p {
   margin-bottom: 1.5rem;
 }
 
-.socialLinks {
+/* Quick Links Styling */
+.quickLinks {
+  list-style: none;
+  padding: 0;
   display: flex;
-  gap: 1.5rem;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quickLinks li {
+  margin: 0;
+}
+
+.quickLinks a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.quickLinks a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.quickLinks a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+/* Social Icons Styling */
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   flex-wrap: wrap;
 }
 
-.socialLinks a {
-  color: var(--text-secondary);
-  font-weight: 500;
+.socialIcon {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 1.5rem;
   transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-.socialLinks a:hover {
-  color: var(--primary-color);
-  transform: translateY(-2px);
-  padding-left: 0;
+/* Twitter Brand Color */
+.twitter {
+  background: #1DA1F2;
+}
+
+.twitter:hover {
+  background: #0d8bd9;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Facebook Brand Color */
+.facebook {
+  background: #4267B2;
+}
+
+.facebook:hover {
+  background: #365899;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Instagram Brand Gradient */
+.instagram {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.instagram:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 16px rgba(188, 24, 136, 0.4);
+}
+
+/* Pinterest Brand Color */
+.pinterest {
+  background: #E60023;
+}
+
+.pinterest:hover {
+  background: #bd081c;
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.socialIcon:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
 }
 
 .footerBottom {
@@ -71,6 +151,39 @@
   font-size: 0.9rem;
 }
 
+/* Category Links Styling */
+.categoryList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.categoryLink {
+  display: block;
+  color: var(--text-tertiary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0;
+}
+
+.categoryLink:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transform: translateX(4px);
+}
+
+.categoryLink:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 3rem 1.5rem 1.5rem;
@@ -81,7 +194,12 @@
     gap: 2rem;
   }
 
-  .socialLinks {
+  .socialIcons {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .quickLinks {
     flex-direction: column;
     gap: 0.5rem;
   }

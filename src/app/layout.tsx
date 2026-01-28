@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { siteMetadata } from '@/lib/metadata';
 import '@/styles/globals.css';
 
 const inter = Inter({ 
@@ -19,9 +20,65 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'The Minimalist Kraft & DO - Home Decor Blog',
-  description: 'Discover the art of simple, intentional living through thoughtful design and timeless home decor pieces.',
-  keywords: ['minimalist', 'home decor', 'interior design', 'decluttering', 'natural materials'],
+  metadataBase: new URL(siteMetadata.url),
+  title: {
+    default: siteMetadata.title,
+    template: "%s | TMKDO",
+  },
+  description: siteMetadata.description,
+  keywords: [...siteMetadata.keywords],
+  authors: [
+    {
+      name: "TMKDO Team",
+      url: siteMetadata.url,
+    },
+  ],
+  creator: "TMKDO",
+  publisher: "TMKDO",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    locale: siteMetadata.locale,
+    url: siteMetadata.url,
+    siteName: siteMetadata.siteName,
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    images: [
+      {
+        url: siteMetadata.ogImage,
+        width: 1200,
+        height: 630,
+        alt: "TMKDO - Minimalist Home Decor & Living",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: siteMetadata.twitterHandle,
+    creator: siteMetadata.twitterHandle,
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    images: [siteMetadata.ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: siteMetadata.url,
+  },
+  category: "lifestyle",
 };
 
 export default function RootLayout({
@@ -32,6 +89,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#C97D60" />
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
           strategy="beforeInteractive"
