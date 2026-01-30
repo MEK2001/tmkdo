@@ -1,19 +1,15 @@
 .searchAndFilter {
   width: 100%;
-  padding: 2rem 0 3rem 0;
-  background: var(--background);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--background-secondary);
+  padding: 3rem 0;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 3rem;
 }
 
-[data-theme="dark"] .searchAndFilter {
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-
 .container {
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 900px;
   padding: 0 2rem;
+  margin: 0 auto;
   display: flex;
   gap: 1.5rem;
   align-items: center;
@@ -30,12 +26,21 @@
   width: 100%;
   display: flex;
   align-items: center;
+  background: var(--card-background);
+  border-radius: 50px;
+  box-shadow: 0 8px 24px var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.searchInputContainer:focus-within {
+  box-shadow: 0 12px 32px rgba(212, 165, 154, 0.2);
+  transform: translateY(-2px);
 }
 
 .searchIcon {
   position: absolute;
-  left: 1.25rem;
-  color: var(--text-secondary);
+  left: 1.5rem;
+  color: var(--accent-color);
   pointer-events: none;
   z-index: 2;
   flex-shrink: 0;
@@ -45,177 +50,137 @@
   width: 100%;
   padding: 1rem 3rem 1rem 3.5rem;
   font-size: 1rem;
-  border: 2px solid rgba(0, 0, 0, 0.1);
+  border: none;
   border-radius: 50px;
-  background: var(--card-background);
-  color: var(--text-primary);
+  background: transparent;
+  color: var(--text-color);
   transition: all 0.3s ease;
   font-family: inherit;
 }
 
 .searchInput::placeholder {
   color: var(--text-secondary);
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .searchInput:focus {
   outline: none;
-  border-color: #a17659;
-  box-shadow: 0 4px 12px rgba(161, 118, 89, 0.2);
+  box-shadow: none;
 }
 
-[data-theme="dark"] .searchInput {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: var(--bg-secondary);
-}
-
-[data-theme="dark"] .searchInput:focus {
-  border-color: #d4a59a;
-  box-shadow: 0 4px 12px rgba(212, 165, 154, 0.2);
+[data-theme='dark'] .searchInput {
+  background: transparent;
+  color: var(--text-color);
 }
 
 .clearButton {
   position: absolute;
-  right: 1.25rem;
+  right: 1.5rem;
   background: transparent;
   border: none;
-  color: var(--text-secondary);
+  color: var(--accent-color);
   font-size: 1.25rem;
   cursor: pointer;
   padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.2s ease;
+  transition: all 0.3s ease;
   z-index: 3;
 }
 
 .clearButton:hover {
-  color: #a17659;
-}
-
-[data-theme="dark"] .clearButton:hover {
-  color: #d4a59a;
+  transform: scale(1.1);
+  color: var(--text-color);
 }
 
 .filterWrapper {
   display: flex;
+  gap: 1rem;
   align-items: center;
-  gap: 0.75rem;
-  min-width: 200px;
 }
 
 .filterLabel {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
-.filterIcon {
-  color: #a17659;
-  flex-shrink: 0;
-}
-
-[data-theme="dark"] .filterIcon {
-  color: #d4a59a;
-}
-
 .filterSelect {
-  padding: 0.75rem 2.5rem 0.75rem 1rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--card-background);
+  color: var(--text-color);
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
   font-size: 0.95rem;
-  font-weight: 500;
-  border: 2px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  background: var(--card-background) url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") no-repeat right 0.75rem center;
-  background-size: 1rem;
-  color: var(--text-primary);
+  font-family: inherit;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: inherit;
-  appearance: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  min-width: 150px;
+}
+
+.filterSelect:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.12);
 }
 
 .filterSelect:focus {
   outline: none;
-  border-color: #a17659;
-  box-shadow: 0 4px 12px rgba(161, 118, 89, 0.2);
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.15);
+  transform: translateY(-1px);
 }
 
-.filterSelect:hover {
-  border-color: #a17659;
+[data-theme='dark'] .filterSelect {
+  background: var(--card-background);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-[data-theme="dark"] .filterSelect {
-  border-color: rgba(255, 255, 255, 0.2);
-  background-color: var(--bg-secondary);
+[data-theme='dark'] .filterSelect:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.2);
 }
 
-[data-theme="dark"] .filterSelect:focus {
-  border-color: #d4a59a;
-  box-shadow: 0 4px 12px rgba(212, 165, 154, 0.2);
-}
-
-[data-theme="dark"] .filterSelect:hover {
-  border-color: #d4a59a;
-}
-
-.filterSelect option {
-  background: var(--bg-secondary);
-  color: var(--text-primary);
-  padding: 0.5rem;
+/* Glass morphism effect */
+[data-theme='dark'] .searchInputContainer {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .searchAndFilter {
+    padding: 2rem 0;
+  }
+
   .container {
-    flex-direction: column;
-    align-items: stretch;
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+    gap: 1rem;
   }
 
   .searchWrapper {
     width: 100%;
-    min-width: auto;
     order: 1;
   }
 
   .filterWrapper {
     width: 100%;
-    justify-content: space-between;
     order: 2;
-  }
-
-  .searchAndFilter {
-    padding: 1.5rem 0 2rem 0;
-    margin-bottom: 2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
     gap: 1rem;
   }
 
-  .searchInput {
-    padding: 0.875rem 2.5rem 0.875rem 3rem;
-    font-size: 0.95rem;
-  }
-
-  .filterWrapper {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
   .filterSelect {
-    width: 100%;
+    flex: 1;
+    min-width: auto;
   }
 
   .filterLabel {
-    font-size: 0.9rem;
+    display: none;
+  }
+
+  .searchInput {
+    font-size: 16px;
   }
 }

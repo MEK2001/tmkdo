@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState } from 'react';
 import { useTheme } from './ThemeProvider';
 import { siteMetadata } from '@/lib/metadata';
@@ -23,13 +22,13 @@ export default function Header() {
     <header className={styles.header}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.logoLink} onClick={closeMobileMenu}>
-          <Image 
+          <img 
             src={siteMetadata.logo} 
             alt="TMKDO Logo" 
-            width={72} 
-            height={72} 
             className={styles.logo}
-            priority
+            width={72}
+            height={72}
+            loading="eager"
           />
           <span className={styles.brandName}>The Minimalist Kraft & DO</span>
         </Link>

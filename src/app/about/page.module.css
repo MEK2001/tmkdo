@@ -1,170 +1,245 @@
-.pageHero {
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
-  padding: 6rem 2rem 4rem;
+.aboutPage {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.aboutHero {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background-secondary);
+  padding: 4rem 2rem;
   text-align: center;
-  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
 }
 
-.pageHero h1 {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 3rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
-}
-
-.pageHero p {
-  font-size: 1.2rem;
-  color: var(--text-tertiary);
-  max-width: 700px;
+.heroContent {
+  max-width: 800px;
   margin: 0 auto;
 }
 
-.aboutContent {
-  max-width: 900px;
-  margin: 5rem auto;
-  padding: 0 2rem;
+.heroTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
 }
 
-.aboutSection {
-  margin-bottom: 4rem;
+.heroSubtitle {
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--accent-color);
+  font-weight: 500;
 }
 
-.aboutSection h2 {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-bottom: 1.5rem;
-  color: var(--text-primary);
+.storySection {
+  padding: 6rem 2rem;
+  background: var(--background);
 }
 
-.aboutSection p {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.paragraph {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: var(--text-tertiary);
-  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  opacity: 0.9;
 }
 
-.highlightBox {
-  background: var(--bg-secondary);
-  padding: 3rem;
+.imageContent {
+  position: relative;
+}
+
+.imageWrapper {
+  position: relative;
   border-radius: 16px;
-  border-left: 5px solid var(--primary-color);
-  margin: 3rem 0;
-  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  box-shadow: 0 20px 60px var(--shadow-heavy);
+  aspect-ratio: 4/5;
 }
 
-.highlightBox h3 {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--text-primary);
+.aboutImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.highlightBox p {
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: var(--text-tertiary);
-  font-style: italic;
+.valuesSection {
+  padding: 6rem 2rem;
+  background: var(--background-secondary);
+}
+
+.centerTitle {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 4rem;
+  color: var(--text-color);
 }
 
 .valuesGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2.5rem;
 }
 
 .valueCard {
-  background: var(--bg-secondary);
-  padding: 2rem;
+  background: var(--card-background);
+  padding: 2.5rem 2rem;
   border-radius: 16px;
   text-align: center;
-  border: 1px solid var(--border-subtle);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow-light);
 }
 
 .valueCard:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border-color);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px var(--shadow-medium);
 }
 
 .valueIcon {
-  font-size: 3rem;
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(212, 165, 154, 0.7) 100%);
+  border-radius: 50%;
+  color: white;
+}
+
+.valueTitle {
+  font-size: 1.4rem;
+  font-weight: 600;
   margin-bottom: 1rem;
+  color: var(--text-color);
 }
 
-.valueCard h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
-  color: var(--text-primary);
-}
-
-.valueCard p {
-  font-size: 0.95rem;
+.valueDescription {
+  font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-tertiary);
-  margin: 0;
+  color: var(--text-secondary);
 }
 
-.statsSection {
-  background: var(--bg-secondary);
-  padding: 5rem 2rem;
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-  margin-top: 3rem;
+.ctaSection {
+  padding: 6rem 2rem;
+  background: var(--background-secondary);
 }
 
-.statsContainer {
-  max-width: 1000px;
+.ctaContent {
+  max-width: 800px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 3rem;
   text-align: center;
 }
 
-.statItem h3 {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 3rem;
-  color: var(--primary-color);
-  margin-bottom: 0.5rem;
+.ctaTitle {
+  font-size: clamp(2rem, 3vw, 2.5rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
 }
 
-.statItem p {
-  font-size: 1rem;
-  color: var(--text-tertiary);
-  font-weight: 500;
+.ctaDescription {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+}
+
+.ctaButtons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.primaryCTA {
+  padding: 1rem 2.5rem;
+  background: var(--accent-color);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(212, 165, 154, 0.3);
+}
+
+.primaryCTA:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.4);
+}
+
+.secondaryCTA {
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: var(--accent-color);
+  border: 2px solid var(--accent-color);
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.secondaryCTA:hover {
+  background: var(--accent-color);
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .imageContent {
+    order: -1;
+  }
 }
 
 @media (max-width: 768px) {
-  .pageHero {
-    padding: 4rem 1.5rem 3rem;
-  }
-
-  .pageHero h1 {
-    font-size: 2.2rem;
-  }
-
-  .aboutContent {
-    padding: 0 1.5rem;
-    margin: 3rem auto;
+  .storySection,
+  .valuesSection,
+  .ctaSection {
+    padding: 4rem 1.5rem;
   }
 
   .valuesGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 
-  .highlightBox {
-    padding: 2rem;
+  .ctaButtons {
+    flex-direction: column;
   }
 
-  .statsContainer {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .statItem h3 {
-    font-size: 2.2rem;
+  .ctaButtons a {
+    width: 100%;
+    text-align: center;
   }
 }
