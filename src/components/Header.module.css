@@ -1,5 +1,5 @@
 .header {
-  background-color: rgba(245, 240, 232, 0.85);
+  background-color: var(--bg-secondary);
   backdrop-filter: blur(12px) saturate(180%);
   box-shadow: var(--shadow-sm);
   position: sticky;
