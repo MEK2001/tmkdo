@@ -11,9 +11,11 @@ interface BlogCardProps {
   date: string;
   title: string;
   excerpt: string;
+  category?: string;
+  readTime?: string;
 }
 
-export default function BlogCard({ slug, image, date, title, excerpt }: BlogCardProps) {
+export default function BlogCard({ slug, image, date, title, excerpt, category, readTime }: BlogCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -77,11 +79,18 @@ export default function BlogCard({ slug, image, date, title, excerpt }: BlogCard
             className={styles.image}
             priority={false}
           />
+          {category && (
+            <span className={styles.categoryBadge}>{category}</span>
+          )}
         </div>
         <div className={styles.contentContainer}>
-          <div className={styles.date}>{date}</div>
           <h3 className={styles.title}>{title}</h3>
           <p className={styles.excerpt}>{excerpt}</p>
+          <div className={styles.cardMeta}>
+            <span className={styles.date}>{date}</span>
+            <span className={styles.metaDivider}>•</span>
+            <span className={styles.readTime}>{readTime}</span>
+          </div>
           <span 
             className={styles.readMoreButton}
             aria-label={`Read full article about ${title}`}

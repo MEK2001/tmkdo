@@ -4,6 +4,7 @@ export const siteMetadata = {
   url: "https://www.tmkdo.com",
   siteName: "TMKDO",
   locale: "en_US",
+  logo: "/logo.svg",
   ogImage: "https://www.tmkdo.com/og-image.jpg",
   twitterHandle: "@tmkdo",
   keywords: [

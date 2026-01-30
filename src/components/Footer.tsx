@@ -67,9 +67,10 @@ export default function Footer() {
         <div className={styles.footerSection}>
           <h3>Categories</h3>
           <ul className={styles.categoryList}>
-            <li><Link href="/?category=Living Room" className={styles.categoryLink}>Living Room</Link></li>
-            <li><Link href="/?category=Organization" className={styles.categoryLink}>Organization</Link></li>
-            <li><Link href="/?category=Materials" className={styles.categoryLink}>Natural Materials</Link></li>
+            <li><Link href="/blog" className={styles.categoryLink}>All Posts</Link></li>
+            <li><Link href="/blog?category=Living Room" className={styles.categoryLink}>Living Room</Link></li>
+            <li><Link href="/blog?category=Organization" className={styles.categoryLink}>Organization</Link></li>
+            <li><Link href="/blog?category=Materials" className={styles.categoryLink}>Natural Materials</Link></li>
           </ul>
         </div>
       </div>
