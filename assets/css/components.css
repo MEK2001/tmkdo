@@ -44,7 +44,10 @@ nav {
 }
 
 .logo-icon {
-    font-size: 1.8rem;
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+    margin-right: 0.5rem;
 }
 
 .nav-links {
