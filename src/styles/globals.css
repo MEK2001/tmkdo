@@ -3,16 +3,22 @@
   /* Light Theme (Default) */
   --primary-color: #C97D60;
   --primary-dark: #B56D50;
+  --accent-color: #D4A59A;
   
   /* Backgrounds */
+  --background: #f5f0e8;
+  --background-secondary: #ebe5dc;
+  --card-background: #ffffff;
   --bg-primary: #f5f0e8;
   --bg-secondary: rgba(255, 252, 248, 0.85);
   --bg-tertiary: #ebe5dc;
   --bg-elevated: #e8e1d7;
   
   /* Text Colors */
+  --text-color: #2a2622;
+  --text-secondary: #5c5650;
   --text-primary: #2a2622;
-  --text-secondary: #3d3933;
+  --text-secondary-old: #3d3933;
   --text-tertiary: #5c5650;
   --text-muted: #888378;
   
@@ -21,6 +27,9 @@
   --border-subtle: rgba(201, 185, 165, 0.15);
   
   /* Shadows */
+  --shadow-light: rgba(150, 130, 110, 0.12);
+  --shadow-medium: rgba(150, 130, 110, 0.15);
+  --shadow-heavy: rgba(150, 130, 110, 0.2);
   --shadow-sm: 0 2px 10px rgba(150, 130, 110, 0.12);
   --shadow-md: 0 4px 20px rgba(150, 130, 110, 0.15);
   --shadow-lg: 0 8px 30px rgba(150, 130, 110, 0.2);
@@ -35,19 +44,31 @@
 
 /* Dark Theme */
 [data-theme="dark"] {
+  --accent-color: #D4A59A;
+  
+  /* Backgrounds */
+  --background: #1e2329;
+  --background-secondary: #2a2f36;
+  --card-background: #252a31;
   --bg-primary: #1e2329;
   --bg-secondary: #2a2f36;
   --bg-tertiary: #252a31;
   --bg-elevated: #23282f;
   
+  /* Text Colors */
+  --text-color: #ffffff;
+  --text-secondary: #a8b0b8;
   --text-primary: #ffffff;
-  --text-secondary: #e0e4e8;
+  --text-secondary-old: #e0e4e8;
   --text-tertiary: #a8b0b8;
   --text-muted: #6b7280;
   
   --border-color: #3a4149;
   --border-subtle: #2d3239;
   
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-medium: rgba(0, 0, 0, 0.4);
+  --shadow-heavy: rgba(0, 0, 0, 0.5);
   --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);

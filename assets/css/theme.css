@@ -1,0 +1,350 @@
+/* ===================================
+   Theme System - The Minimalist Kraft & DO
+   Modern, accessible, and theme-aware design
+   =================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;600;700;800;900&display=swap');
+
+/* ===================================
+   CSS RESET & BASELINE
+   =================================== */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   =================================== */
+:root {
+    /* Brand Colors */
+    --primary-color: #C97D60;
+    --primary-dark: #B56D50;
+    --primary-light: #E09878;
+    --secondary-color: #1a1a1a;
+    --accent-color: #4a5568;
+    
+    /* Dark Theme (Default) */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #252525;
+    --bg-elevated: #1f1f1f;
+    --bg-overlay: rgba(26, 26, 26, 0.95);
+    
+    /* Text Colors - Dark Theme */
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-tertiary: #b0b0b0;
+    --text-muted: #8a8a8a;
+    
+    /* UI Elements */
+    --border-color: #3a3a3a;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --divider-color: #2a2a2a;
+    
+    /* Shadows */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+    
+    /* Interactive States */
+    --hover-overlay: rgba(255, 255, 255, 0.05);
+    --active-overlay: rgba(255, 255, 255, 0.08);
+    
+    /* Animation Variables */
+    --transition-speed: 0.3s;
+    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* ===================================
+   LIGHT THEME
+   =================================== */
+[data-theme="light"] {
+    /* Backgrounds - Warm Beige Palette */
+    --bg-primary: #f5f0e8;
+    --bg-secondary: rgba(255, 252, 248, 0.95);
+    --bg-tertiary: #ebe5dc;
+    --bg-elevated: #ffffff;
+    --bg-overlay: rgba(245, 240, 232, 0.95);
+    
+    /* Text Colors - Dark on Light */
+    --text-primary: #1a1614;
+    --text-secondary: #2a2622;
+    --text-tertiary: #4a4540;
+    --text-muted: #6a6560;
+    
+    /* UI Elements */
+    --border-color: rgba(201, 185, 165, 0.3);
+    --border-subtle: rgba(42, 38, 34, 0.08);
+    --divider-color: rgba(201, 185, 165, 0.2);
+    
+    /* Shadows - Softer for Light Mode */
+    --shadow-sm: 0 2px 8px rgba(150, 130, 110, 0.1);
+    --shadow-md: 0 4px 16px rgba(150, 130, 110, 0.12);
+    --shadow-lg: 0 8px 32px rgba(150, 130, 110, 0.15);
+    --shadow-xl: 0 16px 48px rgba(150, 130, 110, 0.18);
+    
+    /* Interactive States */
+    --hover-overlay: rgba(201, 125, 96, 0.05);
+    --active-overlay: rgba(201, 125, 96, 0.1);
+}
+
+/* ===================================
+   CHARCOAL DARK THEME
+   =================================== */
+[data-theme="dark"] {
+    /* Backgrounds - Blue-tinted Charcoal */
+    --bg-primary: #1e2329;
+    --bg-secondary: #2a2f36;
+    --bg-tertiary: #252a31;
+    --bg-elevated: #23282f;
+    --bg-overlay: rgba(30, 35, 41, 0.95);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: #e0e4e8;
+    --text-tertiary: #a8b0b8;
+    --text-muted: #8a9099;
+    
+    /* UI Elements */
+    --border-color: #3a4149;
+    --border-subtle: rgba(255, 255, 255, 0.08);
+    --divider-color: #2e3339;
+    
+    /* Shadows remain similar */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+    --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* ===================================
+   PREFERS-COLOR-SCHEME SUPPORT
+   =================================== */
+@media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+        --bg-primary: #f5f0e8;
+        --bg-secondary: rgba(255, 252, 248, 0.95);
+        --bg-tertiary: #ebe5dc;
+        --bg-elevated: #ffffff;
+        --text-primary: #1a1614;
+        --text-secondary: #2a2622;
+        --text-tertiary: #4a4540;
+        --text-muted: #6a6560;
+        --border-color: rgba(201, 185, 165, 0.3);
+        --shadow-sm: 0 2px 8px rgba(150, 130, 110, 0.1);
+        --shadow-md: 0 4px 16px rgba(150, 130, 110, 0.12);
+    }
+}
+
+/* ===================================
+   GLOBAL STYLES
+   =================================== */
+html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    background-color: var(--bg-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.4s var(--transition-smooth), 
+                color 0.4s var(--transition-smooth);
+    overflow-x: hidden;
+}
+
+/* ===================================
+   TYPOGRAPHY
+   =================================== */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    transition: color 0.4s var(--transition-smooth);
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+}
+
+h4 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: var(--text-tertiary);
+    transition: color 0.4s var(--transition-smooth);
+}
+
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+a:hover {
+    color: var(--primary-light);
+    opacity: 0.9;
+}
+
+/* ===================================
+   SMOOTH TRANSITIONS
+   =================================== */
+* {
+    transition-property: background-color, color, border-color, opacity, transform;
+    transition-duration: 0.3s;
+    transition-timing-function: var(--transition-smooth);
+}
+
+/* Disable transitions for motion-sensitive users */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+.text-primary { color: var(--text-primary) !important; }
+.text-secondary { color: var(--text-secondary) !important; }
+.text-tertiary { color: var(--text-tertiary) !important; }
+.text-accent { color: var(--primary-color) !important; }
+
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-elevated { background-color: var(--bg-elevated); }
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===================================
+   ANIMATION KEYFRAMES
+   =================================== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ===================================
+   SELECTION STYLING
+   =================================== */
+::selection {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+::-moz-selection {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* ===================================
+   SCROLLBAR STYLING
+   =================================== */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-color);
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border-color) var(--bg-primary);
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - The Minimalist Kraft & DO</title>
+    
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="assets/css/theme.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    
+    <!-- GSAP for Animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="TMKDO Logo" class="logo-icon"> <span>The Minimalist Kraft & DO</span></a>
+            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="closeMobileMenu()">Blog</a></li>
+                <li><a href="about.html" onclick="closeMobileMenu()">About</a></li>
+                <li><a href="contact.html" onclick="closeMobileMenu()">Contact Us</a></li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" onclick="toggleTheme()">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-hero">
+        <h1>About Us</h1>
+        <p>Crafting beautiful, intentional spaces that inspire calm and creativity in everyday living.</p>
+    </section>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2>Our Story</h2>
+            <p>The Minimalist Kraft & DO was born from a simple belief: less is more. In a world filled with excess and constant consumption, we found ourselves yearning for something different—spaces that breathe, homes that tell stories, and objects that serve a purpose beyond mere decoration.</p>
+            <p>What started as a personal journey to declutter and simplify our own living spaces has evolved into a platform where we share our passion for minimalist home decor, intentional design, and the art of curated living. We believe that every piece in your home should be chosen with care, loved deeply, and used purposefully.</p>
+        </div>
+
+        <div class="highlight-box">
+            <h3>Our Philosophy</h3>
+            <p>"True luxury is not about having everything—it's about having exactly what you need, beautifully crafted and thoughtfully placed. It's the freedom that comes from surrounding yourself only with things that add value to your life."</p>
+        </div>
+
+        <div class="about-section">
+            <h2>What We Believe In</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3>Sustainability</h3>
+                    <p>We champion natural materials, timeless designs, and quality over quantity to reduce environmental impact.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">✨</div>
+                    <h3>Intentionality</h3>
+                    <p>Every piece should serve a purpose and bring joy. We help you curate spaces that reflect your values.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🏡</div>
+                    <h3>Simplicity</h3>
+                    <p>Beauty lies in simplicity. Clean lines, neutral palettes, and functional design create peaceful environments.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Authenticity</h3>
+                    <p>We celebrate handcrafted items, local artisans, and pieces with soul over mass-produced alternatives.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2>What We Do</h2>
+            <p>Through our blog, we share practical guides, design inspiration, and honest product recommendations to help you create a home that's truly yours. From decluttering strategies to sourcing the perfect handmade ceramics, we cover every aspect of minimalist living.</p>
+            <p>We're not about stark white rooms or uncomfortable furniture. Our approach to minimalism embraces warmth, texture, and personality. It's about creating spaces that feel inviting, lived-in, and uniquely beautiful.</p>
+        </div>
+    </div>
+
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <h3>50K+</h3>
+                <p>Community Members</p>
+            </div>
+            <div class="stat-item">
+                <h3>200+</h3>
+                <p>Design Guides</p>
+            </div>
+            <div class="stat-item">
+                <h3>1M+</h3>
+                <p>Monthly Readers</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>Join Our Journey</h2>
+        <p>Start your minimalist living journey today and discover the beauty of intentional design.</p>
+        <a href="contact.html" class="cta-button">Get In Touch</a>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>The Minimalist Kraft & DO</h3>
+                <p>Your guide to intentional living and beautiful, functional spaces that inspire calm and creativity.</p>
+                <div class="social-links">
+                    <a href="#">Instagram</a>
+                    <a href="#">Pinterest</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Blog</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <div class="footer-section">
+                <h3>Categories</h3>
+                <span class="footer-text">Living Room Decor</span>
+                <span class="footer-text">Minimalist Tips</span>
+                <span class="footer-text">Natural Materials</span>
+                <span class="footer-text">Decluttering Guides</span>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Minimalist Kraft & DO. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- External JavaScript with GSAP animations -->
+    <script src="assets/js/theme-animations.js"></script>
+    
+    
+    <!-- External JavaScript with GSAP animations -->
+    <script src="assets/js/theme-animations.js"></script>
+    
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            navLinks?.classList.toggle('active');
+            mobileToggle?.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const mobileToggle = document.querySelector('.mobile-menu-toggle');
+            navLinks?.classList.remove('active');
+            mobileToggle?.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const nav = document.querySelector('nav');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (nav && navLinks && !nav.contains(event.target) && navLinks.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
