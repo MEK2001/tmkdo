@@ -10,7 +10,9 @@
 
 .featuredSection {
   padding: 5rem 2rem;
-  background: var(--background);
+  background: linear-gradient(180deg, var(--background) 0%, var(--accent-surface-warm) 50%, var(--background) 100%);
+  position: relative;
+  overflow: hidden;
 }
 
 .sectionTitle {
@@ -45,12 +47,26 @@
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
+}
+
+.viewAllButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-primary);
+  border-radius: 8px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
 }
 
 .viewAllButton:hover {
-  background: linear-gradient(135deg, #a17659, #8B7355);
+  background: var(--gradient-primary);
   color: white;
+  border-color: transparent;
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(201, 125, 96, 0.3);
 }
 
 [data-theme="dark"] .viewAllButton {
@@ -76,10 +92,24 @@
   margin: 5rem auto;
   padding: 4rem 2rem;
   text-align: center;
-  background: var(--bg-secondary);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-surface-medium) 100%);
   border-radius: 24px;
-  box-shadow: var(--shadow-lg);
-  border: 1px solid var(--border-subtle);
+  box-shadow: 0 12px 40px rgba(201, 125, 96, 0.15);
+  border: 1px solid rgba(201, 125, 96, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.newsletter::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(201, 125, 96, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
 .newsletterContent h2 {

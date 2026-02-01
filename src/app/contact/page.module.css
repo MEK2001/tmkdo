@@ -8,14 +8,29 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background-secondary);
+  background: linear-gradient(180deg, var(--background-secondary) 0%, var(--accent-surface-warm) 50%, var(--background-secondary) 100%);
   padding: 4rem 2rem;
   text-align: center;
+  position: relative;
+}
+
+.contactHero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(201, 125, 96, 0.12), transparent 70%);
+  pointer-events: none;
 }
 
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .heroTitle {
@@ -24,6 +39,10 @@
   color: var(--text-color);
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .heroSubtitle {
@@ -82,11 +101,13 @@
   background: var(--card-background);
   border-radius: 12px;
   box-shadow: 0 4px 12px var(--shadow-light);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-left: 4px solid var(--accent-color);
 }
 
 .infoCard:hover {
   transform: translateX(8px);
+  box-shadow: 0 8px 20px rgba(201, 125, 96, 0.15);
 }
 
 .infoIcon {
@@ -154,8 +175,8 @@
 
 .socialIcon:hover {
   transform: translateY(-4px);
-  box-shadow: 0 6px 16px var(--shadow-medium);
-  background: var(--accent-color);
+  box-shadow: 0 8px 20px rgba(201, 125, 96, 0.3);
+  background: var(--gradient-primary);
   color: white;
 }
 
@@ -164,6 +185,7 @@
   padding: 3rem;
   border-radius: 16px;
   box-shadow: 0 8px 24px var(--shadow-light);
+  border: 2px solid var(--accent-surface-warm);
 }
 
 .form {
@@ -200,7 +222,8 @@
 .textarea:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 4px 12px rgba(212, 165, 154, 0.15);
+  box-shadow: 0 0 0 3px var(--accent-surface-warm), 0 0 0 5px rgba(201, 125, 96, 0.1);
+  background: var(--accent-surface-warm);
 }
 
 .input::placeholder,
@@ -216,7 +239,7 @@
 
 .submitButton {
   padding: 1.25rem 2rem;
-  background: var(--accent-color);
+  background: var(--gradient-primary);
   color: white;
   font-size: 1.05rem;
   font-weight: 600;
@@ -224,12 +247,12 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(212, 165, 154, 0.3);
+  box-shadow: 0 4px 12px rgba(201, 125, 96, 0.3);
 }
 
 .submitButton:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(201, 125, 96, 0.4);
 }
 
 .submitButton:disabled {

@@ -1,8 +1,19 @@
 .footer {
   background: var(--bg-tertiary);
   padding: 4rem 2rem 2rem;
-  border-top: 1px solid var(--border-color);
+  border-top: 2px solid var(--accent-color);
   margin-top: 5rem;
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
 }
 
 .footerContent {
@@ -19,6 +30,20 @@
   margin-bottom: 1.5rem;
   color: var(--text-primary);
   font-weight: 600;
+  position: relative;
+  display: inline-block;
+}
+
+.footerSection h3::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  border-radius: 2px;
+  transition: width 0.3s ease;
 }
 
 .footerSection p {
@@ -60,6 +85,7 @@
   color: var(--primary-color);
   text-decoration: underline;
   text-underline-offset: 4px;
+  text-decoration-color: var(--accent-color);
 }
 
 .quickLinks a:focus {
@@ -88,6 +114,11 @@
   transition: all 0.3s ease;
   text-decoration: none;
   cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.socialIcon:hover {
+  transform: translateY(-4px);
 }
 
 /* Twitter Brand Color */
@@ -97,8 +128,8 @@
 
 .twitter:hover {
   background: #0d8bd9;
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 8px 20px rgba(13, 139, 217, 0.3);
 }
 
 /* Facebook Brand Color */
@@ -108,8 +139,8 @@
 
 .facebook:hover {
   background: #365899;
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 8px 20px rgba(54, 88, 153, 0.3);
 }
 
 /* Instagram Brand Gradient */
@@ -118,8 +149,8 @@
 }
 
 .instagram:hover {
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 6px 16px rgba(188, 24, 136, 0.4);
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 8px 20px rgba(188, 24, 136, 0.4);
 }
 
 /* Pinterest Brand Color */
@@ -129,8 +160,8 @@
 
 .pinterest:hover {
   background: #bd081c;
-  transform: translateY(-3px) scale(1.1);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-4px) scale(1.12);
+  box-shadow: 0 8px 20px rgba(189, 8, 28, 0.3);
 }
 
 .socialIcon:focus {
@@ -142,7 +173,7 @@
   max-width: 1400px;
   margin: 0 auto;
   padding-top: 2rem;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid var(--accent-color);
   text-align: center;
 }
 
@@ -176,6 +207,7 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   transform: translateX(4px);
+  text-decoration-color: var(--accent-color);
 }
 
 .categoryLink:focus {

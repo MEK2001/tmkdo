@@ -1,16 +1,62 @@
 .header {
-  background-color: var(--bg-secondary);
+  background-color: rgba(235, 229, 220, 0.75);
   backdrop-filter: blur(12px) saturate(180%);
-  box-shadow: var(--shadow-sm);
-  position: sticky;
+  box-shadow: none;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid rgba(201, 185, 165, 0.12);
   transition: all 0.3s var(--transition-smooth);
+  background-image: linear-gradient(180deg, rgba(235, 229, 220, 0.75) 0%, rgba(255, 252, 248, 0.65) 100%);
+  opacity: 1;
 }
 
 [data-theme="dark"] .header {
-  background-color: rgba(30, 35, 41, 0.95);
+  background-color: rgba(30, 35, 41, 0.80);
+  background-image: linear-gradient(180deg, rgba(30, 35, 41, 0.80) 0%, rgba(42, 47, 54, 0.75) 100%);
+}
+
+/* Header Scroll States - Compact mode when scrolled */
+.header.scrolled {
+  padding: 0.75rem 2rem;
+  background-color: rgba(235, 229, 220, 0.82);
+  backdrop-filter: blur(16px) saturate(200%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-bottom-color: rgba(201, 185, 165, 0.15);
+}
+
+[data-theme="dark"] .header.scrolled {
+  background-color: rgba(30, 35, 41, 0.87);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+/* Header during active scrolling - increased transparency */
+.header.scrolling {
+  background-color: rgba(235, 229, 220, 0.55);
+  background-image: linear-gradient(180deg, rgba(235, 229, 220, 0.55) 0%, rgba(255, 252, 248, 0.45) 100%);
+  box-shadow: none;
+  border-bottom-color: rgba(201, 185, 165, 0.08);
+}
+
+.header.scrolled.scrolling {
+  background-color: rgba(235, 229, 220, 0.60);
+  backdrop-filter: blur(12px) saturate(170%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="dark"] .header.scrolling {
+  background-color: rgba(30, 35, 41, 0.60);
+  background-image: linear-gradient(180deg, rgba(30, 35, 41, 0.60) 0%, rgba(42, 47, 54, 0.55) 100%);
+  box-shadow: none;
+  border-bottom-color: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .header.scrolled.scrolling {
+  background-color: rgba(30, 35, 41, 0.65);
+  backdrop-filter: blur(12px) saturate(170%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
 .nav {
@@ -20,6 +66,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: padding 0.3s ease;
+}
+
+.header.scrolled .nav {
+  padding: 0.75rem 2rem;
 }
 
 /* Logo Link Container */
@@ -30,10 +81,27 @@
   gap: 0.75rem;
   text-decoration: none;
   transition: opacity 0.3s ease;
+  position: relative;
+}
+
+.logoLink::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.logoLink:hover::after {
+  width: 100%;
 }
 
 .logoLink:hover {
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 /* Logo Image */
@@ -41,7 +109,12 @@
   display: block;
   width: clamp(48px, 5vw, 96px);
   height: clamp(48px, 5vw, 96px);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
+}
+
+.header.scrolled .logo {
+  width: clamp(40px, 4vw, 64px);
+  height: clamp(40px, 4vw, 64px);
 }
 
 .logoLink:hover .logo {
@@ -54,6 +127,11 @@
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
+  transition: font-size 0.3s ease;
+}
+
+.header.scrolled .brandName {
+  font-size: 0.95rem;
 }
 
 .navLinks {
@@ -246,10 +324,10 @@
 
   .navLinks {
     position: fixed;
-    top: 70px;
+    top: 120px;
     right: -100%;
     width: 280px;
-    height: calc(100vh - 70px);
+    height: calc(100vh - 120px);
     background: var(--bg-primary);
     flex-direction: column;
     align-items: flex-start;
@@ -258,6 +336,11 @@
     box-shadow: var(--shadow-lg);
     transition: right 0.3s ease;
     border-left: 1px solid var(--border-color);
+  }
+
+  .header.scrolled .navLinks {
+    top: 73px;
+    height: calc(100vh - 73px);
   }
 
   .navLinks.active {

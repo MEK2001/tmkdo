@@ -5,6 +5,9 @@
   --primary-dark: #B56D50;
   --accent-color: #D4A59A;
   
+  /* Header */
+  --header-height: 120px;
+  
   /* Backgrounds */
   --background: #f5f0e8;
   --background-secondary: #ebe5dc;
@@ -33,6 +36,16 @@
   --shadow-sm: 0 2px 10px rgba(150, 130, 110, 0.12);
   --shadow-md: 0 4px 20px rgba(150, 130, 110, 0.15);
   --shadow-lg: 0 8px 30px rgba(150, 130, 110, 0.2);
+  
+  /* Brand Gradients */
+  --gradient-primary: linear-gradient(135deg, #C97D60 0%, #E09878 100%);
+  --gradient-primary-light: linear-gradient(135deg, #E09878 0%, #F0A89A 100%);
+  --gradient-accent: linear-gradient(135deg, #D4A59A 0%, #E9C4B5 100%);
+  
+  /* Accent Surfaces (Warm Overlays) */
+  --accent-surface-warm: rgba(201, 125, 96, 0.08);
+  --accent-surface-medium: rgba(201, 125, 96, 0.12);
+  --accent-glow: rgba(201, 125, 96, 0.15);
   
   /* Transitions */
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -72,6 +85,16 @@
   --shadow-sm: 0 2px 10px rgba(0,0,0,0.3);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.4);
   --shadow-lg: 0 8px 30px rgba(0,0,0,0.5);
+  
+  /* Brand Gradients (Dark) */
+  --gradient-primary: linear-gradient(135deg, #E09878 0%, #F0A89A 100%);
+  --gradient-primary-light: linear-gradient(135deg, #D4A59A 0%, #E9C4B5 100%);
+  --gradient-accent: linear-gradient(135deg, #E9C4B5 0%, #F5D4CB 100%);
+  
+  /* Accent Surfaces (Dark) */
+  --accent-surface-warm: rgba(224, 152, 120, 0.12);
+  --accent-surface-medium: rgba(224, 152, 120, 0.15);
+  --accent-glow: rgba(224, 152, 120, 0.2);
   
   /* Skeleton Loading */
   --skeleton-base: #2a2a2a;
@@ -124,6 +147,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s var(--transition-smooth), color 0.3s var(--transition-smooth);
+  padding-top: 120px;
 }
 
 a {
@@ -169,6 +193,40 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 1;
     transform: scale(1);
   }
+}
+
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+/* Entrance Animation Utilities */
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInFromLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 /* Scroll Behavior */

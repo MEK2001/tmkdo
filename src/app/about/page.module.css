@@ -8,15 +8,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--background-secondary);
+  background: linear-gradient(180deg, var(--background-secondary) 0%, var(--accent-surface-warm) 50%, var(--background-secondary) 100%);
   padding: 4rem 2rem;
   text-align: center;
   position: relative;
 }
 
+.aboutHero::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201, 125, 96, 0.15), transparent 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .heroContent {
   max-width: 800px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .heroTitle {
@@ -25,6 +40,10 @@
   color: var(--text-color);
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .heroSubtitle {
@@ -82,6 +101,17 @@
   aspect-ratio: 4/5;
 }
 
+.imageWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(201, 125, 96, 0.08), transparent);
+  pointer-events: none;
+}
+
 .aboutImage {
   width: 100%;
   height: 100%;
@@ -91,7 +121,7 @@
 
 .valuesSection {
   padding: 6rem 2rem;
-  background: var(--background-secondary);
+  background: linear-gradient(180deg, var(--background) 0%, var(--accent-surface-warm) 50%, var(--background) 100%);
 }
 
 .centerTitle {
@@ -115,11 +145,27 @@
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 12px var(--shadow-light);
+  border-left: 4px solid var(--accent-color);
+  position: relative;
+}
+
+.valueCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--accent-surface-warm), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 16px;
+  pointer-events: none;
 }
 
 .valueCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px var(--shadow-medium);
+  box-shadow: 0 12px 24px rgba(201, 125, 96, 0.2);
 }
 
 .valueIcon {

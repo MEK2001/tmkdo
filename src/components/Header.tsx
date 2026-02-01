@@ -1,14 +1,66 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTheme } from './ThemeProvider';
 import { siteMetadata } from '@/lib/metadata';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
   const { theme, toggleTheme } = useTheme();
+
+  // Handle scroll behavior for compact mode and transparency
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    let ticking = false;
+
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const currentScrollY = window.scrollY;
+          
+          // Set scrolling state
+          setIsScrolling(true);
+          
+          // Clear existing timeout
+          if (scrollTimeout) {
+            clearTimeout(scrollTimeout);
+          }
+          
+          // Set new timeout to detect when scrolling stops
+          const timeout = setTimeout(() => {
+            setIsScrolling(false);
+          }, 150);
+          setScrollTimeout(timeout);
+          
+          // Detect if scrolled (for compact mode)
+          if (currentScrollY > 10) {
+            setIsScrolled(true);
+          } else {
+            setIsScrolled(false);
+          }
+          
+          setLastScrollY(currentScrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout) {
+        clearTimeout(scrollTimeout);
+      }
+    };
+  }, [scrollTimeout]);
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -19,7 +71,7 @@ export default function Header() {
   };
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isScrolling ? styles.scrolling : ''}`}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.logoLink} onClick={closeMobileMenu}>
           <img 
