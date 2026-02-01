@@ -6,60 +6,63 @@ import BlogCard from '@/components/BlogCard';
 import SearchAndFilter from '@/components/SearchAndFilter';
 import styles from './page.module.css';
 
-const blogPosts = [
+interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  image: string;
+  category: string;
+  excerpt: string;
+}
+
+const blogPosts: BlogPost[] = [
   {
     slug: 'minimalist-living-room',
-    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&q=80',
-    date: 'January 15, 2026',
-    readTime: '8 min read',
     title: '5 Essential Pieces for a Minimalist Living Room',
-    excerpt: 'Creating a minimalist living room doesn\'t mean sacrificing comfort or style. Discover the five essential furniture and decor pieces that form the foundation of a perfectly balanced space.',
+    date: 'January 15, 2026',
+    image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&q=80',
     category: 'Living Room',
+    excerpt: 'Learn the five furniture pieces that form the foundation of a minimalist living room.'
   },
   {
     slug: 'corner-tv-stand',
-    image: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&q=80',
-    date: 'January 16, 2026',
-    readTime: '6 min read',
     title: 'Maximize Your Space: The Corner TV Stand Solution',
-    excerpt: 'Discover how a corner TV stand can maximize your space while maintaining a clean, organized aesthetic.',
+    date: 'January 16, 2026',
+    image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop&q=80',
     category: 'Organization',
+    excerpt: 'Explore how a well-designed corner TV stand can transform your living room layout.'
   },
   {
     slug: 'throw-blanket-styling',
-    image: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&q=80',
-    date: 'January 17, 2026',
-    readTime: '5 min read',
     title: 'The Art of Layering: Choosing the Perfect Throw Blanket',
-    excerpt: 'Learn how to choose and style the perfect throw blanket to add comfort and visual depth to your living room.',
+    date: 'January 17, 2026',
+    image: 'https://images.unsplash.com/photo-1564603808762-b7a5ccd51b77?w=800&h=600&fit=crop&q=80',
     category: 'Living Room',
+    excerpt: 'Master the art of textile layering with our guide to selecting throw blankets.'
   },
   {
     slug: 'pampas-grass-decor',
-    image: 'https://images.unsplash.com/photo-1615876234886-fd9a39fda97f?w=800&h=600&fit=crop&q=80',
-    date: 'January 18, 2026',
-    readTime: '7 min read',
     title: 'Natural Elegance: Decorating with Pampas Grass',
-    excerpt: 'Bring natural elegance into your home with pampas grass—a low-maintenance, sustainable way to add texture and beauty to any space.',
+    date: 'January 18, 2026',
+    image: 'https://images.unsplash.com/photo-1517457373614-b7152f800fd1?w=800&h=600&fit=crop&q=80',
     category: 'Materials',
+    excerpt: 'Bring natural elegance into your home with pampas grass styling tips.'
   },
   {
     slug: 'shagreen-desk-organizer',
-    image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=800&h=600&fit=crop&q=80',
-    date: 'January 20, 2026',
-    readTime: '6 min read',
     title: 'Elevate Your Desk with Shagreen: The Luxury Organizer Trend',
-    excerpt: 'Discover how shagreen desk organizers bring luxury and sophistication to your workspace while maintaining minimalist principles.',
+    date: 'January 20, 2026',
+    image: 'https://images.unsplash.com/photo-1586578042364-decf17b99017?w=800&h=600&fit=crop&q=80',
     category: 'Organization',
+    excerpt: 'Discover how shagreen desk organizers combine functionality with luxury aesthetics.'
   },
   {
     slug: 'natural-materials',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&q=80',
-    date: 'January 5, 2026',
-    readTime: '9 min read',
     title: 'Natural Materials in Modern Homes: Wood, Stone & Clay',
-    excerpt: 'Explore how natural materials bring warmth, texture, and authenticity to contemporary interiors. From reclaimed wood to handcrafted ceramics, discover the beauty of organic elements.',
+    date: 'January 5, 2026',
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&h=600&fit=crop&q=80',
     category: 'Materials',
+    excerpt: 'Discover how to incorporate natural materials into your modern home design.'
   },
 ];
 
@@ -70,7 +73,7 @@ function BlogContent() {
 
   // Filter posts by category and search
   const filteredPosts = useMemo(() => {
-    let posts = blogPosts;
+    let posts = [...blogPosts];
 
     // Filter by category
     if (category && category !== 'all') {
