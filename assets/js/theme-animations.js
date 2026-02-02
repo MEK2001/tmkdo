@@ -129,50 +129,62 @@ class AnimationController {
         if (typeof ScrollTrigger !== 'undefined') {
             gsap.registerPlugin(ScrollTrigger);
             
+            // Detect if mobile device
+            const isMobile = window.innerWidth <= 768;
+            
             // Animate elements on scroll
             const animateOnScroll = (selector, animationProps) => {
                 const elements = document.querySelectorAll(selector);
                 elements.forEach((el, index) => {
-                    gsap.from(el, {
+                    // Reduce animation complexity on mobile
+                    const mobileProps = isMobile ? {
                         ...animationProps,
+                        duration: animationProps.duration * 0.5, // Faster on mobile
+                        delay: index * 0.05 // Less stagger
+                    } : {
+                        ...animationProps,
+                        delay: index * 0.1
+                    };
+                    
+                    gsap.from(el, {
+                        ...mobileProps,
                         scrollTrigger: {
                             trigger: el,
-                            start: 'top 85%',
+                            start: isMobile ? 'top 90%' : 'top 85%', // Earlier trigger on mobile
                             end: 'top 20%',
                             toggleActions: 'play none none reverse',
-                        },
-                        delay: index * 0.1 // Stagger effect
+                        }
                     });
                 });
             };
 
             // Apply animations to different elements
             animateOnScroll('.value-card, .info-card', {
-                y: 50,
+                y: isMobile ? 30 : 50,
                 opacity: 0,
-                duration: 0.8,
+                duration: isMobile ? 0.4 : 0.8,
                 ease: 'power3.out'
             });
 
             animateOnScroll('.about-section, .highlight-box', {
-                y: 30,
+                y: isMobile ? 20 : 30,
                 opacity: 0,
-                duration: 0.6,
+                duration: isMobile ? 0.3 : 0.6,
                 ease: 'power2.out'
             });
 
             animateOnScroll('.blog-card, .featured-post', {
-                scale: 0.95,
+                scale: isMobile ? 0.98 : 0.95,
                 opacity: 0,
-                duration: 0.7,
-                ease: 'back.out(1.2)'
+                duration: isMobile ? 0.35 : 0.7,
+                ease: isMobile ? 'power2.out' : 'back.out(1.2)'
             });
 
             animateOnScroll('.stat-item', {
-                scale: 0.8,
+                scale: isMobile ? 0.95 : 0.8,
                 opacity: 0,
-                duration: 0.6,
-                ease: 'elastic.out(1, 0.5)'
+                duration: isMobile ? 0.3 : 0.6,
+                ease: isMobile ? 'power2.out' : 'elastic.out(1, 0.5)'
             });
         } else {
             this.initFallbackScrollAnimations();
@@ -180,16 +192,20 @@ class AnimationController {
     }
 
     initFallbackScrollAnimations() {
+        // Detect if mobile device
+        const isMobile = window.innerWidth <= 768;
+        
         // Fallback using Intersection Observer
         const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            threshold: isMobile ? 0.05 : 0.1,
+            rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.animation = 'fadeInUp 0.6s ease forwards';
+                    const animationDuration = isMobile ? '0.4s' : '0.6s';
+                    entry.target.style.animation = `fadeInUp ${animationDuration} ease forwards`;
                     observer.unobserve(entry.target);
                 }
             });
@@ -202,7 +218,9 @@ class AnimationController {
         
         elementsToAnimate.forEach((el, index) => {
             el.style.opacity = '0';
-            el.style.animationDelay = `${index * 0.1}s`;
+            // Reduce stagger delay on mobile
+            const staggerDelay = isMobile ? index * 0.05 : index * 0.1;
+            el.style.animationDelay = `${staggerDelay}s`;
             observer.observe(el);
         });
     }

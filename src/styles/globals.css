@@ -259,6 +259,21 @@ body {
   animation: slideInFromLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
+/* Faster animations on mobile */
+@media (max-width: 768px) {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInFromLeft 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
 /* Scroll Behavior */
 html {
   scroll-behavior: smooth;
