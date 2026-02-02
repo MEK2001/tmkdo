@@ -132,59 +132,90 @@ class AnimationController {
             // Detect if mobile device
             const isMobile = window.innerWidth <= 768;
             
-            // Animate elements on scroll
+            // Check for reduced motion preference
+            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            // Animate elements on scroll with subtle, smooth animations
             const animateOnScroll = (selector, animationProps) => {
                 const elements = document.querySelectorAll(selector);
                 elements.forEach((el, index) => {
-                    // Reduce animation complexity on mobile
+                    // Skip or simplify animations if user prefers reduced motion
+                    if (prefersReducedMotion) {
+                        gsap.set(el, { opacity: 1, y: 0, scale: 1 });
+                        return;
+                    }
+                    
+                    // Ultra-fast, near-zero stagger for blog cards
                     const mobileProps = isMobile ? {
                         ...animationProps,
-                        duration: animationProps.duration * 0.5, // Faster on mobile
-                        delay: index * 0.05 // Less stagger
+                        duration: animationProps.duration * 0.5, // Even faster
+                        delay: index * 0.005 // Almost zero delay - cards appear instantly
                     } : {
                         ...animationProps,
-                        delay: index * 0.1
+                        delay: index * 0.008 // Minimal stagger
                     };
                     
                     gsap.from(el, {
                         ...mobileProps,
                         scrollTrigger: {
                             trigger: el,
-                            start: isMobile ? 'top 90%' : 'top 85%', // Earlier trigger on mobile
-                            end: 'top 20%',
-                            toggleActions: 'play none none reverse',
+                            start: isMobile ? 'top 110%' : 'top 110%', // Load even BEFORE visible - smart preload!
+                            end: 'top 10%',
+                            toggleActions: 'play none none none', // No reverse
+                            once: true, // Animate only once
                         }
                     });
                 });
             };
 
-            // Apply animations to different elements
+            // Blog cards - INSTANT animation, pre-loads ahead of scroll
+            // Use eager loading: cards load BEFORE they come into view
+            // Check if we're on blog page - if so, disable animations for performance
+            const isBlogPage = window.location.pathname.includes('/blog');
+            
+            if (isBlogPage) {
+                // On blog page: Show cards instantly without animation for performance
+                const blogCards = document.querySelectorAll('.blog-card, .featured-post');
+                blogCards.forEach(el => {
+                    gsap.set(el, { opacity: 1, y: 0 });
+                });
+            } else {
+                // On other pages: Use ultra-fast animations
+                animateOnScroll('.blog-card, .featured-post', {
+                    y: isMobile ? 5 : 8, // Barely perceptible movement
+                    opacity: 0,
+                    duration: isMobile ? 0.2 : 0.25, // Lightning fast - almost instant
+                    ease: 'power1.inOut' // Snappiest easing
+                });
+            }
+
+            // Apply very subtle animations to different elements
             animateOnScroll('.value-card, .info-card', {
-                y: isMobile ? 30 : 50,
+                y: isMobile ? 20 : 30, // Reduced movement
                 opacity: 0,
-                duration: isMobile ? 0.4 : 0.8,
-                ease: 'power3.out'
+                duration: isMobile ? 0.6 : 0.9, // Smoother
+                ease: 'power2.out' // Smooth easing
             });
 
             animateOnScroll('.about-section, .highlight-box', {
-                y: isMobile ? 20 : 30,
+                y: isMobile ? 15 : 20, // Very subtle
                 opacity: 0,
-                duration: isMobile ? 0.3 : 0.6,
+                duration: isMobile ? 0.5 : 0.8,
                 ease: 'power2.out'
             });
 
             animateOnScroll('.blog-card, .featured-post', {
-                scale: isMobile ? 0.98 : 0.95,
+                y: isMobile ? 20 : 30, // Reduced from scale to y-movement
                 opacity: 0,
-                duration: isMobile ? 0.35 : 0.7,
-                ease: isMobile ? 'power2.out' : 'back.out(1.2)'
+                duration: isMobile ? 0.6 : 0.9,
+                ease: 'power2.out' // Consistent smooth easing
             });
 
             animateOnScroll('.stat-item', {
-                scale: isMobile ? 0.95 : 0.8,
+                y: isMobile ? 15 : 25, // Changed from scale to y-movement
                 opacity: 0,
-                duration: isMobile ? 0.3 : 0.6,
-                ease: isMobile ? 'power2.out' : 'elastic.out(1, 0.5)'
+                duration: isMobile ? 0.5 : 0.8,
+                ease: 'power2.out'
             });
         } else {
             this.initFallbackScrollAnimations();
@@ -194,35 +225,103 @@ class AnimationController {
     initFallbackScrollAnimations() {
         // Detect if mobile device
         const isMobile = window.innerWidth <= 768;
+        const isBlogPage = window.location.pathname.includes('/blog');
         
-        // Fallback using Intersection Observer
-        const observerOptions = {
-            threshold: isMobile ? 0.05 : 0.1,
-            rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
+        // Check for reduced motion preference
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (prefersReducedMotion) {
+            // Show all elements immediately if reduced motion is preferred
+            const allElements = document.querySelectorAll(
+                '.value-card, .info-card, .blog-card, .about-section, .highlight-box, .stat-item'
+            );
+            allElements.forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+            return;
+        }
+        
+        // On blog page: show blog cards instantly for performance
+        if (isBlogPage) {
+            const blogCards = document.querySelectorAll('.blog-card, .featured-post');
+            blogCards.forEach(el => {
+                el.style.opacity = '1';
+            });
+        } else {
+            // Fallback using Intersection Observer with ultra-fast animations for blog cards
+            const blogCardObserverOptions = {
+                threshold: isMobile ? 0.1 : 0.2, // Earlier trigger
+                rootMargin: isMobile ? '0px 0px -10px 0px' : '0px 0px -20px 0px'
+            };
+
+            const blogCardObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry, index) => {
+                    if (entry.isIntersecting) {
+                        // Ultra-fast animation for blog cards
+                        const animationDuration = isMobile ? '0.35s' : '0.45s';
+                        const delay = isMobile ? index * 0.01 : index * 0.02;
+                        entry.target.style.animation = `fadeInUp ${animationDuration} ease forwards`;
+                        entry.target.style.animationDelay = `${delay}s`;
+                        blogCardObserver.unobserve(entry.target);
+                    }
+                });
+            }, blogCardObserverOptions);
+
+            // Observe blog cards with faster animation
+            const blogCards = document.querySelectorAll('.blog-card, .featured-post');
+            blogCards.forEach(el => {
+                el.style.opacity = '0';
+                blogCardObserver.observe(el);
+            });
+        }
+
+        // Standard animation speed for other elements
+        const standardObserverOptions = {
+            threshold: isMobile ? 0.08 : 0.15,
+            rootMargin: isMobile ? '0px 0px -30px 0px' : '0px 0px -60px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        const standardObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    const animationDuration = isMobile ? '0.4s' : '0.6s';
+                    const animationDuration = isMobile ? '0.6s' : '0.9s';
+                    const delay = isMobile ? index * 0.03 : index * 0.06;
                     entry.target.style.animation = `fadeInUp ${animationDuration} ease forwards`;
-                    observer.unobserve(entry.target);
+                    entry.target.style.animationDelay = `${delay}s`;
+                    standardObserver.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, standardObserverOptions);
 
-        // Observe elements
+        // Observe other elements
         const elementsToAnimate = document.querySelectorAll(
-            '.value-card, .info-card, .blog-card, .about-section, .highlight-box, .stat-item'
+            '.value-card, .info-card, .about-section, .highlight-box, .stat-item'
         );
         
-        elementsToAnimate.forEach((el, index) => {
+        elementsToAnimate.forEach(el => {
             el.style.opacity = '0';
-            // Reduce stagger delay on mobile
-            const staggerDelay = isMobile ? index * 0.05 : index * 0.1;
-            el.style.animationDelay = `${staggerDelay}s`;
-            observer.observe(el);
+            standardObserver.observe(el);
         });
+
+        // Add fadeInUp keyframes if not already present
+        if (!document.querySelector('style[data-theme-animation-css]')) {
+            const style = document.createElement('style');
+            style.setAttribute('data-theme-animation-css', 'true');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(12px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        }
     }
 
     initPageTransitions() {

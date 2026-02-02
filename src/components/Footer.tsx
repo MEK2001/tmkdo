@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { FaTwitter, FaFacebook, FaInstagram, FaPinterest } from 'react-icons/fa';
+import { FaTiktok, FaInstagram, FaPinterest } from 'react-icons/fa';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -13,24 +13,14 @@ export default function Footer() {
           <p>Your guide to intentional living and beautiful, functional spaces that inspire calm and creativity.</p>
           <div className={styles.socialIcons}>
             <a 
-              href="https://twitter.com/tmkdo" 
+              href="https://tiktok.com/@tmkdo" 
               target="_blank" 
               rel="noopener noreferrer"
-              aria-label="Follow TMKDO on Twitter"
-              title="Follow us on Twitter"
-              className={`${styles.socialIcon} ${styles.twitter}`}
+              aria-label="Follow TMKDO on TikTok"
+              title="Follow us on TikTok"
+              className={`${styles.socialIcon} ${styles.tiktok}`}
             >
-              <FaTwitter />
-            </a>
-            <a 
-              href="https://facebook.com/tmkdo" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Follow TMKDO on Facebook"
-              title="Follow us on Facebook"
-              className={`${styles.socialIcon} ${styles.facebook}`}
-            >
-              <FaFacebook />
+              <FaTiktok />
             </a>
             <a 
               href="https://instagram.com/tmkdo" 

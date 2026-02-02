@@ -1,5 +1,7 @@
 .homepage {
   background: var(--background);
+  position: relative;
+  z-index: 2;
 }
 
 .container {

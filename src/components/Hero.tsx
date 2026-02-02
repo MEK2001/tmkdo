@@ -9,15 +9,15 @@ export default function Hero() {
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
 
-  useEffect(() => {
-    const words = [
-      'minimalist spaces',
-      'intentional living',
-      'timeless design',
-      'natural beauty',
-      'peaceful sanctuaries'
-    ]
+  const words = [
+    'minimalist spaces',
+    'intentional living',
+    'timeless design',
+    'natural beauty',
+    'peaceful sanctuaries'
+  ]
 
+  useEffect(() => {
     let timer
     const handleType = () => {
       const i = loopNum % words.length
@@ -40,12 +40,12 @@ export default function Hero() {
     }
 
     timer = setTimeout(handleType, typingSpeed)
-
     return () => clearTimeout(timer)
-  }, [text, isDeleting, loopNum, typingSpeed])
+  }, [text, isDeleting, loopNum, typingSpeed, words])
 
   return (
     <section className={styles.hero}>
+      {/* Hero Content */}
       <div className={styles.heroContent}>
         <h1 className={styles.heroTitle}>
           Welcome to <span className={styles.brandName}>TMKDO</span>

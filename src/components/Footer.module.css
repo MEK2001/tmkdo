@@ -149,26 +149,16 @@
   transform: translateY(-4px);
 }
 
-/* Twitter Brand Color */
-.twitter {
-  background: #1DA1F2;
+/* TikTok Brand Color */
+.tiktok {
+  background: #000000;
 }
 
-.twitter:hover {
-  background: #0d8bd9;
+.tiktok:hover {
+  background: #25f4ee;
+  color: #000000;
   transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 8px 20px rgba(13, 139, 217, 0.3);
-}
-
-/* Facebook Brand Color */
-.facebook {
-  background: #4267B2;
-}
-
-.facebook:hover {
-  background: #365899;
-  transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 8px 20px rgba(54, 88, 153, 0.3);
+  box-shadow: 0 8px 20px rgba(37, 244, 238, 0.3);
 }
 
 /* Instagram Brand Gradient */

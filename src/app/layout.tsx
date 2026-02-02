@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import SmoothScroll from '@/components/SmoothScroll';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { siteMetadata } from '@/lib/metadata';
@@ -114,6 +115,7 @@ export default function RootLayout({
       </head>
       <body>
         <ThemeProvider>
+          <SmoothScroll />
           <Header />
           <main>{children}</main>
           <Footer />
