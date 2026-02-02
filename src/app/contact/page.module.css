@@ -14,6 +14,20 @@
   position: relative;
 }
 
+@media (max-width: 768px) {
+  .contactHero {
+    min-height: 35vh;
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactHero {
+    min-height: 30vh;
+    padding: 2rem 1rem;
+  }
+}
+
 .contactHero::before {
   content: '';
   position: absolute;
@@ -55,6 +69,24 @@
 
 .contactContent {
   padding: 6rem 2rem;
+}
+
+@media (max-width: 1024px) {
+  .contactContent {
+    padding: 4rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .contactContent {
+    padding: 3rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactContent {
+    padding: 2rem 1rem;
+  }
 }
 
 .container {
@@ -188,6 +220,18 @@
   border: 2px solid var(--accent-surface-warm);
 }
 
+@media (max-width: 768px) {
+  .contactFormWrapper {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactFormWrapper {
+    padding: 1.5rem 1rem;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -216,6 +260,13 @@
   color: var(--text-color);
   font-family: inherit;
   transition: all 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .input,
+  .textarea {
+    font-size: 16px;
+  }
 }
 
 .input:focus,

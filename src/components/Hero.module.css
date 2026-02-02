@@ -10,6 +10,13 @@
   overflow: hidden;
 }
 
+@media (max-width: 1024px) {
+  .hero {
+    min-height: 65vh;
+    padding: 3rem 1.5rem;
+  }
+}
+
 .hero::before {
   content: '';
   position: absolute;
@@ -65,24 +72,37 @@
 }
 
 .heroSubtitle {
-  font-size: 1.5rem;
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
   color: var(--text-secondary);
   font-weight: 500;
   margin-bottom: 2rem;
   letter-spacing: 0.5px;
 }
 
+@media (max-width: 480px) {
+  .heroSubtitle {
+    margin-bottom: 1.5rem;
+  }
+}
+
 .typingContainer {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: clamp(1.25rem, 3vw, 2rem);
   font-weight: 600;
   color: var(--text-color);
   margin: 1.5rem 0 2rem 0;
-  min-height: 3rem;
+  min-height: clamp(2.5rem, 5vw, 3rem);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   gap: 0.5rem;
+}
+
+@media (max-width: 480px) {
+  .typingContainer {
+    margin: 1rem 0 1.5rem 0;
+    gap: 0.25rem;
+  }
 }
 
 .typingPrefix {
@@ -117,12 +137,26 @@
 }
 
 .heroDescription {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
   line-height: 1.8;
   color: var(--text-primary);
   max-width: 700px;
   margin: 0 auto 3rem auto;
   opacity: 0.9;
+  padding: 0 1rem;
+}
+
+@media (max-width: 768px) {
+  .heroDescription {
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroDescription {
+    margin-bottom: 1.5rem;
+    padding: 0;
+  }
 }
 
 .heroCTA {
@@ -132,19 +166,45 @@
   flex-wrap: wrap;
 }
 
-.primaryButton {
+.primaryButton,
+.secondaryButton {
   padding: 1rem 2.5rem;
-  background: var(--gradient-primary);
-  color: white;
-  border-radius: 8px;
   font-size: 1.1rem;
   font-weight: 600;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(201, 125, 96, 0.3);
-  border: 2px solid transparent;
   cursor: pointer;
   display: inline-block;
+}
+
+.primaryButton {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 4px 12px rgba(201, 125, 96, 0.3);
+  border: 2px solid transparent;
+}
+
+.secondaryButton {
+  background: transparent;
+  color: #C97D60;
+  border: 2px solid #C97D60;
+}
+
+@media (max-width: 768px) {
+  .primaryButton,
+  .secondaryButton {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .primaryButton,
+  .secondaryButton {
+    padding: 0.85rem 1.75rem;
+    font-size: 0.95rem;
+  }
 }
 
 .primaryButton:hover {
@@ -159,20 +219,6 @@
 
 [data-theme="dark"] .primaryButton:hover {
   box-shadow: 0 8px 20px rgba(212, 165, 154, 0.3);
-}
-
-.secondaryButton {
-  padding: 1rem 2.5rem;
-  background: transparent;
-  color: #C97D60;
-  border: 2px solid #C97D60;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  display: inline-block;
 }
 
 .secondaryButton:hover {
@@ -201,18 +247,6 @@
     padding: 3rem 1.5rem;
   }
 
-  .heroTitle {
-    font-size: 2.5rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1.25rem;
-  }
-
-  .heroDescription {
-    font-size: 1rem;
-  }
-
   .heroCTA {
     flex-direction: column;
     gap: 1rem;
@@ -230,24 +264,7 @@
     padding: 2rem 1rem;
   }
 
-  .heroTitle {
-    font-size: 2rem;
-    margin-bottom: 0.75rem;
-  }
-
-  .heroSubtitle {
-    font-size: 1.1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .heroDescription {
-    font-size: 0.95rem;
-    margin-bottom: 2rem;
-  }
-
-  .primaryButton,
-  .secondaryButton {
-    padding: 0.9rem 2rem;
-    font-size: 1rem;
+  .heroCTA {
+    gap: 0.75rem;
   }
 }

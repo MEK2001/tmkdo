@@ -8,6 +8,24 @@
   padding: 0 2rem;
 }
 
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+}
+
 .featuredSection {
   padding: 5rem 2rem;
   background: linear-gradient(180deg, var(--background) 0%, var(--accent-surface-warm) 50%, var(--background) 100%);
@@ -15,19 +33,50 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .featuredSection {
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuredSection {
+    padding: 2rem 1rem;
+  }
+}
+
 .sectionTitle {
   font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   text-align: center;
   margin-bottom: 3rem;
   color: var(--text-primary);
 }
 
+@media (max-width: 480px) {
+  .sectionTitle {
+    margin-bottom: 2rem;
+  }
+}
+
 .featuredGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 768px) {
+  .featuredGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuredGrid {
+    gap: 1rem;
+  }
 }
 
 .viewAllContainer {
@@ -100,6 +149,20 @@
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .newsletter {
+    margin: 3rem 1.5rem;
+    padding: 3rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .newsletter {
+    margin: 2rem 1rem;
+    padding: 2rem 1rem;
+  }
+}
+
 .newsletter::before {
   content: '';
   position: absolute;
@@ -114,13 +177,13 @@
 
 .newsletterContent h2 {
   font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 2.2rem;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   margin-bottom: 1rem;
   color: var(--text-primary);
 }
 
 .newsletterContent p {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2vw, 1.1rem);
   margin-bottom: 2rem;
   color: var(--text-tertiary);
 }
@@ -136,7 +199,7 @@
 
 .newsletterForm input {
   flex: 1;
-  min-width: 250px;
+  min-width: 200px;
   padding: 1rem 1.5rem;
   border: 2px solid var(--border-color);
   border-radius: 50px;
@@ -145,6 +208,13 @@
   background: var(--bg-primary);
   color: var(--text-primary);
   transition: border-color 0.3s ease;
+}
+
+@media (max-width: 640px) {
+  .newsletterForm input {
+    font-size: 16px;
+    min-width: auto;
+  }
 }
 
 .newsletterForm input:focus {

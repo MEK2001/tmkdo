@@ -8,6 +8,7 @@ import styles from './Header.module.css';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isScrolling, setIsScrolling] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -64,10 +65,19 @@ export default function Header() {
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+    if (mobileMenuOpen) {
+      setMobileDropdownOpen(false); // Close dropdown when closing menu
+    }
   };
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
+    setMobileDropdownOpen(false);
+  };
+
+  const toggleMobileDropdown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setMobileDropdownOpen(!mobileDropdownOpen);
   };
 
   return (
@@ -100,10 +110,20 @@ export default function Header() {
             <Link href="/" onClick={closeMobileMenu}>Home</Link>
           </li>
           <li className={styles.navItemWithDropdown}>
-            <Link href="/blog" onClick={closeMobileMenu} className={styles.navLink}>
+            <Link 
+              href="/blog" 
+              onClick={(e) => {
+                if (window.innerWidth <= 768) {
+                  toggleMobileDropdown(e);
+                } else {
+                  closeMobileMenu();
+                }
+              }} 
+              className={styles.navLink}
+            >
               Blog
             </Link>
-            <div className={styles.dropdown}>
+            <div className={`${styles.dropdown} ${mobileDropdownOpen ? styles.dropdownOpen : ''}`}>
               <ul className={styles.dropdownList}>
                 <li>
                   <Link href="/blog" onClick={closeMobileMenu} className={styles.dropdownLink}>
