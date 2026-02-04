@@ -5,9 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:production": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "npm run build && wrangler pages deploy out --project-name=tmkdo"
+    "clean": "if exist .next rmdir /s /q .next && if exist out rmdir /s /q out",
+    "prebuild": "if exist .next rmdir /s /q .next && if exist out rmdir /s /q out",
+    "deploy": "npm run build"
   },
   "dependencies": {
     "gsap": "^3.12.5",
