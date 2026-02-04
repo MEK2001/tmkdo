@@ -8,8 +8,8 @@
     "build:production": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "if exist .next rmdir /s /q .next && if exist out rmdir /s /q out",
-    "prebuild": "if exist .next rmdir /s /q .next && if exist out rmdir /s /q out",
+    "clean": "rm -rf .next out",
+    "prebuild": "rm -rf .next out || true",
     "deploy": "npm run build"
   },
   "dependencies": {
