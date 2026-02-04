@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import Link from 'next/link'
 import styles from './Hero.module.css'
 
@@ -9,13 +9,13 @@ export default function Hero() {
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(150)
 
-  const words = [
+  const words = useMemo(() => [
     'minimalist spaces',
     'intentional living',
     'timeless design',
     'natural beauty',
     'peaceful sanctuaries'
-  ]
+  ], [])
 
   useEffect(() => {
     let timer

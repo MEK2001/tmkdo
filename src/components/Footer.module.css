@@ -149,18 +149,6 @@
   transform: translateY(-4px);
 }
 
-/* TikTok Brand Color */
-.tiktok {
-  background: #000000;
-}
-
-.tiktok:hover {
-  background: #25f4ee;
-  color: #000000;
-  transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 8px 20px rgba(37, 244, 238, 0.3);
-}
-
 /* Instagram Brand Gradient */
 .instagram {
   background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);

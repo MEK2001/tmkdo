@@ -1,21 +1,20 @@
 .header {
-  background-color: rgba(235, 229, 220, 0.75);
-  backdrop-filter: blur(12px) saturate(180%);
+  background-color: transparent;
+  backdrop-filter: none;
   box-shadow: none;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1000;
-  border-bottom: 1px solid rgba(201, 185, 165, 0.12);
+  border-bottom: none;
   transition: all 0.3s var(--transition-smooth);
-  background-image: linear-gradient(180deg, rgba(235, 229, 220, 0.75) 0%, rgba(255, 252, 248, 0.65) 100%);
   opacity: 1;
 }
 
 [data-theme="dark"] .header {
-  background-color: rgba(30, 35, 41, 0.80);
-  background-image: linear-gradient(180deg, rgba(30, 35, 41, 0.80) 0%, rgba(42, 47, 54, 0.75) 100%);
+  background-color: transparent;
+  background-image: none;
 }
 
 /* Header Scroll States - Compact mode when scrolled */
@@ -24,39 +23,42 @@
   background-color: rgba(235, 229, 220, 0.82);
   backdrop-filter: blur(16px) saturate(200%);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border-bottom-color: rgba(201, 185, 165, 0.15);
+  border-bottom: 1px solid rgba(201, 185, 165, 0.15);
 }
 
 [data-theme="dark"] .header.scrolled {
   background-color: rgba(30, 35, 41, 0.87);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* Header during active scrolling - increased transparency */
 .header.scrolling {
-  background-color: rgba(235, 229, 220, 0.55);
-  background-image: linear-gradient(180deg, rgba(235, 229, 220, 0.55) 0%, rgba(255, 252, 248, 0.45) 100%);
+  background-color: transparent;
+  background-image: none;
   box-shadow: none;
-  border-bottom-color: rgba(201, 185, 165, 0.08);
+  border-bottom: none;
 }
 
 .header.scrolled.scrolling {
   background-color: rgba(235, 229, 220, 0.60);
   backdrop-filter: blur(12px) saturate(170%);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid rgba(201, 185, 165, 0.10);
 }
 
 [data-theme="dark"] .header.scrolling {
-  background-color: rgba(30, 35, 41, 0.60);
-  background-image: linear-gradient(180deg, rgba(30, 35, 41, 0.60) 0%, rgba(42, 47, 54, 0.55) 100%);
+  background-color: transparent;
+  background-image: none;
   box-shadow: none;
-  border-bottom-color: rgba(255, 255, 255, 0.03);
+  border-bottom: none;
 }
 
 [data-theme="dark"] .header.scrolled.scrolling {
   background-color: rgba(30, 35, 41, 0.65);
   backdrop-filter: blur(12px) saturate(170%);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .nav {
@@ -130,34 +132,34 @@
   opacity: 0.9;
 }
 
-/* Logo Image */
-.logo {
-  display: block;
-  width: clamp(48px, 5vw, 96px);
-  height: clamp(48px, 5vw, 96px);
-  transition: transform 0.3s ease, width 0.3s ease, height 0.3s ease;
-}
-
-.header.scrolled .logo {
-  width: clamp(40px, 4vw, 64px);
-  height: clamp(40px, 4vw, 64px);
-}
-
-.logoLink:hover .logo {
-  transform: scale(1.05);
-}
-
 /* Brand Name */
 .brandName {
-  font-size: 1.1rem;
+  font-size: 1.5rem;
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
-  transition: font-size 0.3s ease;
+  transition: font-size 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
+  animation: slideInBrand 0.6s ease-out;
 }
 
 .header.scrolled .brandName {
-  font-size: 0.95rem;
+  font-size: 1.25rem;
+}
+
+.logoLink:hover .brandName {
+  transform: translateY(-2px);
+  text-shadow: 0 4px 12px rgba(201, 144, 110, 0.2);
+}
+
+@keyframes slideInBrand {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .navLinks {

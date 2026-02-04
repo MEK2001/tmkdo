@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import AffiliateDisclosure from '@/components/AffiliateDisclosure'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -42,6 +43,8 @@ export default function AboutPage() {
                 Our mission is to help you create spaces that bring peace, clarity, 
                 and joy—spaces that reflect who you are and how you want to live.
               </p>
+
+              <AffiliateDisclosure variant="inline" />
             </div>
             <div className={styles.imageContent}>
               <div className={styles.imageWrapper}>

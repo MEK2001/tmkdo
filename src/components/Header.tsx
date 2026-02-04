@@ -84,14 +84,6 @@ export default function Header() {
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isScrolling ? styles.scrolling : ''}`}>
       <nav className={styles.nav}>
         <Link href="/" className={styles.logoLink} onClick={closeMobileMenu}>
-          <img 
-            src={siteMetadata.logo} 
-            alt="TMKDO Logo" 
-            className={styles.logo}
-            width={72}
-            height={72}
-            loading="eager"
-          />
           <span className={styles.brandName}>The Minimalist Kraft & DO</span>
         </Link>
         

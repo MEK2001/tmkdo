@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { FaTiktok, FaInstagram, FaPinterest } from 'react-icons/fa';
+import { FaInstagram, FaPinterest } from 'react-icons/fa';
+import AffiliateDisclosure from './AffiliateDisclosure';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -13,17 +14,7 @@ export default function Footer() {
           <p>Your guide to intentional living and beautiful, functional spaces that inspire calm and creativity.</p>
           <div className={styles.socialIcons}>
             <a 
-              href="https://tiktok.com/@tmkdo" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Follow TMKDO on TikTok"
-              title="Follow us on TikTok"
-              className={`${styles.socialIcon} ${styles.tiktok}`}
-            >
-              <FaTiktok />
-            </a>
-            <a 
-              href="https://instagram.com/tmkdo" 
+              href="https://www.instagram.com/_tmkdo?igsh=bWozMGhkOWJ5NzJk" 
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="Follow TMKDO on Instagram"
@@ -33,7 +24,7 @@ export default function Footer() {
               <FaInstagram />
             </a>
             <a 
-              href="https://pinterest.com/tmkdo" 
+              href="https://pin.it/g0mJ8xDh2" 
               target="_blank" 
               rel="noopener noreferrer"
               aria-label="Follow TMKDO on Pinterest"
@@ -64,6 +55,8 @@ export default function Footer() {
           </ul>
         </div>
       </div>
+      
+      <AffiliateDisclosure variant="subtle" />
       
       <div className={styles.footerBottom}>
         <p>&copy; {new Date().getFullYear()} The Minimalist Kraft & DO. All rights reserved.</p>

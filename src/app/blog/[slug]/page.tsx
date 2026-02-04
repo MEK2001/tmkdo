@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import RelatedPosts from '@/components/RelatedPosts';
+import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 import { siteMetadata } from '@/lib/metadata';
 import styles from './page.module.css';
 
