@@ -1,3 +1,7 @@
+# CRITICAL: Never deploy .next folder
+.next/
+.next/**/*
+
 # Dependencies
 node_modules/
 package-lock.json
@@ -9,10 +13,7 @@ yarn.lock
 dist/
 build/
 .output/
-/.next/
-/out/
-.next/
-.next/**
+/out/.cache
 
 # Environment variables
 .env
@@ -25,11 +26,12 @@ build/
 *.swp
 *.swo
 
-# Misc
+# OS & Misc
 .DS_Store
+Thumbs.db
 *.pem
 
-# Debug logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -41,25 +43,16 @@ next-env.d.ts
 # Vercel
 .vercel
 
-# Old files (backup)
+# Backup files
 *.html.backup
+*.backup
+*.old
 *.py
 CHANGELIST.md
 THEME_IMPROVEMENTS.md
 QUICK_START.md
 
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 # Cloudflare
 .wrangler/
-wrangler.toml.bak
-# Note: wrangler.toml should be committed
+
 
