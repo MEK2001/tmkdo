@@ -11,7 +11,8 @@ build/
 .output/
 /.next/
 /out/
-.next
+.next/
+.next/**
 
 # Environment variables
 .env

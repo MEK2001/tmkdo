@@ -1,28 +1,50 @@
 # Deployment Guide for TMKDO
 
-## Cloudflare Pages
+## Cloudflare Pages (Recommended)
 
-The `.next/cache` folder is exceeding Cloudflare's 25 MiB size limit. Here are two solutions:
+Your site uses static export which is perfect for Cloudflare Pages!
 
-### Solution 1: Use Static Export (Recommended for Cloudflare)
+### Configuration Steps
 
-Your site is already configured with `output: 'export'` in `next.config.ts`, which generates a static `out/` folder.
+1. **In Cloudflare Dashboard**, go to your Pages project
+2. **Settings → Build & Deployments**
+3. Set these build settings:
+   - **Build command**: `npm run build`
+   - **Build output directory**: `out`
+   - **Root directory**: `/`
+4. Add any environment variables if needed (like email credentials)
+5. **Deploy**
 
-In your Cloudflare Pages settings:
-1. **Build command**: `npm run build`
-2. **Build output directory**: `out`
-3. **Root directory**: `/`
+### Why This Works
+- Your `next.config.ts` has `output: 'export'` which generates `/out` folder (~114 kB)
+- `.next/` folder is completely ignored (in `.gitignore`)
+- Only static files deploy (no cache files)
+- Fast, reliable, serverless deployment
 
-This will deploy the static files without the `.next/cache` folder.
+### Clear Any Previous Builds
 
-### Solution 2: Exclude Cache from Deployment
-
-Make sure `.next/` is in your `.gitignore`:
+If you've already pushed `.next/` to git, you may need to:
+```bash
+git rm -r .next --cached
+git commit -m "Remove .next from git"
+git push
 ```
-.next/
+
+## Local Testing
+
+```bash
+# Clean build
+rm -rf .next out
+
+# Build locally
+npm run build
+
+# Test the static output
+npm install -g serve
+serve out -l 3000
 ```
 
-Then commit and push your changes.
+Visit http://localhost:3000 to verify everything works.
 
 ## Netlify (Alternative)
 
