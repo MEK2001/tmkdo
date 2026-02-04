@@ -1,8 +1,0 @@
-# This file is not needed for Cloudflare Pages static deployment
-# Configure Pages in Cloudflare Dashboard instead:
-# Settings → Build & Deployments
-# Build command: npm run build
-# Build output directory: out
-# Root directory: /
-
-
