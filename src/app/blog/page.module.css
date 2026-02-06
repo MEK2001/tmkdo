@@ -87,12 +87,8 @@
 }
 
 .searchInfo strong {
-  color: #a17659;
+  color: #8B2635;
   font-weight: 600;
-}
-
-[data-theme="dark"] .searchInfo strong {
-  color: #d4a59a;
 }
 
 .loading {

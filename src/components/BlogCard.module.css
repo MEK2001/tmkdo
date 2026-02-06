@@ -13,7 +13,7 @@
 
 .blogCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(201, 125, 96, 0.2);
+  box-shadow: 0 12px 32px rgba(139, 38, 53, 0.2);
 }
 
 .cardLink {
@@ -50,7 +50,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(201, 125, 96, 0) 0%, rgba(201, 125, 96, 0.15) 100%);
+  background: rgba(139, 38, 53, 0.12);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
@@ -65,7 +65,7 @@
   top: 1rem;
   left: 1rem;
   padding: 0.375rem 0.875rem;
-  background: linear-gradient(135deg, rgba(201, 125, 96, 0.85) 0%, rgba(224, 152, 120, 0.85) 100%);
+  background: rgba(139, 38, 53, 0.85);
   backdrop-filter: blur(8px);
   color: #ffffff;
   font-size: 0.75rem;
@@ -73,20 +73,15 @@
   border-radius: 20px;
   z-index: 2;
   text-transform: capitalize;
-  box-shadow: 0 4px 12px rgba(201, 125, 96, 0.25);
+  box-shadow: 0 4px 12px rgba(139, 38, 53, 0.25);
   transition: all 0.3s ease;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .blogCard:hover .categoryBadge {
-  background: linear-gradient(135deg, rgba(201, 125, 96, 1) 0%, rgba(224, 152, 120, 1) 100%);
-  box-shadow: 0 6px 16px rgba(201, 125, 96, 0.35);
+  background: rgba(139, 38, 53, 1);
+  box-shadow: 0 6px 16px rgba(139, 38, 53, 0.35);
   transform: translateY(-2px);
-}
-
-[data-theme="dark"] .categoryBadge {
-  background: linear-gradient(135deg, rgba(224, 152, 120, 0.8) 0%, rgba(212, 165, 154, 0.8) 100%);
-  color: #1e2329;
 }
 
 .imageContainer .image {
@@ -119,10 +114,6 @@
   .contentContainer {
     padding: 1rem;
   }
-}
-
-[data-theme="dark"] .contentContainer {
-  background: rgba(30, 30, 30, 0.95);
 }
 
 .date {

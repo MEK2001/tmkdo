@@ -33,7 +33,7 @@
 }
 
 .searchInputContainer:focus-within {
-  box-shadow: 0 12px 32px rgba(212, 165, 154, 0.2);
+  box-shadow: 0 12px 32px rgba(139, 38, 53, 0.2);
   transform: translateY(-2px);
 }
 
@@ -73,11 +73,6 @@
 .searchInput:focus {
   outline: none;
   box-shadow: none;
-}
-
-[data-theme='dark'] .searchInput {
-  background: transparent;
-  color: var(--text-color);
 }
 
 .clearButton {
@@ -130,30 +125,14 @@
 
 .filterSelect:hover {
   border-color: var(--accent-color);
-  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.12);
+  box-shadow: 0 6px 16px rgba(139, 38, 53, 0.12);
 }
 
 .filterSelect:focus {
   outline: none;
   border-color: var(--accent-color);
-  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.15);
+  box-shadow: 0 6px 16px rgba(139, 38, 53, 0.15);
   transform: translateY(-1px);
-}
-
-[data-theme='dark'] .filterSelect {
-  background: var(--card-background);
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme='dark'] .filterSelect:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 6px 16px rgba(212, 165, 154, 0.2);
-}
-
-/* Glass morphism effect */
-[data-theme='dark'] .searchInputContainer {
-  backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.05);
 }
 
 /* Responsive Design */

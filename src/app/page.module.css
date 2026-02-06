@@ -30,7 +30,7 @@
 
 .featuredSection {
   padding: 5rem 2rem;
-  background: linear-gradient(180deg, var(--background) 0%, var(--accent-surface-warm) 50%, var(--background) 100%);
+  background: var(--background);
   position: relative;
   overflow: hidden;
 }
@@ -105,7 +105,7 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: var(--gradient-primary);
+  background: var(--primary-color);
   border-radius: 8px;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -113,7 +113,7 @@
 }
 
 .viewAllButton:hover {
-  background: var(--gradient-primary);
+  background: var(--primary-color);
   color: white;
   border-color: transparent;
   transform: translateY(-2px);
@@ -126,13 +126,13 @@
 }
 
 [data-theme="dark"] .viewAllButton:hover {
-  background: linear-gradient(135deg, #d4a59a, #c98f7a);
+  background: #d4a59a;
   color: white;
   transform: translateY(-2px);
 }
 
 .categoryButton.active {
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: var(--primary-color);
   color: white;
   border-color: var(--primary-color);
   box-shadow: 0 4px 12px rgba(201, 125, 96, 0.3);
@@ -143,7 +143,7 @@
   margin: 5rem auto;
   padding: 4rem 2rem;
   text-align: center;
-  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--accent-surface-medium) 100%);
+  background: var(--bg-secondary);
   border-radius: 24px;
   box-shadow: 0 12px 40px rgba(201, 125, 96, 0.15);
   border: 1px solid rgba(201, 125, 96, 0.2);
@@ -172,7 +172,7 @@
   right: -10%;
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(201, 125, 96, 0.1) 0%, transparent 70%);
+  background: rgba(201, 125, 96, 0.08);
   border-radius: 50%;
   pointer-events: none;
 }
@@ -226,7 +226,7 @@
 
 .newsletterForm button {
   padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  background: var(--primary-color);
   color: white;
   border: none;
   border-radius: 50px;
@@ -250,14 +250,7 @@
   height: 48px;
   width: 300px;
   margin: 0 auto 1.5rem;
-  background: linear-gradient(
-    90deg,
-    var(--skeleton-base) 0%,
-    var(--skeleton-highlight) 50%,
-    var(--skeleton-base) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+  background: var(--skeleton-base);
   border-radius: 8px;
 }
 
@@ -265,14 +258,7 @@
   height: 48px;
   width: 300px;
   margin: 0 auto;
-  background: linear-gradient(
-    90deg,
-    var(--skeleton-base) 0%,
-    var(--skeleton-highlight) 50%,
-    var(--skeleton-base) 100%
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+  background: var(--skeleton-base);
   border-radius: 8px;
 }
 

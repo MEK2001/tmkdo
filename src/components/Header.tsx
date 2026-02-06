@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import { useTheme } from './ThemeProvider';
 import { siteMetadata } from '@/lib/metadata';
 import styles from './Header.module.css';
 
@@ -13,7 +12,6 @@ export default function Header() {
   const [isScrolling, setIsScrolling] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollTimeout, setScrollTimeout] = useState<NodeJS.Timeout | null>(null);
-  const { theme, toggleTheme } = useTheme();
 
   // Handle scroll behavior for compact mode and transparency
   useEffect(() => {
@@ -145,15 +143,6 @@ export default function Header() {
           </li>
           <li>
             <Link href="/contact" onClick={closeMobileMenu}>Contact Us</Link>
-          </li>
-          <li>
-            <button 
-              className={styles.themeToggle} 
-              onClick={toggleTheme}
-              aria-label="Toggle theme"
-            >
-              <span>{theme === 'light' ? '🌙' : '☀️'}</span>
-            </button>
           </li>
         </ul>
       </nav>

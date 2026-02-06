@@ -1,6 +1,44 @@
 .aboutPage {
   min-height: 100vh;
   background: var(--background);
+  position: relative;
+  overflow: hidden;
+}
+
+.backgroundWallpaper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&h=1080&fit=crop&q=85');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.16;
+  z-index: 0;
+  animation: wallpaperFloat 36s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes wallpaperFloat {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.05) translate(1%, -1%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backgroundWallpaper {
+    animation: none;
+    transform: none;
+  }
+  
+  .ctaSection::before {
+    animation: none;
+    transform: none;
+  }
 }
 
 .aboutHero {
@@ -8,10 +46,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, var(--background-secondary) 0%, var(--accent-surface-warm) 50%, var(--background-secondary) 100%);
+  background: transparent;
   padding: 4rem 2rem;
   text-align: center;
   position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 768px) {
@@ -36,7 +75,7 @@
   transform: translateX(-50%);
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(201, 125, 96, 0.15), transparent 70%);
+  background: rgba(139, 38, 53, 0.12);
   pointer-events: none;
   z-index: 1;
 }
@@ -54,10 +93,6 @@
   color: var(--text-color);
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .heroSubtitle {
@@ -68,7 +103,9 @@
 
 .storySection {
   padding: 6rem 2rem;
-  background: var(--background);
+  background: transparent;
+  position: relative;
+  z-index: 1;
 }
 
 @media (max-width: 1024px) {
@@ -134,7 +171,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(201, 125, 96, 0.08), transparent);
+  background: rgba(139, 38, 53, 0.08);
   pointer-events: none;
 }
 
@@ -147,7 +184,7 @@
 
 .valuesSection {
   padding: 6rem 2rem;
-  background: linear-gradient(180deg, var(--background) 0%, var(--accent-surface-warm) 50%, var(--background) 100%);
+  background: var(--background);
 }
 
 @media (max-width: 1024px) {
@@ -194,7 +231,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, var(--accent-surface-warm), transparent);
+  background: rgba(139, 38, 53, 0.06);
   opacity: 0;
   transition: opacity 0.3s ease;
   border-radius: 16px;
@@ -203,7 +240,7 @@
 
 .valueCard:hover {
   transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(201, 125, 96, 0.2);
+  box-shadow: 0 12px 24px rgba(139, 38, 53, 0.2);
 }
 
 .valueIcon {
@@ -213,7 +250,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, var(--accent-color) 0%, rgba(212, 165, 154, 0.7) 100%);
+  background: var(--accent-color);
   border-radius: 50%;
   color: white;
 }
@@ -234,6 +271,45 @@
 .ctaSection {
   padding: 6rem 2rem;
   background: var(--background-secondary);
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1920&h=1080&fit=crop&q=85');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.15;
+  z-index: 0;
+  animation: ctaWallpaperDrift 32s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.ctaSection::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.4);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes ctaWallpaperDrift {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.08) translate(-2%, 1%);
+  }
 }
 
 @media (max-width: 1024px) {
@@ -258,6 +334,8 @@
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 .ctaTitle {

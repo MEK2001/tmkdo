@@ -31,21 +31,16 @@
 }
 
 .categoryButton:hover {
-  color: #a17659;
-  border-color: #a17659;
+  color: #8B2635;
+  border-color: #8B2635;
   transform: translateY(-2px);
 }
 
-[data-theme="dark"] .categoryButton:hover {
-  color: #d4a59a;
-  border-color: #d4a59a;
-}
-
 .categoryButton.active {
-  background: linear-gradient(135deg, #a17659, #8B7355);
+  background: linear-gradient(135deg, #8B2635, #6B1E2A);
   color: white;
-  border-color: #a17659;
-  box-shadow: 0 4px 12px rgba(161, 118, 89, 0.3);
+  border-color: #8B2635;
+  box-shadow: 0 4px 12px rgba(139, 38, 53, 0.3);
 }
 
 [data-theme="dark"] .categoryButton.active {
