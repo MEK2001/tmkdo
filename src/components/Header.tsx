@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { siteMetadata } from '@/lib/metadata';
 import styles from './Header.module.css';
@@ -83,6 +84,17 @@ export default function Header() {
       <nav className={styles.nav}>
         <Link href="/" className={styles.logoLink} onClick={closeMobileMenu}>
           <span className={styles.brandName}>The Minimalist Kraft & DO</span>
+        </Link>
+
+        <Link href="/" className={styles.centerLogo} onClick={closeMobileMenu} aria-label="Home">
+          <Image 
+            src="/logo.svg" 
+            alt="TMKDO Logo" 
+            width={70} 
+            height={70}
+            className={styles.logoImage}
+            priority
+          />
         </Link>
         
         <button
