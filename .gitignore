@@ -13,6 +13,7 @@ yarn.lock
 dist/
 build/
 .output/
+out/
 /out/.cache
 
 # Environment variables
