@@ -43,10 +43,9 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/Untitled design.svg', type: 'image/svg+xml' },
     ],
-    apple: '/apple-touch-icon.png',
+    apple: '/Untitled design.svg',
   },
   openGraph: {
     type: "website",
