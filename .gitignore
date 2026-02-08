@@ -14,7 +14,7 @@ dist/
 build/
 .output/
 out/
-/out/.cache
+.next/
 
 # Environment variables
 .env
