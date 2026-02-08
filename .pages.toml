@@ -13,3 +13,7 @@ NEXT_PUBLIC_SANITY_DATASET = "production"
 [env.production]
 NEXT_PUBLIC_SANITY_PROJECT_ID = "yr3kaxmk"
 NEXT_PUBLIC_SANITY_DATASET = "production"
+# Preview branches
+[env.preview]
+NEXT_PUBLIC_SANITY_PROJECT_ID = "yr3kaxmk"
+NEXT_PUBLIC_SANITY_DATASET = "production"
