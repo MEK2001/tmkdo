@@ -1,4 +1,4 @@
-# Website Construction Prompt for LLM/AI Models
+ # Website Construction Prompt for LLM/AI Models
 
 ## Use this prompt when building a similar website or making major tweaks
 

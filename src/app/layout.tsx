@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Lora } from 'next/font/google';
 import Script from 'next/script';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScroll from '@/components/SmoothScroll';
@@ -14,9 +14,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const playfair = Playfair_Display({ 
+const lora = Lora({ 
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-lora',
   display: 'swap',
 });
 
@@ -94,7 +94,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" data-theme="light" className={`${inter.variable} ${lora.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
