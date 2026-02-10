@@ -98,10 +98,8 @@ export default function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="any" />
+        <link rel="apple-touch-icon" href="/logo.svg" />
         <meta name="theme-color" content="#8B2635" />
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
