@@ -8,8 +8,8 @@
     "build:production": "NODE_ENV=production next build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "powershell -Command \"Remove-Item -Recurse -Force .next,out -ErrorAction SilentlyContinue\"",
-    "prebuild": "powershell -Command \"Remove-Item -Recurse -Force .next,out -ErrorAction SilentlyContinue\"",
+    "clean": "rimraf .next out",
+    "prebuild": "rimraf .next out",
     "deploy": "npm run build"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "react-icons": "^5.5.0"
   },
   "devDependencies": {
+      "rimraf": "^6.0.1",
     "@sanity/client": "^7.14.1",
     "@types/node": "^22.10.5",
     "@types/node-fetch": "^2.6.13",
