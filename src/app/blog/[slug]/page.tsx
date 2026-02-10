@@ -11,6 +11,7 @@ import {urlFor} from '@/lib/sanity.image';
 import {SanityPost} from '@/types/blog';
 import styles from './page.module.css';
 
+export const runtime = 'nodejs';
 export const revalidate = 60;
 
 export async function generateStaticParams() {

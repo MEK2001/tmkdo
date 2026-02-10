@@ -3,6 +3,7 @@ import SkeletonCard from '@/components/SkeletonCard';
 import BlogContentClient from './BlogContentClient';
 import styles from './page.module.css';
 
+export const runtime = 'nodejs';
 // Enable ISR with 60 second revalidation
 export const revalidate = 60;
 
