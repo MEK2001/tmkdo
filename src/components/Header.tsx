@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
+import { HiOutlineAcademicCap } from 'react-icons/hi2';
 import { siteMetadata } from '@/lib/metadata';
 import styles from './Header.module.css';
 
@@ -82,9 +83,18 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${isScrolled ? styles.scrolled : ''} ${isScrolling ? styles.scrolling : ''}`}>
       <nav className={styles.nav}>
-        <Link href="/" className={styles.logoLink} onClick={closeMobileMenu}>
-          <span className={styles.brandName}>The Minimalist Kraft & DO</span>
-        </Link>
+        <div className={styles.leftControls}>
+          <Link
+            href="/admin"
+            className={styles.cmsLink}
+            aria-label="Open TMKDO CMS (admin)"
+          >
+            <HiOutlineAcademicCap className={styles.cmsIcon} />
+          </Link>
+          <Link href="/" className={styles.logoLink} onClick={closeMobileMenu}>
+            <span className={styles.brandName}>The Minimalist Kraft & DO</span>
+          </Link>
+        </div>
 
         <Link href="/" className={styles.centerLogo} onClick={closeMobileMenu} aria-label="Home">
           <Image 

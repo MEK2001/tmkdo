@@ -1,0 +1,117 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+site_url: https://www.tmkdo.com
+display_url: https://www.tmkdo.com
+logo_url: /logo.svg
+
+collections:
+  - name: "posts"
+    label: "📝 Blog Posts"
+    label_singular: "Blog Post"
+    folder: "content/posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "blog/{{slug}}"
+    
+    editor:
+      preview: true
+    
+    sortable_fields: ['date', 'title', 'category']
+    
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+        hint: "Post title (60 characters max for SEO)"
+      
+      - label: "URL Slug"
+        name: "slug"
+        widget: "string"
+        hint: "URL-friendly slug (auto-generated from title)"
+        required: false
+      
+      - label: "Publication Date"
+        name: "date"
+        widget: "datetime"
+        default: ""
+        format: "YYYY-MM-DDTHH:mm:ss"
+      
+      - label: "Author"
+        name: "author"
+        widget: "string"
+        default: "TMKDO Team"
+      
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "🛋️ Living Room", value: "Living Room" }
+          - { label: "📦 Organization", value: "Organization" }
+          - { label: "🌿 Natural Materials", value: "Materials" }
+          - { label: "🛏️ Bedroom", value: "Bedroom" }
+          - { label: "🏠 Home Decor", value: "Home Decor" }
+      
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+        default: []
+      
+      - label: "Featured Image"
+        name: "image"
+        widget: "image"
+        required: true
+        hint: "Recommended: 1200x630px"
+      
+      - label: "Image Alt Text"
+        name: "imageAlt"
+        widget: "string"
+        required: false
+      
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        required: false
+        hint: "150-160 characters"
+        pattern: ['.{0,160}', "Max 160 characters"]
+      
+      - label: "Reading Time"
+        name: "readTime"
+        widget: "string"
+        default: "5 min read"
+      
+      - label: "SEO"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - { label: "SEO Title", name: "title", widget: "string", required: false }
+          - { label: "SEO Description", name: "description", widget: "text", required: false }
+      
+      - label: "Content"
+        name: "body"
+        widget: "markdown"
+        modes: ['rich_text', 'raw']
+      
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options:
+          - { label: "Published", value: "published" }
+          - { label: "Draft", value: "draft" }
+        default: "published"
+      
+      - label: "Featured"
+        name: "featured"
+        widget: "boolean"
+        default: false
+        required: false
+
+
+
+

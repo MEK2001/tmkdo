@@ -47,6 +47,41 @@
   position: relative;
 }
 
+.leftControls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cmsLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid var(--border-color);
+  background: rgba(139, 38, 53, 0.04);
+  color: var(--primary-color);
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.cmsLink:hover {
+  background: rgba(139, 38, 53, 0.1);
+  border-color: rgba(139, 38, 53, 0.4);
+  box-shadow: 0 4px 16px var(--shadow-medium);
+  transform: translateY(-1px);
+}
+
+.cmsIcon {
+  font-size: 1.25rem;
+}
+
 .header.scrolled .nav {
   padding: 0.75rem 2rem;
 }
