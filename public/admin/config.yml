@@ -4,7 +4,7 @@ backend:
   branch: main
   base_url: https://www.tmkdo.com
   auth_type: implicit
-  app_id: YOUR_GITHUB_CLIENT_ID_HERE  # Replace with your GitHub OAuth App Client ID
+  app_id: Ov23li84oLgT3xGoOlN2  # Replace with your GitHub OAuth App Client ID
   auth_scope: repo
   commit_messages:
     create: 'Create {{collection}} "{{slug}}"'
