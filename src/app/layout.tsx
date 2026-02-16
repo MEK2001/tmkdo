@@ -111,11 +111,6 @@ export default function RootLayout({
           src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
           strategy="beforeInteractive"
         />
-        {/* Netlify Identity for Decap CMS authentication */}
-        <Script
-          src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-          strategy="afterInteractive"
-        />
       </head>
       <body suppressHydrationWarning>
         <ThemeProvider>

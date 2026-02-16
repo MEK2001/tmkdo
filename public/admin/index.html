@@ -6,9 +6,6 @@
   <meta name="robots" content="noindex" />
   <title>TMKDO Content Manager</title>
   
-  <!-- Netlify Identity Widget -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  
   <style>
     /* ===== TMKDO BURGUNDY THEME ADMIN STYLING ===== */
     
@@ -411,17 +408,6 @@
       }, 1500);
     });
 
-    // Netlify Identity
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-        if (!user) {
-          window.netlifyIdentity.on("login", () => {
-            document.location.href = "/admin/";
-          });
-        }
-      });
-    }
-    
     console.log('%c📚 TMKDO CMS', 'color: #8B2635; font-size: 20px; font-weight: bold;');
     console.log('%cBurgundy theme loaded', 'color: #5c5650; font-size: 14px;');
   </script>

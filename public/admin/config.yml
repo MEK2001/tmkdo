@@ -1,6 +1,17 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: MEK2001/tmkdo
   branch: main
+  base_url: https://www.tmkdo.com
+  auth_type: implicit
+  app_id: YOUR_GITHUB_CLIENT_ID_HERE  # Replace with your GitHub OAuth App Client ID
+  auth_scope: repo
+  commit_messages:
+    create: 'Create {{collection}} "{{slug}}"'
+    update: 'Update {{collection}} "{{slug}}"'
+    delete: 'Delete {{collection}} "{{slug}}"'
+    uploadMedia: 'Upload "{{path}}"'
+    deleteMedia: 'Delete "{{path}}"'
 
 media_folder: "public/images/blog"
 public_folder: "/images/blog"
