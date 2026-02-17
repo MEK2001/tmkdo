@@ -2,8 +2,8 @@ backend:
   name: github
   repo: MEK2001/tmkdo
   branch: main
-  auth_type: implicit
-  app_id: Ov23liJHnmfPr3lSnbDa
+  base_url: https://tmkdo-cms-auth.eessaa-khan.workers.dev
+  auth_endpoint: auth/github-oauth
 
 media_folder: "public/images/blog"
 public_folder: "/images/blog"

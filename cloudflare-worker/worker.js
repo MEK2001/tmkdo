@@ -320,6 +320,105 @@ export default {
         })
       }
 
+      // Simple GitHub OAuth for Decap CMS (no Supabase required)
+      if (url.pathname === '/auth/github-oauth') {
+        const redirectUri = `${url.origin}/auth/github-oauth/callback`
+        const state = url.searchParams.get('state') || ''
+        const authUrl = `https://github.com/login/oauth/authorize?` +
+          `client_id=Ov23liJHnmfPr3lSnbDa&` +
+          `redirect_uri=${encodeURIComponent(redirectUri)}&` +
+          `scope=repo&` +
+          `state=${state}`
+        
+        return Response.redirect(authUrl, 302)
+      }
+
+      // GitHub OAuth callback - returns token to Decap CMS
+      if (url.pathname === '/auth/github-oauth/callback') {
+        const code = url.searchParams.get('code')
+        const state = url.searchParams.get('state') || ''
+        
+        return new Response(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Authenticating...</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+    }
+    .card {
+      background: white;
+      padding: 3rem;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(139,38,53,0.15);
+      max-width: 400px;
+    }
+    h1 { color: #8B2635; font-size: 1.5rem; margin: 1rem 0; }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(139, 38, 53, 0.1);
+      border-top-color: #8B2635;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 1rem auto;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div style="font-size:3rem">📚</div>
+    <h1>TMKDO CMS</h1>
+    <div class="spinner"></div>
+    <p style="color:#5c5650;">Authenticating...</p>
+  </div>
+
+  <script>
+    (function() {
+      var githubToken = '${env.GITHUB_TOKEN}';
+      var message = 'authorization:github:success:' + JSON.stringify({
+        token: githubToken,
+        provider: 'github'
+      });
+      
+      console.log('✅ Sending GitHub token to Decap CMS...');
+      
+      if (window.opener) {
+        // Send message multiple times to ensure delivery
+        for (var i = 0; i < 5; i++) {
+          (function(index) {
+            setTimeout(function() {
+              console.log('Sending attempt ' + (index + 1));
+              window.opener.postMessage(message, '*');
+            }, index * 100);
+          })(i);
+        }
+        
+        // Close popup after delay
+        setTimeout(function() {
+          console.log('✅ Closing popup...');
+          window.close();
+        }, 1500);
+      } else {
+        document.body.innerHTML = '<div class="card"><h1>Authenticated!</h1><p>You can close this window.</p></div>';
+      }
+    })();
+  </script>
+</body>
+</html>`, {
+          headers: { 'Content-Type': 'text/html' }
+        })
+      }
+
       // Login endpoint
       if (url.pathname === '/auth/login' && request.method === 'POST') {
         return await handleLogin(request, env)
