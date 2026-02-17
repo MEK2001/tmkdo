@@ -94,7 +94,7 @@ export default function Header() {
             />
           </Link>
           <Link 
-            href="/admin/login.html" 
+            href="/admin" 
             className={styles.cmsLink}
             aria-label="Open TMKDO CMS (admin)"
           >

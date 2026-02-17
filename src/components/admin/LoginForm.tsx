@@ -92,6 +92,13 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
             )}
           </button>
         </form>
+
+        <div className={styles.footer}>
+          <p>Don't have an account?</p>
+          <a href="/admin/signup" className={styles.link}>
+            Sign up here
+          </a>
+        </div>
       </div>
     </div>
   );

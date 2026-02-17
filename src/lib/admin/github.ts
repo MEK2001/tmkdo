@@ -3,6 +3,7 @@
 const GITHUB_API = 'https://api.github.com';
 const REPO_OWNER = 'MEK2001';
 const REPO_NAME = 'tmkdo';
+const BRANCH = 'CMS-changes'; // Working branch
 
 export interface GitHubFile {
   path: string;
@@ -12,7 +13,7 @@ export interface GitHubFile {
 
 export async function listFiles(path: string, token: string): Promise<any[]> {
   const response = await fetch(
-    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`,
     {
       headers: {
         'Authorization': `token ${token}`,
@@ -30,7 +31,7 @@ export async function listFiles(path: string, token: string): Promise<any[]> {
 
 export async function getFile(path: string, token: string): Promise<GitHubFile> {
   const response = await fetch(
-    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,
+    `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`,
     {
       headers: {
         'Authorization': `token ${token}`,
@@ -63,7 +64,7 @@ export async function createOrUpdateFile(
   const body: any = {
     message,
     content: Buffer.from(content).toString('base64'),
-    branch: 'main'
+    branch: BRANCH // Use working branch
   };
 
   if (sha) {
@@ -107,7 +108,7 @@ export async function deleteFile(
       body: JSON.stringify({
         message,
         sha,
-        branch: 'main'
+        branch: BRANCH
       })
     }
   );
@@ -140,7 +141,7 @@ export async function uploadImage(
       body: JSON.stringify({
         message: `Upload image: ${filename}`,
         content,
-        branch: 'main'
+        branch: BRANCH
       })
     }
   );

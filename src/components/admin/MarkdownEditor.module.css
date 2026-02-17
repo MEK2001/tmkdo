@@ -1,0 +1,274 @@
+/* Rich Markdown Editor Styles */
+
+.container {
+  border: 2px solid rgba(139, 38, 53, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.container:focus-within {
+  border-color: #8B2635;
+  box-shadow: 0 8px 24px rgba(139, 38, 53, 0.15);
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+  border-bottom: 1px solid rgba(139, 38, 53, 0.1);
+  flex-wrap: wrap;
+}
+
+.toolbarGroup {
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
+}
+
+.toolBtn {
+  padding: 0.5rem 0.75rem;
+  background: white;
+  border: 1px solid rgba(139, 38, 53, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-family: var(--font-inter), sans-serif;
+  transition: all 0.2s ease;
+  color: #5c5650;
+  font-weight: 500;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toolBtn:hover {
+  background: #8B2635;
+  color: white;
+  border-color: #8B2635;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(139, 38, 53, 0.25);
+}
+
+.toolBtn:active {
+  transform: translateY(0);
+}
+
+.separator {
+  width: 1px;
+  height: 24px;
+  background: rgba(139, 38, 53, 0.15);
+  margin: 0 0.25rem;
+}
+
+.tabs {
+  display: flex;
+  background: white;
+  border-bottom: 1px solid rgba(139, 38, 53, 0.1);
+}
+
+.tab {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #5c5650;
+  transition: all 0.2s ease;
+}
+
+.tab:hover {
+  background: rgba(139, 38, 53, 0.05);
+}
+
+.activeTab {
+  color: #8B2635;
+  border-bottom-color: #8B2635;
+  background: rgba(139, 38, 53, 0.05);
+}
+
+.editor {
+  width: 100%;
+  min-height: 400px;
+  padding: 1.5rem;
+  border: none;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  resize: vertical;
+  background: white;
+  color: #2a2622;
+}
+
+.editor:focus {
+  outline: none;
+}
+
+.preview {
+  min-height: 400px;
+  padding: 1.5rem;
+  background: white;
+  color: #2a2622;
+  line-height: 1.7;
+  overflow-y: auto;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.preview h1 {
+  font-family: var(--font-lora), serif;
+  font-size: 2rem;
+  color: #8B2635;
+  margin: 1.5rem 0 1rem;
+}
+
+.preview h2 {
+  font-family: var(--font-lora), serif;
+  font-size: 1.6rem;
+  color: #8B2635;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.preview h3 {
+  font-family: var(--font-lora), serif;
+  font-size: 1.3rem;
+  color: #5c5650;
+  margin: 1rem 0 0.5rem;
+}
+
+.preview p {
+  margin: 1rem 0;
+}
+
+.preview a {
+  color: #8B2635;
+  text-decoration: underline;
+}
+
+.preview ul, .preview ol {
+  margin: 1rem 0;
+  padding-left: 2rem;
+}
+
+.preview li {
+  margin: 0.5rem 0;
+}
+
+.preview code {
+  background: rgba(139, 38, 53, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: 0.85rem;
+}
+
+.preview img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1rem 0;
+  display: block;
+}
+
+.preview strong {
+  font-weight: 700;
+  color: #2a2622;
+}
+
+.preview em {
+  font-style: italic;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
+  border-top: 1px solid rgba(139, 38, 53, 0.1);
+  font-size: 0.8rem;
+  color: #888;
+  font-family: var(--font-inter), sans-serif;
+}
+
+.wordCount, .charCount {
+  font-weight: 500;
+}
+
+/* Modern futuristic enhancements */
+@media (prefers-color-scheme: dark) {
+  .container {
+    background: #1a1a1a;
+    border-color: rgba(139, 38, 53, 0.3);
+  }
+
+  .toolbar {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+    border-bottom-color: rgba(139, 38, 53, 0.3);
+  }
+
+  .toolBtn {
+    background: #2a2a2a;
+    color: #e0e0e0;
+    border-color: rgba(139, 38, 53, 0.3);
+  }
+
+  .toolBtn:hover {
+    background: #8B2635;
+    color: white;
+  }
+
+  .tabs {
+    background: #1a1a1a;
+    border-bottom-color: rgba(139, 38, 53, 0.3);
+  }
+
+  .tab {
+    color: #e0e0e0;
+  }
+
+  .tab:hover {
+    background: rgba(139, 38, 53, 0.15);
+  }
+
+  .editor, .preview {
+    background: #1a1a1a;
+    color: #e0e0e0;
+  }
+
+  .footer {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+    border-top-color: rgba(139, 38, 53, 0.3);
+    color: #aaa;
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .toolbar {
+    padding: 0.5rem;
+  }
+
+  .toolBtn {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .editor, .preview {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+}
