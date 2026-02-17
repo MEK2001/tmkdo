@@ -2,7 +2,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import AdminLayout from '@/components/admin/AdminLayout';
 import { useAdmin } from '@/components/admin/AdminContext';
 import { SiteSettings } from '@/lib/admin/content';
 import styles from './page.module.css';
@@ -81,18 +80,15 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <AdminLayout>
-        <div className={styles.loading}>
-          <div className={styles.spinner} />
-          <p>Loading settings...</p>
-        </div>
-      </AdminLayout>
+      <div className={styles.loading}>
+        <div className={styles.spinner} />
+        <p>Loading settings...</p>
+      </div>
     );
   }
 
   return (
-    <AdminLayout>
-      <div className={styles.container}>
+    <div className={styles.container}>
         <div className={styles.header}>
           <h1>Site Settings</h1>
           <p className={styles.subtitle}>Configure your website settings</p>
@@ -209,6 +205,5 @@ export default function SettingsPage() {
           </div>
         </form>
       </div>
-    </AdminLayout>
   );
 }

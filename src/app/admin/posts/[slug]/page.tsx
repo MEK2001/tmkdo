@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
-import AdminLayout from '@/components/admin/AdminLayout';
 import { useAdmin } from '@/components/admin/AdminContext';
 import { BlogPost } from '@/lib/admin/content';
 import styles from './page.module.css';
@@ -146,18 +145,15 @@ export default function PostEditorPage() {
 
   if (loading) {
     return (
-      <AdminLayout>
-        <div className={styles.loading}>
-          <div className={styles.spinner} />
-          <p>Loading post...</p>
-        </div>
-      </AdminLayout>
+      <div className={styles.loading}>
+        <div className={styles.spinner} />
+        <p>Loading post...</p>
+      </div>
     );
   }
 
   return (
-    <AdminLayout>
-      <div className={styles.container}>
+    <div className={styles.container}>
         <div className={styles.header}>
           <h1>{isNew ? 'Create New Post' : 'Edit Post'}</h1>
           <div className={styles.actions}>
@@ -350,6 +346,5 @@ export default function PostEditorPage() {
           )}
         </div>
       </div>
-    </AdminLayout>
   );
 }

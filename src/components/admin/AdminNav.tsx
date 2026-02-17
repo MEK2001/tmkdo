@@ -2,6 +2,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useAdmin } from './AdminContext';
 import styles from './AdminNav.module.css';
@@ -19,7 +20,13 @@ export default function AdminNav() {
   return (
     <nav className={styles.nav}>
       <div className={styles.header}>
-        <span className={styles.logo}>📚</span>
+        <Image 
+          src="/logo.svg" 
+          alt="TMKDO Logo" 
+          width={40} 
+          height={40}
+          className={styles.logoImage}
+        />
         <h2>TMKDO CMS</h2>
       </div>
 

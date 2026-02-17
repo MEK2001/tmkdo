@@ -1,12 +1,12 @@
-// Admin Layout with Authentication
+// Admin Root Layout - Wraps all admin pages with authentication
 'use client';
 
-import { useAdmin } from '@/components/admin/AdminContext';
+import { AdminProvider, useAdmin } from '@/components/admin/AdminContext';
 import LoginForm from '@/components/admin/LoginForm';
 import AdminNav from '@/components/admin/AdminNav';
-import styles from './AdminLayout.module.css';
+import styles from './layout.module.css';
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+function AdminLayoutInner({ children }: { children: React.ReactNode }) {
   const { session, loading, setSession } = useAdmin();
 
   if (loading) {
@@ -29,5 +29,17 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {children}
       </main>
     </div>
+  );
+}
+
+export default function AdminRootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <AdminProvider>
+      <AdminLayoutInner>{children}</AdminLayoutInner>
+    </AdminProvider>
   );
 }

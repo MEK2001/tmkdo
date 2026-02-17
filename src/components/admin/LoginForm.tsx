@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { loginAdmin } from '@/lib/admin/auth';
 import styles from './LoginForm.module.css';
 
@@ -33,7 +34,13 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.logo}>
-          <span className={styles.logoIcon}>📚</span>
+          <Image 
+            src="/logo.svg" 
+            alt="TMKDO Logo" 
+            width={60} 
+            height={60}
+            className={styles.logoImage}
+          />
           <h1>TMKDO CMS</h1>
           <p>Content Management System</p>
         </div>

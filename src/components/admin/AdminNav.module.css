@@ -12,6 +12,7 @@
   flex-direction: column;
   padding: 1.5rem;
   overflow-y: auto;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .header {
@@ -23,12 +24,12 @@
   border-bottom: 1px solid #e5e5e5;
 }
 
-.logo {
-  font-size: 2rem;
+.logoImage {
+  flex-shrink: 0;
 }
 
 .header h2 {
-  font-family: 'Lora', serif;
+  font-family: var(--font-lora), serif;
   font-size: 1.5rem;
   color: #8B2635;
 }
@@ -70,6 +71,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .userEmail {
@@ -78,6 +80,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .navList {
@@ -99,6 +102,7 @@
   text-decoration: none;
   transition: all 0.2s ease;
   font-weight: 500;
+  font-family: var(--font-inter), sans-serif;
 }
 
 .navItem:hover {

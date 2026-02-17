@@ -3,7 +3,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import AdminLayout from '@/components/admin/AdminLayout';
 import { useAdmin } from '@/components/admin/AdminContext';
 import { BlogPost } from '@/lib/admin/content';
 import styles from './page.module.css';
@@ -73,8 +72,7 @@ export default function PostsPage() {
   });
 
   return (
-    <AdminLayout>
-      <div className={styles.container}>
+    <div className={styles.container}>
         <div className={styles.header}>
           <div>
             <h1>Blog Posts</h1>
@@ -169,6 +167,5 @@ export default function PostsPage() {
           </div>
         )}
       </div>
-    </AdminLayout>
   );
 }

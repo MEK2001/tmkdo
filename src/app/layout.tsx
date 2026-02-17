@@ -3,8 +3,7 @@ import { Inter, Lora } from 'next/font/google';
 import Script from 'next/script';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScroll from '@/components/SmoothScroll';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import ConditionalLayout from '@/components/ConditionalLayout';
 import { siteMetadata } from '@/lib/metadata';
 import '@/styles/globals.css';
 
@@ -115,9 +114,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <ThemeProvider>
           <SmoothScroll />
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <ConditionalLayout>{children}</ConditionalLayout>
         </ThemeProvider>
       </body>
     </html>
