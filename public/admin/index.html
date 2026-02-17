@@ -120,29 +120,34 @@
   </div>
 
   <!-- Decap CMS -->
-<script>
-  console.log('🚀 Decap CMS initializing...');
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  
+  <script>
+    console.log('🚀 Decap CMS initializing...');
 
-  // Listen for auth messages from popup
-  window.addEventListener('message', function(event) {
-    console.log('📨 Message received:', event.data);
-    
-    if (typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
-      console.log('✅ Auth token received! Forwarding to Decap CMS...');
-    }
-  }, false);
+    // Listen for auth messages from popup
+    window.addEventListener('message', function(event) {
+      console.log('📨 Message received:', event.data);
+      
+      if (typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
+        console.log('✅ Auth token received! Forwarding to Decap CMS...');
+      }
+    }, false);
 
-  // Remove loading screen immediately (before Decap takes over)
-  window.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM loaded');
-    var loading = document.getElementById('cms-loading');
-    if (loading) {
-      loading.style.display = 'none';
-    }
-  });
+    // Remove loading screen when CMS is ready
+    window.addEventListener('DOMContentLoaded', function() {
+      console.log('✅ DOM loaded');
+      // Remove the loading screen after a short delay to ensure CMS has initialized
+      setTimeout(function() {
+        var loading = document.getElementById('cms-loading');
+        if (loading) {
+          loading.style.display = 'none';
+        }
+      }, 1500);
+    });
 
-  console.log('📚 Decap CMS script loaded');
-</script>
+    console.log('📚 Decap CMS script loaded');
+  </script>
 </body>
 </html>
 
