@@ -6,7 +6,7 @@ import { getBlogPost, saveBlogPost, deleteBlogPost } from '@/lib/admin/content';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
     const token = request.headers.get('x-github-token');
@@ -18,7 +18,8 @@ export async function GET(
       );
     }
 
-    const post = await getBlogPost(params.slug, token);
+    const { slug } = await params;
+    const post = await getBlogPost(slug, token);
 
     return NextResponse.json({ post });
   } catch (error: any) {
@@ -32,7 +33,7 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
     const token = request.headers.get('x-github-token');
@@ -44,8 +45,9 @@ export async function PUT(
       );
     }
 
+    const { slug } = await params;
     const post = await request.json();
-    await saveBlogPost(post, token, params.slug);
+    await saveBlogPost(post, token, slug);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
@@ -59,7 +61,7 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { slug: string } }
+  { params }: { params: Promise<{ slug: string }> }
 ) {
   try {
     const token = request.headers.get('x-github-token');
@@ -71,7 +73,8 @@ export async function DELETE(
       );
     }
 
-    await deleteBlogPost(params.slug, token);
+    const { slug } = await params;
+    await deleteBlogPost(slug, token);
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
