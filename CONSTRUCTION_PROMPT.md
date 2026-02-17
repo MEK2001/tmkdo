@@ -473,6 +473,6 @@ Optimized for both desktop and mobile experiences.
 - Content: Update blog post topics
 - Social platforms: Add/remove as needed
 - Animation speeds: Increase/decrease durations
-- Deployment: Choose Vercel, Netlify, etc.
+- Deployment: Choose Cloudflare Pages, Vercel, etc.
 
 This prompt contains enough technical detail for any AI model to rebuild the entire website with all optimizations and best practices already baked in.
