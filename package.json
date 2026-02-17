@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "npx @cloudflare/next-on-pages",
-    "preview": "npm run pages:build && npx wrangler pages dev",
+    "pages:build": "opennextjs-cloudflare build",
+    "preview": "npm run pages:build && opennextjs-cloudflare preview",
     "deploy": "npm run pages:build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "powershell -Command \"Remove-Item -Recurse -Force .next,.vercel,out -ErrorAction SilentlyContinue\""
+    "clean": "powershell -Command \"Remove-Item -Recurse -Force .next,.open-next,out -ErrorAction SilentlyContinue\""
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
@@ -25,6 +25,7 @@
     "remark-html": "^16.0.1"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.16.5",
     "@types/node": "^22.10.5",
     "@types/node-fetch": "^2.6.13",
     "@types/nodemailer": "^7.0.9",

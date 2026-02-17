@@ -4,8 +4,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { uploadImage } from '@/lib/admin/github';
 
-export const dynamic = 'force-dynamic';
-
 export async function POST(request: NextRequest) {
   try {
     const token = request.headers.get('x-github-token');

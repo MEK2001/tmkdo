@@ -1,8 +1,6 @@
 import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
 
-export const dynamic = 'force-dynamic';
-
 // Configure your email service here
 // Using environment variables for sensitive data
 const transporter = nodemailer.createTransport({
