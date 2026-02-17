@@ -4,6 +4,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { listBlogPosts } from '@/lib/admin/content';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(request: NextRequest) {
   try {
     const token = request.headers.get('x-github-token');

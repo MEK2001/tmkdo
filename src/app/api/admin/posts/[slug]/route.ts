@@ -4,6 +4,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getBlogPost, saveBlogPost, deleteBlogPost } from '@/lib/admin/content';
 
+export const dynamic = 'force-dynamic';
+
 export async function GET(
   request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
