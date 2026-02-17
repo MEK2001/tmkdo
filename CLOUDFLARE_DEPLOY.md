@@ -12,7 +12,7 @@ Go to **Pages → Your Project → Settings → Builds & deployments** and confi
 
 1. **Framework preset**: `Next.js`
 2. **Build command**: `npm run deploy`
-3. **Build output directory**: `.open-next/worker`
+3. **Build output directory**: `.open-next`
 4. **Root directory**: (leave empty or `/`)
 5. **Node version**: Set environment variable `NODE_VERSION=22`
 
@@ -91,14 +91,14 @@ Using Wrangler CLI:
 npm run pages:build
 
 # Deploy to Cloudflare
-npx wrangler pages deploy .open-next/worker --project-name=tmkdo
+npx wrangler pages deploy .open-next --project-name=tmkdo
 ```
 
 Note: You must login first with `wrangler login`
 
 ## What's Deployed
 
-The `.open-next/worker` folder contains:
+The `.open-next` folder contains:
 - **Server-rendered pages** - Dynamic content generation
 - **Static pages** - Pre-rendered at build time
 - **API routes as Cloudflare Functions**:
@@ -149,7 +149,7 @@ Cloudflare Workers configuration:
 ```toml
 name = "tmkdo"
 compatibility_date = "2024-01-01"
-pages_build_output_dir = ".open-next/worker"
+pages_build_output_dir = ".open-next"
 ```
 
 ### `next.config.ts`
@@ -168,7 +168,7 @@ Next.js configuration (no special Cloudflare setup needed)
 **Issue**: API routes not found after deployment.
 
 **Solution**: 
-1. Verify build output directory is `.open-next/worker`
+1. Verify build output directory is `.open-next`
 2. Check API routes are listed in build output with ƒ symbol
 3. Ensure environment variables are set in Cloudflare Dashboard
 
@@ -205,7 +205,7 @@ If you previously used `@cloudflare/next-on-pages`:
 3. ✅ Updated build scripts in package.json
 4. ✅ Created `open-next.config.ts`
 5. ✅ Updated `wrangler.toml`
-6. ✅ Build output directory changed: `.vercel/output/static` → `.open-next/worker`
+6. ✅ Build output directory changed: `.vercel/output/static` → `.open-next`
 
 ## Additional Resources
 
