@@ -123,74 +123,27 @@
   <script src="https://unpkg.com/decap-cms@^3.1.0/dist/decap-cms.js"></script>
 
   <script>
-        const WORKER_URL = 'https://tmkdo-cms-auth.eessaa-khan.workers.dev'
-
-    // Check authentication before loading CMS
-    async function initCMS() {
-      const token = localStorage.getItem('tmkdo_access_token')
-
-      if (!token) {
-        window.location.href = '/admin/login.html'
-        return
-      }
-
-      try {
-        // Verify token is still valid
-        const res = await fetch(`${WORKER_URL}/auth/verify`, {
-          headers: { 'Authorization': `Bearer ${token}` }
-        })
-
-        if (!res.ok) {
-          localStorage.clear()
-          window.location.href = '/admin/login.html'
-          return
-        }
-
-        const data = await res.json()
-        console.log('✅ Logged in as:', data.user.email, '| Role:', data.user.role)
-
-        // Hide loading screen - CMS is ready
-        setTimeout(() => {
-          const loading = document.getElementById('cms-loading')
-          loading.style.opacity = '0'
-          loading.style.transition = 'opacity 0.5s ease'
-          setTimeout(() => loading.remove(), 500)
-        }, 1500)
-
-      } catch (err) {
-        console.error('Auth error:', err)
-        localStorage.clear()
-        window.location.href = '/admin/login.html'
-      }
+  // Listen for auth message from popup
+  window.addEventListener('message', (event) => {
+    const data = event.data
+    if (typeof data === 'string' && data.startsWith('authorization:github:success:')) {
+      console.log('✅ Auth token received from popup')
+      // Decap CMS handles this automatically - just log it
     }
+  })
 
-    // Auto refresh token every 15 minutes
-    setInterval(async () => {
-      const refreshToken = localStorage.getItem('tmkdo_refresh_token')
-      if (!refreshToken) return
-
-      try {
-        const res = await fetch(`${WORKER_URL}/auth/refresh`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ refresh_token: refreshToken })
-        })
-
-        if (res.ok) {
-          const data = await res.json()
-          localStorage.setItem('tmkdo_access_token', data.access_token)
-          if (data.refresh_token) {
-            localStorage.setItem('tmkdo_refresh_token', data.refresh_token)
-          }
-        }
-      } catch (err) {
-        console.error('Token refresh failed:', err)
+  // Hide loading screen
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const loading = document.getElementById('cms-loading')
+      if (loading) {
+        loading.style.opacity = '0'
+        loading.style.transition = 'opacity 0.5s ease'
+        setTimeout(() => loading.remove(), 500)
       }
-    }, 15 * 60 * 1000)
-
-    // Start
-    initCMS()
-  </script>
+    }, 2000)
+  })
+</script>
 </body>
 </html>
 
