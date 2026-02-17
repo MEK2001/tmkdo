@@ -3,7 +3,7 @@ backend:
   repo: MEK2001/tmkdo
   branch: main
   base_url: https://tmkdo-cms-auth.eessaa-khan.workers.dev
-  auth_endpoint: /auth/google
+  auth_endpoint: /auth/cms
 
 media_folder: "public/images/blog"
 public_folder: "/images/blog"
@@ -18,10 +18,8 @@ collections:
     folder: "content/posts"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    preview_path: "blog/{{slug}}"
     editor:
       preview: false
-    sortable_fields: ['date', 'title']
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Date", name: "date", widget: "datetime" }
@@ -41,7 +39,3 @@ collections:
       - { label: "Featured", name: "featured", widget: "boolean", default: false }
       - { label: "Status", name: "status", widget: "select", options: ["published", "draft"], default: "published" }
       - { label: "Content", name: "body", widget: "markdown" }
-
-
-
-
