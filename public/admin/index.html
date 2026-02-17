@@ -120,31 +120,28 @@
   </div>
 
   <!-- Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.1.0/dist/decap-cms.js"></script>
+<script>
+  console.log('🚀 Decap CMS initializing...');
 
-   <script src="https://unpkg.com/decap-cms@^3.1.0/dist/decap-cms.js"></script>
-
-  <script>
-  // Listen for auth message from popup
-  window.addEventListener('message', (event) => {
-    const data = event.data
-    if (typeof data === 'string' && data.startsWith('authorization:github:success:')) {
-      console.log('✅ Auth token received from popup')
-      // Decap CMS handles this automatically - just log it
+  // Listen for auth messages from popup
+  window.addEventListener('message', function(event) {
+    console.log('📨 Message received:', event.data);
+    
+    if (typeof event.data === 'string' && event.data.startsWith('authorization:github:success:')) {
+      console.log('✅ Auth token received! Forwarding to Decap CMS...');
     }
-  })
+  }, false);
 
-  // Hide loading screen
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const loading = document.getElementById('cms-loading')
-      if (loading) {
-        loading.style.opacity = '0'
-        loading.style.transition = 'opacity 0.5s ease'
-        setTimeout(() => loading.remove(), 500)
-      }
-    }, 2000)
-  })
+  // Remove loading screen immediately (before Decap takes over)
+  window.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM loaded');
+    var loading = document.getElementById('cms-loading');
+    if (loading) {
+      loading.style.display = 'none';
+    }
+  });
+
+  console.log('📚 Decap CMS script loaded');
 </script>
 </body>
 </html>
