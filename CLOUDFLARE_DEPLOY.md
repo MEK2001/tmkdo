@@ -151,8 +151,11 @@ Cloudflare Workers configuration:
 ```toml
 name = "tmkdo"
 compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".cloudflare"
 ```
+
+**Important**: The `nodejs_compat` flag is required for OpenNext to work with Node.js built-in modules (fs, crypto, stream, etc.).
 
 ### `next.config.ts`
 Next.js configuration (no special Cloudflare setup needed)
