@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "opennextjs-cloudflare build",
+    "pages:build": "opennextjs-cloudflare build && node scripts/postbuild.js",
     "preview": "npm run pages:build && opennextjs-cloudflare preview",
     "deploy": "npm run pages:build",
     "start": "next start",
     "lint": "next lint",
-    "clean": "powershell -Command \"Remove-Item -Recurse -Force .next,.open-next,out -ErrorAction SilentlyContinue\""
+    "clean": "powershell -Command \"Remove-Item -Recurse -Force .next,.open-next,.cloudflare,out -ErrorAction SilentlyContinue\""
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
