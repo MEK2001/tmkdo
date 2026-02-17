@@ -1,20 +1,20 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  // Optimize images
+  // Generate a static export in the `out` directory for Cloudflare Pages
+  output: 'export',
+
+  // Optimize images while remaining compatible with static export
   images: {
     remotePatterns: [
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
     ],
+    unoptimized: true,
   },
-  
+
   // Production optimizations
   reactStrictMode: true,
   poweredByHeader: false,

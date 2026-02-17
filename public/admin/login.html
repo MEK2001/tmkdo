@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TMKDO CMS - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(139, 38, 53, 0.15);
+      width: 100%;
+      max-width: 440px;
+      padding: 3rem;
+      animation: fadeUp 0.5s ease;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .logo-icon {
+      font-size: 3.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    .logo h1 {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      color: #8B2635;
+      margin-bottom: 0.25rem;
+    }
+
+    .logo p {
+      color: #5c5650;
+      font-size: 0.9rem;
+    }
+
+    .tabs {
+      display: flex;
+      border-bottom: 2px solid rgba(139, 38, 53, 0.1);
+      margin-bottom: 2rem;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 0.875rem;
+      background: none;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #5c5650;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .tab.active {
+      color: #8B2635;
+      border-bottom-color: #8B2635;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active {
+      display: block;
+      animation: fadeUp 0.3s ease;
+    }
+
+    .alert {
+      padding: 0.875rem 1rem;
+      border-radius: 10px;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .alert.show { display: block; }
+    .alert-error { background: rgba(244,67,54,0.1); color: #c62828; border: 1px solid rgba(244,67,54,0.2); }
+    .alert-success { background: rgba(76,175,80,0.1); color: #2e7d32; border: 1px solid rgba(76,175,80,0.2); }
+    .alert-info { background: rgba(33,150,243,0.1); color: #1565c0; border: 1px solid rgba(33,150,243,0.2); }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #2a2622;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      border: 2px solid rgba(139, 38, 53, 0.15);
+      border-radius: 10px;
+      font-size: 1rem;
+      font-family: 'Inter', sans-serif;
+      color: #2a2622;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #8B2635;
+      box-shadow: 0 0 0 3px rgba(139, 38, 53, 0.08);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 1rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+    }
+
+    .btn-primary {
+      background: #8B2635;
+      color: white;
+      box-shadow: 0 4px 20px rgba(139, 38, 53, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: #6B1E2A;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(139, 38, 53, 0.35);
+    }
+
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-google {
+      background: white;
+      color: #2a2622;
+      border: 2px solid rgba(139, 38, 53, 0.15);
+      margin-top: 1rem;
+    }
+
+    .btn-google:hover {
+      border-color: #8B2635;
+      background: rgba(139, 38, 53, 0.02);
+      transform: translateY(-2px);
+    }
+
+    .divider {
+      text-align: center;
+      margin: 1.5rem 0;
+      position: relative;
+    }
+
+    .divider::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      width: 100%; height: 1px;
+      background: rgba(139, 38, 53, 0.1);
+    }
+
+    .divider span {
+      background: white;
+      padding: 0 1rem;
+      position: relative;
+      color: #5c5650;
+      font-size: 0.875rem;
+    }
+
+    .forgot {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .forgot a {
+      color: #8B2635;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+
+    .forgot a:hover { text-decoration: underline; }
+
+    .spinner {
+      width: 20px; height: 20px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .btn.loading { opacity: 0.7; pointer-events: none; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <span class="logo-icon">📚</span>
+      <h1>TMKDO</h1>
+      <p>Content Management System</p>
+    </div>
+
+    <div id="alert" class="alert"></div>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="login">Sign In</button>
+      <button class="tab" data-tab="signup">Sign Up</button>
+    </div>
+
+    <!-- LOGIN TAB -->
+    <div id="login-tab" class="tab-content active">
+      <form id="login-form">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="login-email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="login-password" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" id="login-btn">
+          <span>Sign In</span>
+        </button>
+      </form>
+
+      <div class="divider"><span>or</span></div>
+
+      <button class="btn btn-google" id="google-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Continue with Google
+      </button>
+
+      <div class="forgot">
+        <a href="#" id="forgot-link">Forgot your password?</a>
+      </div>
+    </div>
+
+    <!-- SIGNUP TAB -->
+    <div id="signup-tab" class="tab-content">
+      <form id="signup-form">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="signup-name" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="signup-email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="signup-password" placeholder="Min. 8 characters" required minlength="8">
+        </div>
+        <button type="submit" class="btn btn-primary" id="signup-btn">
+          <span>Create Account</span>
+        </button>
+      </form>
+
+      <div class="divider"><span>or</span></div>
+
+      <button class="btn btn-google" id="google-signup-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+        </svg>
+        Continue with Google
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // ⚠️ REPLACE THIS with your actual worker URL
+    const WORKER_URL = 'https://tmkdo-cms-auth.eessaa-khan.workers.dev'
+
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'))
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'))
+        tab.classList.add('active')
+        document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active')
+        hideAlert()
+      })
+    })
+
+    // LOGIN
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const btn = document.getElementById('login-btn')
+      const email = document.getElementById('login-email').value
+      const password = document.getElementById('login-password').value
+
+      setLoading(btn, true)
+      hideAlert()
+
+      try {
+        const res = await fetch(`${WORKER_URL}/auth/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        })
+
+        const data = await res.json()
+
+        if (!res.ok) throw new Error(data.error || 'Login failed')
+
+        localStorage.setItem('tmkdo_access_token', data.access_token)
+        localStorage.setItem('tmkdo_refresh_token', data.refresh_token)
+        localStorage.setItem('tmkdo_user', JSON.stringify(data.user))
+
+        showAlert('Login successful! Redirecting...', 'success')
+        setTimeout(() => window.location.href = '/admin/', 1000)
+
+      } catch (err) {
+        showAlert(err.message, 'error')
+        setLoading(btn, false)
+      }
+    })
+
+    // SIGNUP
+    document.getElementById('signup-form').addEventListener('submit', async (e) => {
+      e.preventDefault()
+      const btn = document.getElementById('signup-btn')
+      const email = document.getElementById('signup-email').value
+      const password = document.getElementById('signup-password').value
+      const fullName = document.getElementById('signup-name').value
+
+      setLoading(btn, true)
+      hideAlert()
+
+      try {
+        const res = await fetch(`${WORKER_URL}/auth/signup`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password, fullName })
+        })
+
+        const data = await res.json()
+
+        if (!res.ok) throw new Error(data.error || 'Signup failed')
+
+        showAlert(data.message, 'success')
+        setTimeout(() => document.querySelector('[data-tab="login"]').click(), 2500)
+
+      } catch (err) {
+        showAlert(err.message, 'error')
+      } finally {
+        setLoading(btn, false)
+      }
+    })
+
+    // GOOGLE AUTH
+    function openGoogleAuth() {
+      const w = 600, h = 700
+      const left = (screen.width - w) / 2
+      const top = (screen.height - h) / 2
+      window.open(
+        `${WORKER_URL}/auth/google`,
+        'Google Auth',
+        `width=${w},height=${h},left=${left},top=${top}`
+      )
+    }
+
+    document.getElementById('google-btn').addEventListener('click', openGoogleAuth)
+    document.getElementById('google-signup-btn').addEventListener('click', openGoogleAuth)
+
+    // Listen for Google auth success message
+    window.addEventListener('message', (event) => {
+      if (event.data?.type === 'auth-success') {
+        localStorage.setItem('tmkdo_access_token', event.data.access_token)
+        localStorage.setItem('tmkdo_refresh_token', event.data.refresh_token || '')
+        localStorage.setItem('tmkdo_user', JSON.stringify(event.data.user))
+        showAlert('Google sign-in successful! Redirecting...', 'success')
+        setTimeout(() => window.location.href = '/admin/', 1000)
+      }
+    })
+
+    // FORGOT PASSWORD
+    document.getElementById('forgot-link').addEventListener('click', async (e) => {
+      e.preventDefault()
+      const email = prompt('Enter your email address to reset password:')
+      if (!email) return
+
+      try {
+        const res = await fetch(`${WORKER_URL}/auth/reset-password`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        })
+        const data = await res.json()
+        showAlert(data.message || 'Reset email sent!', 'success')
+      } catch (err) {
+        showAlert('Failed to send reset email', 'error')
+      }
+    })
+
+    // HELPERS
+    function showAlert(msg, type) {
+      const el = document.getElementById('alert')
+      el.textContent = msg
+      el.className = `alert alert-${type} show`
+    }
+
+    function hideAlert() {
+      document.getElementById('alert').className = 'alert'
+    }
+
+    function setLoading(btn, loading) {
+      if (loading) {
+        btn.classList.add('loading')
+        btn.innerHTML = '<div class="spinner"></div>'
+      } else {
+        btn.classList.remove('loading')
+        btn.innerHTML = '<span>' + (btn.id === 'signup-btn' ? 'Create Account' : 'Sign In') + '</span>'
+      }
+    }
+
+    // Redirect if already logged in
+    if (localStorage.getItem('tmkdo_access_token')) {
+      window.location.href = '/admin/'
+    }
+  </script>
+</body>
+</html>
