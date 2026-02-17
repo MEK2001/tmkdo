@@ -39,10 +39,11 @@
 .nav {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 1.2rem 2rem;
-  display: flex;
-  justify-content: space-between;
+  padding: 1.2rem clamp(2rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  gap: clamp(1rem, 3vw, 2rem);
   transition: padding 0.3s ease;
   position: relative;
 }
@@ -50,15 +51,18 @@
 .leftControls {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: clamp(0.75rem, 1.5vw, 1.25rem);
+  grid-column: 1;
+  justify-self: start;
+  width: 100%;
 }
 
 .cmsLink {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: clamp(42px, 5vw, 52px);
+  height: clamp(42px, 5vw, 52px);
   border-radius: 999px;
   border: 1px solid var(--border-color);
   background: rgba(139, 38, 53, 0.04);
@@ -79,36 +83,51 @@
 }
 
 .cmsIcon {
-  font-size: 1.25rem;
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
 }
 
 .header.scrolled .nav {
-  padding: 0.75rem 2rem;
+  padding: 0.75rem clamp(2rem, 5vw, 4rem);
 }
 
 /* Center Logo Styles */
 .centerLogo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
   z-index: 10;
-  animation: logoFloat 3s ease-in-out infinite;
+}
+
+/* Desktop: Center logo should be in grid column 2 (centered) */
+@media (min-width: 769px) {
+  .centerLogo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: logoFloat 3s ease-in-out infinite;
+  }
+}
+
+/* Mobile: Logo stays in leftControls, no absolute positioning */
+@media (max-width: 768px) {
+  .centerLogo {
+    position: relative;
+    transform: none;
+    animation: none;
+  }
 }
 
 .logoImage {
-  width: 70px;
-  height: 70px;
+  width: clamp(60px, 8vw, 90px);
+  height: clamp(60px, 8vw, 90px);
   transition: all 0.3s ease;
   filter: drop-shadow(0 2px 8px rgba(139, 38, 53, 0.2));
 }
 
 .header.scrolled .logoImage {
-  width: 50px;
-  height: 50px;
+  width: clamp(50px, 6vw, 70px);
+  height: clamp(50px, 6vw, 70px);
 }
 
 .centerLogo:hover .logoImage {
@@ -118,26 +137,42 @@
 
 @keyframes logoFloat {
   0%, 100% {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
   50% {
-    transform: translateX(-50%) translateY(-8px);
+    transform: translateY(-8px);
   }
 }
 
 @media (max-width: 1024px) {
   .nav {
-    padding: 1rem 1.5rem;
+    padding: 1rem clamp(1.5rem, 4vw, 3rem);
   }
   
   .header.scrolled .nav {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem clamp(1.5rem, 4vw, 3rem);
+  }
+}
+
+@media (max-width: 968px) {
+  .nav {
+    padding: 0.9rem 1.2rem;
+  }
+  
+  .header.scrolled .nav {
+    padding: 0.7rem 1.2rem;
+  }
+  
+  .brandName {
+    font-size: clamp(0.9rem, 2.8vw, 1.2rem);
   }
 }
 
 @media (max-width: 768px) {
   .nav {
     padding: 0.75rem 1rem;
+    grid-template-columns: 1fr auto auto;
+    gap: 0.5rem;
   }
   
   .header.scrolled .nav {
@@ -184,16 +219,17 @@
 
 /* Brand Name */
 .brandName {
-  font-size: 1.5rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
   font-weight: 600;
   color: var(--text-primary);
   letter-spacing: -0.01em;
   transition: font-size 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
   animation: slideInBrand 0.6s ease-out;
+  white-space: nowrap;
 }
 
 .header.scrolled .brandName {
-  font-size: 1.25rem;
+  font-size: clamp(1rem, 2.2vw, 1.5rem);
 }
 
 .logoLink:hover .brandName {
@@ -215,20 +251,12 @@
 .navLinks {
   display: flex;
   list-style: none;
-  gap: 2.5rem;
+  gap: clamp(1.25rem, 2.5vw, 3rem);
   align-items: center;
-}
-
-@media (max-width: 1024px) {
-  .navLinks {
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 968px) {
-  .navLinks {
-    gap: 1rem;
-  }
+  grid-column: 3;
+  justify-self: end;
+  width: 100%;
+  justify-content: flex-end;
 }
 
 /* Nav Item with Dropdown */
@@ -241,13 +269,14 @@
   text-decoration: none;
   color: var(--text-tertiary);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   transition: color 0.3s ease;
   position: relative;
   display: flex;
   align-items: center;
   gap: 0.25rem;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .navLink::after {
@@ -265,9 +294,10 @@
   text-decoration: none;
   color: var(--text-tertiary);
   font-weight: 500;
-  font-size: 0.95rem;
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   transition: color 0.3s ease;
   position: relative;
+  white-space: nowrap;
 }
 
 .navLinks a:hover,
@@ -347,7 +377,7 @@
   padding: 0.75rem 1.5rem;
   color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
   transition: all 0.2s ease;
   border-left: 3px solid transparent;
 }
@@ -360,6 +390,11 @@
 }
 
 .dropdownLink::after {
+  display: none;
+}
+
+/* Hide mobile-only elements on desktop */
+.mobileOnly {
   display: none;
 }
 
@@ -393,6 +428,14 @@
   border: none;
   cursor: pointer;
   padding: 8px;
+  z-index: 1001;
+  position: relative;
+}
+
+@media (min-width: 769px) {
+  .mobileToggle {
+    display: none !important;
+  }
 }
 
 .mobileToggle span {
@@ -416,16 +459,56 @@
 }
 
 @media (max-width: 768px) {
+  .nav {
+    grid-template-columns: 1fr auto;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+  }
+
   .mobileToggle {
     display: flex;
+    grid-column: 2;
+    justify-self: end;
+    z-index: 1001;
+  }
+
+  /* Hide only CMS icon on mobile, keep brand name visible */
+  .cmsLink {
+    display: none;
+  }
+
+  /* Left controls with logo and brand name on mobile */
+  .leftControls {
+    display: flex;
+    grid-column: 1;
+    gap: 0.75rem;
+    align-items: center;
+    justify-self: start;
+    width: auto;
+  }
+
+  .centerLogo .logoImage {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header.scrolled .centerLogo .logoImage {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Brand name stays visible on mobile */
+  .brandName {
+    font-size: clamp(0.75rem, 3.5vw, 1rem);
+    display: inline-block;
   }
 
   .navLinks {
     position: fixed;
-    top: var(--header-height);
+    top: 0;
     right: -100%;
     width: min(320px, 85vw);
-    height: calc(100vh - var(--header-height));
+    height: 100vh;
     background: var(--bg-primary);
     flex-direction: column;
     align-items: flex-start;
@@ -436,11 +519,8 @@
     border-left: 1px solid var(--border-color);
     overflow-y: auto;
     z-index: 999;
-  }
-
-  .header.scrolled .navLinks {
-    top: 73px;
-    height: calc(100vh - 73px);
+    grid-column: 1 / -1;
+    justify-self: stretch;
   }
 
   .navLinks.active {
@@ -475,9 +555,27 @@
     margin-left: 1rem;
   }
 
-  /* Hide center logo on mobile */
-  .centerLogo {
-    display: none;
+  /* Mobile-only admin link styling */
+  .mobileOnly {
+    display: block;
+    width: 100%;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .mobileAdminLink {
+    display: flex !important;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.05rem !important;
+    padding: 0.75rem 1rem !important;
+    color: var(--primary-color) !important;
+    font-weight: 600 !important;
+  }
+
+  .mobileAdminIcon {
+    font-size: 1.5rem;
   }
 
   /* Mobile dropdown behavior */
@@ -541,16 +639,32 @@
   }
 
   .brandName {
-    font-size: 0.9rem;
+    font-size: clamp(0.75rem, 3vw, 0.9rem);
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding: 0.75rem 0.75rem;
   }
 
-  .logo {
-    width: clamp(40px, 10vw, 56px);
-    height: clamp(40px, 10vw, 56px);
+  .centerLogo .logoImage {
+    width: 48px;
+    height: 48px;
+  }
+
+  .header.scrolled .centerLogo .logoImage {
+    width: 43px;
+    height: 43px;
   }
 }
 
 @media (max-width: 480px) {
+  .nav {
+    padding: 0.6rem 0.5rem;
+    grid-template-columns: auto 1fr auto;
+  }
+
   .navLinks {
     width: min(280px, 90vw);
     padding: 1.5rem 1.5rem 1.5rem 1rem;
@@ -566,18 +680,13 @@
     padding: 0.55rem 0.85rem !important;
   }
   
-  .logo {
+  .centerLogo .logoImage {
+    width: 45px;
+    height: 45px;
+  }
+
+  .header.scrolled .centerLogo .logoImage {
     width: 40px;
     height: 40px;
-  }
-  
-  .brandName {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .brandName {
-    font-size: 0.9rem;
   }
 }
