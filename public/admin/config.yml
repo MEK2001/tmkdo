@@ -2,8 +2,8 @@ backend:
   name: github
   repo: MEK2001/tmkdo
   branch: main
-  base_url: https://tmkdo-cms-auth.eessaa-khan.workers.dev
-  auth_endpoint: /auth/cms
+  base_url: https://cms-changes.tmkdo.pages.dev
+  auth_endpoint: /admin/auth-popup.html
 
 media_folder: "public/images/blog"
 public_folder: "/images/blog"
