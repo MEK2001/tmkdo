@@ -246,22 +246,34 @@
 
       console.log('✅ Sending GitHub token to parent window...')
       
-      // Format expected by Decap CMS
-      const message = 'authorization:github:success:' + JSON.stringify({
+      // Send in the exact format Decap CMS expects
+      const data = {
         token: githubToken,
         provider: 'github'
-      })
+      }
 
-      // Send message multiple times to ensure delivery
-      window.opener.postMessage(message, '*')
-      setTimeout(() => window.opener.postMessage(message, '*'), 100)
-      setTimeout(() => window.opener.postMessage(message, '*'), 300)
+      // Try multiple message formats to ensure compatibility
+      const message1 = `authorization:github:success:${JSON.stringify(data)}`
+      const message2 = `authorization:github:success:${githubToken}`
+      
+      // Send both formats
+      window.opener.postMessage(message1, window.location.origin)
+      window.opener.postMessage(message1, '*')
+      window.opener.postMessage(data, window.location.origin)
+      window.opener.postMessage(data, '*')
+      
+      setTimeout(() => {
+        window.opener.postMessage(message1, window.location.origin)
+        window.opener.postMessage(message1, '*')
+      }, 100)
 
       console.log('✅ Token sent! Closing popup...')
       showAlert('Authentication successful! Closing...', 'success')
       
       // Close popup after brief delay
-      setTimeout(() => window.close(), 800)
+      setTimeout(() => {
+        window.close()
+      }, 1000)
     }
 
     async function getGitHubToken(accessToken) {
