@@ -70,21 +70,7 @@ Size: ~114 kB (only /out folder)
    - Purge all cache
    - Trigger deploy again
 
-3. **Last resort - Netlify:**
-   If Cloudflare continues to fail:
-   ```bash
-   # Connect GitHub to Netlify
-   # Build command: npm run build
-   # Publish directory: out
-   ```
-
-If you prefer Netlify for deployment:
-1. Connect your GitHub repository
-2. Build command: `npm run build`
-3. Publish directory: `out`
-4. (Netlify automatically uses the `netlify.toml` configuration)
-
-## Vercel (Alternative - Recommended for Next.js)
+## Vercel (Alternative)
 
 1. Go to vercel.com
 2. Connect your GitHub repository

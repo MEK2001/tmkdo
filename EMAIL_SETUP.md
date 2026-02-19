@@ -90,7 +90,7 @@ npm run dev
 
 ## Production Deployment
 
-For production (Vercel, Netlify, etc.), set the environment variables in your hosting platform's settings:
+For production (Cloudflare Pages, Vercel, etc.), set the environment variables in your hosting platform's settings:
 - EMAIL_HOST
 - EMAIL_PORT
 - EMAIL_SECURE

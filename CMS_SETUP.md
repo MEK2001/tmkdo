@@ -2,7 +2,7 @@
 
 ## Overview
 
-This CMS uses **GitHub backend** instead of Netlify's git-gateway, so it works directly with GitHub OAuth and doesn't require Netlify services.
+This CMS uses **Cloudflare Worker authentication** with Supabase for user management, providing a custom authentication solution that doesn't require third-party services.
 
 ## Setup Steps
 
@@ -55,7 +55,7 @@ These are automatically requested during OAuth flow.
 
 ### Error: "Unable to access identity settings"
 
-- ✅ **Fixed**: Changed backend from `git-gateway` to `github`
+- ✅ **Fixed**: Backend uses GitHub OAuth
 - Make sure GitHub OAuth App is configured correctly
 - Verify callback URL matches exactly: `https://www.tmkdo.com/admin/`
 

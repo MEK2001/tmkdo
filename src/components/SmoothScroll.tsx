@@ -1,9 +1,17 @@
 'use client'
 import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import Lenis from 'lenis'
 
 export default function SmoothScroll() {
+  const pathname = usePathname()
+  
   useEffect(() => {
+    // Skip smooth scroll on admin routes
+    if (pathname?.startsWith('/admin')) {
+      return
+    }
+
     // Initialize Lenis
     const lenis = new Lenis({
       duration: 1.2,
@@ -28,7 +36,7 @@ export default function SmoothScroll() {
     return () => {
       lenis.destroy()
     }
-  }, [])
+  }, [pathname])
 
   return null
 }
