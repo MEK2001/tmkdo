@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, useParams } from 'next/navigation';
 import { useAdmin } from '@/components/admin/AdminContext';
+import MarkdownEditor from '@/components/admin/MarkdownEditor';
 import { BlogPost } from '@/lib/admin/content';
 import styles from './page.module.css';
 
@@ -321,26 +322,11 @@ export default function PostEditorPage() {
             <div className={styles.content}>
               <div className={styles.formGroup}>
                 <label>Content (Markdown)</label>
-                <textarea
+                <MarkdownEditor
                   value={post.content}
-                  onChange={(e) => setPost({ ...post, content: e.target.value })}
+                  onChange={(newContent) => setPost({ ...post, content: newContent })}
                   placeholder="Write your post content in Markdown..."
-                  rows={20}
-                  className={styles.contentEditor}
                 />
-              </div>
-
-              <div className={styles.markdownHelp}>
-                <h4>Markdown Help</h4>
-                <ul>
-                  <li><code># Heading 1</code> - Large heading</li>
-                  <li><code>## Heading 2</code> - Medium heading</li>
-                  <li><code>**bold**</code> - <strong>Bold text</strong></li>
-                  <li><code>*italic*</code> - <em>Italic text</em></li>
-                  <li><code>[link](url)</code> - Hyperlink</li>
-                  <li><code>![alt](image-url)</code> - Image</li>
-                  <li><code>- item</code> - Bullet list</li>
-                </ul>
               </div>
             </div>
           )}

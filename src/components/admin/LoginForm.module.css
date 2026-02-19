@@ -148,3 +148,43 @@
     transform: rotate(360deg);
   }
 }
+
+.footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(139, 38, 53, 0.1);
+}
+
+.footer p {
+  color: #5c5650;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.link {
+  color: #8B2635;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.link:hover {
+  color: #6B1E2A;
+  text-decoration: underline;
+}
+
+.hint {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.alertSuccess {
+  background: #e6ffe6;
+  color: #2d6f2d;
+  border-color: #b3ffb3;
+}

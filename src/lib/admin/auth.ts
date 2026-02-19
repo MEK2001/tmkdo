@@ -56,15 +56,15 @@ export async function getGitHubToken(accessToken: string): Promise<string> {
   return data.github_token || data.token;
 }
 
-// Session management (localStorage)
+// Session management (sessionStorage - expires on tab close)
 export function saveSession(session: AdminSession): void {
-  localStorage.setItem('admin_session', JSON.stringify(session));
+  sessionStorage.setItem('admin_session', JSON.stringify(session));
 }
 
 export function getSession(): AdminSession | null {
   if (typeof window === 'undefined') return null;
   
-  const sessionStr = localStorage.getItem('admin_session');
+  const sessionStr = sessionStorage.getItem('admin_session');
   if (!sessionStr) return null;
 
   try {
@@ -75,7 +75,7 @@ export function getSession(): AdminSession | null {
 }
 
 export function clearSession(): void {
-  localStorage.removeItem('admin_session');
+  sessionStorage.removeItem('admin_session');
 }
 
 export function isAuthenticated(): boolean {

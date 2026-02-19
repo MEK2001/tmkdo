@@ -55,5 +55,7 @@ QUICK_START.md
 
 # Cloudflare
 .wrangler/
+.open-next/
+.cloudflare/
 
 

@@ -4,6 +4,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useAdmin } from '@/components/admin/AdminContext';
 import styles from './page.module.css';
 
 interface BlogPost {
@@ -17,13 +18,23 @@ interface BlogPost {
 }
 
 export default function AdminDashboard() {
+  const { githubToken } = useAdmin();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadPosts() {
+      if (!githubToken) {
+        setLoading(false);
+        return;
+      }
+
       try {
-        const res = await fetch('/api/admin/posts');
+        const res = await fetch('/api/admin/posts', {
+          headers: {
+            'x-github-token': githubToken
+          }
+        });
         if (res.ok) {
           const data = await res.json();
           // Get the 5 most recent posts
@@ -36,7 +47,7 @@ export default function AdminDashboard() {
       }
     }
     loadPosts();
-  }, []);
+  }, [githubToken]);
 
   const publishedCount = posts.filter(p => p.published).length;
   const draftCount = posts.filter(p => !p.published).length;
