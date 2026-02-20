@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { loginAdmin } from '@/lib/admin/auth';
 import styles from './LoginForm.module.css';
@@ -46,9 +47,9 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
         </div>
 
         <div className={styles.homeLink}>
-          <a href="/" className={styles.backBtn}>
+          <Link href="/" className={styles.backBtn}>
             ← Back to Website
-          </a>
+          </Link>
         </div>
 
         {error && (
