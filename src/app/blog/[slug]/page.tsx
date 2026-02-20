@@ -100,51 +100,57 @@ export async function generateMetadata(
       };
     }
 
-  const publishedDate = new Date(post.date).toISOString();
-  const modifiedDate = publishedDate;
-  const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
-  const excerpt =
-    post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
+    const publishedDate = new Date(post.date).toISOString();
+    const modifiedDate = publishedDate;
+    const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
+    const excerpt =
+      post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
 
-  return {
-    title: post.title,
-    description: excerpt,
-    keywords: [...siteMetadata.keywords],
-    authors: [
-      {
-        name: 'TMKDO Team',
-      },
-    ],
-    openGraph: {
-      type: 'article',
-      url: postUrl,
+    return {
       title: post.title,
       description: excerpt,
-      images: [
+      keywords: [...siteMetadata.keywords],
+      authors: [
         {
-          url: post.image,
-          width: 1200,
-          height: 630,
-          alt: post.title,
+          name: 'TMKDO Team',
         },
       ],
-      publishedTime: publishedDate,
-      modifiedTime: modifiedDate,
-      authors: ['TMKDO Team'],
-      section: 'Lifestyle',
-      tags: ['minimalist', 'home decor', post.category.toLowerCase()],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: excerpt,
-      images: [post.image],
-      creator: siteMetadata.twitterHandle,
-    },
-    alternates: {
-      canonical: postUrl,
-    },
-  };
+      openGraph: {
+        type: 'article',
+        url: postUrl,
+        title: post.title,
+        description: excerpt,
+        images: [
+          {
+            url: post.image,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
+        publishedTime: publishedDate,
+        modifiedTime: modifiedDate,
+        authors: ['TMKDO Team'],
+        section: 'Lifestyle',
+        tags: ['minimalist', 'home decor', post.category.toLowerCase()],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: excerpt,
+        images: [post.image],
+        creator: siteMetadata.twitterHandle,
+      },
+      alternates: {
+        canonical: postUrl,
+      },
+    };
+  } catch (error) {
+    console.error('[Metadata] Error generating metadata:', error);
+    return {
+      title: 'Post Not Found',
+    };
+  }
 }
 
 export default async function BlogPost(

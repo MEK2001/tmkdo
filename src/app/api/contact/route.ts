@@ -1,11 +1,21 @@
 import { Resend } from 'resend';
 import { NextRequest, NextResponse } from 'next/server';
 
-// Initialize Resend client (Edge-compatible)
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialize Resend client (Edge-compatible) - only if API key exists
+const RESEND_API_KEY = process.env.RESEND_API_KEY || 'dummy-key-for-build';
+const resend = new Resend(RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
+    // Check if Resend is properly configured
+    if (!process.env.RESEND_API_KEY || RESEND_API_KEY === 'dummy-key-for-build') {
+      console.error('[Contact] Resend API key not configured');
+      return NextResponse.json(
+        { error: 'Contact form is temporarily unavailable' },
+        { status: 503 }
+      );
+    }
+
     const { name, email, message } = await request.json();
 
     // Validate required fields
