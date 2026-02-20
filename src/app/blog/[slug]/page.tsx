@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import RelatedPosts from '@/components/RelatedPosts';
@@ -288,7 +289,7 @@ export default async function BlogPost(
         <p style={{ marginBottom: '2rem' }}>
           We couldn't find the blog post you're looking for.
         </p>
-        <a href="/blog" style={{
+        <Link href="/blog" style={{
           display: 'inline-block',
           padding: '0.75rem 1.5rem',
           background: '#8B2635',
@@ -296,8 +297,8 @@ export default async function BlogPost(
           textDecoration: 'none',
           borderRadius: '8px'
         }}>
-          ← Back to Blog
-        </a>
+          Back to Blog
+        </Link>
       </div>
     );
   }
