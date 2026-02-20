@@ -7,7 +7,6 @@ export default function ContactPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: ''
   })
   const [status, setStatus] = useState('')
@@ -30,7 +29,7 @@ export default function ContactPage() {
       }
 
       setStatus('success')
-      setFormData({ name: '', email: '', subject: '', message: '' })
+      setFormData({ name: '', email: '', message: '' })
       
       setTimeout(() => setStatus(''), 3000)
     } catch (error) {
@@ -144,20 +143,6 @@ export default function ContactPage() {
                     required
                     className={styles.input}
                     placeholder="john@example.com"
-                  />
-                </div>
-
-                <div className={styles.formGroup}>
-                  <label htmlFor="subject" className={styles.label}>Subject</label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className={styles.input}
-                    placeholder="How can we help?"
                   />
                 </div>
 
