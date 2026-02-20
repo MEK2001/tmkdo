@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "Minimalist Home Decor & Curated Living Blog - Next.js",
   "scripts": {
-    "dev": "next dev",
+    "prebuild": "node scripts/generate-posts-json.js",
+    "dev": "node scripts/generate-posts-json.js && next dev",
     "build": "next build",
     "pages:build": "opennextjs-cloudflare build && node scripts/postbuild.js",
     "preview": "npm run pages:build && opennextjs-cloudflare preview",

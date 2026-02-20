@@ -33,6 +33,17 @@ if (fs.existsSync(workerSource)) {
   }
 });
 
+// Copy posts.json from public/api to cloudflare/api so it's served as a static asset
+const postsJsonSource = path.join('public', 'api', 'posts.json');
+const postsJsonTargetDir = path.join(targetDir, 'api');
+if (fs.existsSync(postsJsonSource)) {
+  if (!fs.existsSync(postsJsonTargetDir)) {
+    fs.mkdirSync(postsJsonTargetDir, { recursive: true });
+  }
+  fs.copyFileSync(postsJsonSource, path.join(postsJsonTargetDir, 'posts.json'));
+  console.log('✅ Copied posts.json to Cloudflare output');
+}
+
 // Create _routes.json to properly route static assets
 const routesConfig = {
   version: 1,
@@ -40,6 +51,7 @@ const routesConfig = {
   exclude: [
     '/_next/static/*',
     '/images/*',
+    '/api/posts.json',
     '/favicon.ico',
     '/robots.txt',
     '/sitemap.xml',
