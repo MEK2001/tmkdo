@@ -33,7 +33,34 @@ if (fs.existsSync(workerSource)) {
   }
 });
 
+// Create _routes.json to properly route static assets
+const routesConfig = {
+  version: 1,
+  include: ['/*'],
+  exclude: [
+    '/_next/static/*',
+    '/images/*',
+    '/favicon.ico',
+    '/robots.txt',
+    '/sitemap.xml',
+    '/manifest.json',
+    '/*.png',
+    '/*.jpg',
+    '/*.jpeg',
+    '/*.svg',
+    '/*.ico',
+    '/*.css',
+    '/*.js'
+  ]
+};
+
+fs.writeFileSync(
+  path.join(targetDir, '_routes.json'),
+  JSON.stringify(routesConfig, null, 2)
+);
+
 console.log('✅ Restructured OpenNext output for Cloudflare Pages');
+console.log('✅ Generated _routes.json for static asset handling');
 console.log(`📁 Deploy directory: ${targetDir}`);
 
 // Helper function to copy directories recursively
