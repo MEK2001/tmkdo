@@ -67,23 +67,38 @@ const staticRelatedPosts = [
 ];
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  console.log('[Build] Generating static params for blog posts...');
+  try {
+    const posts = await getAllPosts();
+    console.log(`[Build] Found ${posts.length} posts to generate`);
+    return posts.map((post) => {
+      console.log(`[Build] Generating page for: ${post.slug}`);
+      return { slug: post.slug };
+    });
+  } catch (error) {
+    console.error('[Build] Error in generateStaticParams:', error);
+    return [];
+  }
 }
+
+// Force static generation for all blog posts
+export const dynamic = 'force-static';
+export const dynamicParams = false;
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  try {
+    const { slug } = await params;
+    console.log(`[Metadata] Generating metadata for: ${slug}`);
+    const post = await getPostBySlug(slug);
 
-  if (!post || post.status !== 'published') {
-    return {
-      title: 'Post Not Found',
-    };
-  }
+    if (!post || post.status !== 'published') {
+      console.warn(`[Metadata] Post not found or not published: ${slug}`);
+      return {
+        title: 'Post Not Found',
+      };
+    }
 
   const publishedDate = new Date(post.date).toISOString();
   const modifiedDate = publishedDate;
@@ -135,51 +150,54 @@ export async function generateMetadata(
 export default async function BlogPost(
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  try {
+    const { slug } = await params;
+    console.log(`[Page] Rendering blog post: ${slug}`);
+    const post = await getPostBySlug(slug);
 
-  if (!post || post.status !== 'published') {
-    notFound();
-  }
+    if (!post || post.status !== 'published') {
+      console.warn(`[Page] Post not found or not published: ${slug}`);
+      notFound();
+    }
 
-  const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
-  const excerpt =
-    post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
+    const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
+    const excerpt =
+      post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    image: [post.image],
-    datePublished: new Date(post.date).toISOString(),
-    dateModified: new Date(post.date).toISOString(),
-    author: {
-      '@type': 'Organization',
-      name: 'TMKDO',
-      url: siteMetadata.url,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: siteMetadata.siteName,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${siteMetadata.url}${siteMetadata.logo}`,
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      image: [post.image],
+      datePublished: new Date(post.date).toISOString(),
+      dateModified: new Date(post.date).toISOString(),
+      author: {
+        '@type': 'Organization',
+        name: 'TMKDO',
+        url: siteMetadata.url,
       },
-    },
-    description: excerpt,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl,
-    },
-  };
+      publisher: {
+        '@type': 'Organization',
+        name: siteMetadata.siteName,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${siteMetadata.url}${siteMetadata.logo}`,
+        },
+      },
+      description: excerpt,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': postUrl,
+      },
+    };
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <div className={styles.blogPostContainer}>
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <div className={styles.blogPostContainer}>
         <article className={styles.article}>
           <header className={styles.postHeader}>
             <h1 className={styles.postTitle}>{post.title}</h1>
@@ -244,7 +262,11 @@ export default async function BlogPost(
         </aside>
       </div>
     </>
-  );
+    );
+  } catch (error) {
+    console.error('[Page] Error rendering blog post:', error);
+    notFound();
+  }
 }
 
 
