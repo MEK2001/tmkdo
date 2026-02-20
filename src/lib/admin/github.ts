@@ -12,7 +12,8 @@ export interface GitHubFile {
 }
 
 export async function listFiles(path: string, token: string): Promise<any[]> {
-  const response = await fetch(
+  // Try CMS-changes branch first, fallback to main if it fails
+  let response = await fetch(
     `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`,
     {
       headers: {
@@ -22,15 +23,31 @@ export async function listFiles(path: string, token: string): Promise<any[]> {
     }
   );
 
+  // If CMS-changes branch fails, try main branch
+  if (!response.ok && response.status === 404) {
+    console.log(`Path ${path} not found on ${BRANCH}, trying main branch...`);
+    response = await fetch(
+      `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=main`,
+      {
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      }
+    );
+  }
+
   if (!response.ok) {
-    throw new Error('Failed to list files');
+    const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
+    throw new Error(`Failed to list files: ${errorData.message || response.statusText}`);
   }
 
   return await response.json();
 }
 
 export async function getFile(path: string, token: string): Promise<GitHubFile> {
-  const response = await fetch(
+  // Try CMS-changes branch first, fallback to main if it fails
+  let response = await fetch(
     `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=${BRANCH}`,
     {
       headers: {
@@ -40,8 +57,23 @@ export async function getFile(path: string, token: string): Promise<GitHubFile> 
     }
   );
 
+  // If CMS-changes branch fails, try main branch
+  if (!response.ok && response.status === 404) {
+    console.log(`File ${path} not found on ${BRANCH}, trying main branch...`);
+    response = await fetch(
+      `${GITHUB_API}/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}?ref=main`,
+      {
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      }
+    );
+  }
+
   if (!response.ok) {
-    throw new Error('Failed to get file');
+    const errorData = await response.json().catch(() => ({ message: 'Unknown error' }));
+    throw new Error(`Failed to get file: ${errorData.message || response.statusText}`);
   }
 
   const data = await response.json();

@@ -15,7 +15,9 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    console.log('Fetching posts from GitHub...');
     const posts = await listBlogPosts(token);
+    console.log(`Successfully loaded ${posts.length} posts`);
 
     return NextResponse.json({ posts });
   } catch (error: any) {

@@ -45,6 +45,12 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
           <p>Content Management System</p>
         </div>
 
+        <div className={styles.homeLink}>
+          <a href="/" className={styles.backBtn}>
+            ← Back to Website
+          </a>
+        </div>
+
         {error && (
           <div className={styles.alert}>
             {error}
