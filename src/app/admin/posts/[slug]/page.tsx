@@ -69,6 +69,10 @@ export default function PostEditorPage() {
 
     try {
       setSaving(true);
+      setError('');
+      
+      console.log('Saving post:', post.slug);
+      
       const url = isNew
         ? '/api/admin/posts/create'
         : `/api/admin/posts/${params.slug}`;
@@ -84,12 +88,30 @@ export default function PostEditorPage() {
       });
 
       if (!response.ok) {
-        const data = await response.json();
-        throw new Error(data.error || 'Failed to save post');
+        const contentType = response.headers.get('content-type');
+        let errorMessage = 'Failed to save post';
+        
+        if (contentType?.includes('application/json')) {
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorMessage;
+          } catch (e) {
+            errorMessage = 'Save failed - server returned invalid response';
+          }
+        } else {
+          const textError = await response.text();
+          console.error('Save error response:', textError);
+          errorMessage = 'Save failed - server error';
+        }
+        
+        throw new Error(errorMessage);
       }
 
+      console.log('Post saved successfully');
       router.push('/admin/posts');
     } catch (err: any) {
+      console.error('Save error:', err);
+      setError(err.message);
       alert(err.message);
       setSaving(false);
     }
@@ -101,6 +123,10 @@ export default function PostEditorPage() {
 
     try {
       setUploading(true);
+      setError('');
+      
+      console.log('Uploading image:', file.name, file.size, 'bytes');
+      
       const formData = new FormData();
       formData.append('file', file);
 
@@ -113,12 +139,31 @@ export default function PostEditorPage() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to upload image');
+        const contentType = response.headers.get('content-type');
+        let errorMessage = 'Failed to upload image';
+        
+        if (contentType?.includes('application/json')) {
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorMessage;
+          } catch (e) {
+            errorMessage = 'Upload failed - server returned invalid response';
+          }
+        } else {
+          const textError = await response.text();
+          console.error('Upload error response:', textError);
+          errorMessage = 'Upload failed - server error';
+        }
+        
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
+      console.log('Image uploaded successfully:', data.url);
       setPost({ ...post, image: data.url });
     } catch (err: any) {
+      console.error('Image upload error:', err);
+      setError(err.message);
       alert(err.message);
     } finally {
       setUploading(false);

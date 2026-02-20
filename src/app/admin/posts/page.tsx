@@ -23,6 +23,10 @@ export default function PostsPage() {
   async function loadPosts() {
     try {
       setLoading(true);
+      setError('');
+      
+      console.log('Loading posts from API...');
+      
       const response = await fetch('/api/admin/posts', {
         headers: {
           'x-github-token': githubToken!
@@ -30,12 +34,30 @@ export default function PostsPage() {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to load posts');
+        const contentType = response.headers.get('content-type');
+        let errorMessage = 'Failed to load posts';
+        
+        if (contentType?.includes('application/json')) {
+          try {
+            const errorData = await response.json();
+            errorMessage = errorData.error || errorMessage;
+          } catch (e) {
+            errorMessage = 'Load failed - server returned invalid response';
+          }
+        } else {
+          const textError = await response.text();
+          console.error('Load posts error:', textError);
+          errorMessage = 'Load failed - server error. Check console for details.';
+        }
+        
+        throw new Error(errorMessage);
       }
 
       const data = await response.json();
+      console.log('Posts loaded successfully:', data.posts.length, 'posts');
       setPosts(data.posts);
     } catch (err: any) {
+      console.error('Failed to load posts:', err);
       setError(err.message);
     } finally {
       setLoading(false);
