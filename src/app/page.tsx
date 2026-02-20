@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
 import BlogCard from '@/components/BlogCard';
-import NewsletterForm from '@/components/NewsletterForm';
 import styles from './page.module.css';
 
 interface BlogPost {
@@ -96,14 +95,6 @@ export default function HomePage() {
               </div>
             </>
           )}
-        </div>
-      </section>
-
-      <section className={styles.newsletter}>
-        <div className={styles.newsletterContent}>
-          <h2>Join Our Community</h2>
-          <p>Get weekly inspiration, design tips, and exclusive decor finds delivered straight to your inbox.</p>
-          <NewsletterForm />
         </div>
       </section>
     </main>
