@@ -1,8 +1,6 @@
 // API Route: Create a new blog post
 // POST /api/admin/posts/create
 
-export const runtime = 'edge';
-
 import { NextRequest, NextResponse } from 'next/server';
 import { saveBlogPost } from '@/lib/admin/content';
 
