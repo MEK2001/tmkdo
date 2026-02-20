@@ -1,6 +1,8 @@
 // API Route: Get and Update site settings
 // GET/PUT /api/admin/settings
 
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getSiteSettings, saveSiteSettings } from '@/lib/admin/content';
 

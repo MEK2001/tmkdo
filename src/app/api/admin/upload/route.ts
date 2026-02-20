@@ -1,6 +1,8 @@
 // API Route: Upload images
 // POST /api/admin/upload
 
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { uploadImage } from '@/lib/admin/github';
 

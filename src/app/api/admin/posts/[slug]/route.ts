@@ -1,6 +1,8 @@
 // API Route: Get, Update, or Delete a specific blog post
 // GET/PUT/DELETE /api/admin/posts/[slug]
 
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getBlogPost, saveBlogPost, deleteBlogPost } from '@/lib/admin/content';
 

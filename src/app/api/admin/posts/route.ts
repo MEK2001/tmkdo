@@ -1,6 +1,8 @@
 // API Route: List all blog posts
 // GET /api/admin/posts
 
+export const runtime = 'edge';
+
 import { NextRequest, NextResponse } from 'next/server';
 import { listBlogPosts } from '@/lib/admin/content';
 

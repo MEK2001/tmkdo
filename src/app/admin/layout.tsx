@@ -1,6 +1,8 @@
 // Admin Root Layout - Wraps all admin pages with authentication
 'use client';
 
+export const runtime = 'edge';
+
 import { AdminProvider, useAdmin } from '@/components/admin/AdminContext';
 import LoginForm from '@/components/admin/LoginForm';
 import AdminNav from '@/components/admin/AdminNav';
