@@ -2,10 +2,12 @@
 const fs = require('fs');
 const path = require('path');
 const matter = require('gray-matter');
+const { remark } = require('remark');
+const html = require('remark-html').default;
 
 async function generatePostsJson() {
   try {
-    console.log('[Build] Generating posts.json at build time...');
+    console.log('[Build] Generating posts.json with full content at build time...');
     
     const postsDir = path.join(process.cwd(), 'content', 'posts');
     const files = fs.readdirSync(postsDir).filter(f => f.endsWith('.md'));
@@ -14,10 +16,16 @@ async function generatePostsJson() {
     
     for (const file of files) {
       const filePath = path.join(postsDir, file);
-      const content = fs.readFileSync(filePath, 'utf-8');
-      const { data } = matter(content);
+      const fileContent = fs.readFileSync(filePath, 'utf-8');
+      const { data, content } = matter(fileContent);
       
       const slug = file.replace('.md', '');
+      
+      // Convert markdown to HTML
+      const processedContent = await remark()
+        .use(html, { sanitize: false })
+        .process(content);
+      const contentHtml = processedContent.toString();
       
       posts.push({
         slug,
@@ -27,6 +35,10 @@ async function generatePostsJson() {
         date: data.date || new Date().toISOString(),
         category: data.category || 'General',
         readTime: data.readTime || '5 min read',
+        content: contentHtml, // Include full HTML content
+        author: data.author || 'TMKDO Team',
+        tags: data.tags || [],
+        status: data.status || 'published'
       });
     }
     
@@ -39,10 +51,23 @@ async function generatePostsJson() {
       fs.mkdirSync(outputDir, { recursive: true });
     }
     
+    // Write full posts data
     const outputPath = path.join(outputDir, 'posts.json');
     fs.writeFileSync(outputPath, JSON.stringify({ posts }, null, 2));
     
-    console.log(`[Build] Generated ${posts.length} posts in posts.json at ${outputPath}`);
+    // Also write individual post files for efficient loading
+    const postsDetailDir = path.join(outputDir, 'posts');
+    if (!fs.existsSync(postsDetailDir)) {
+      fs.mkdirSync(postsDetailDir, { recursive: true });
+    }
+    
+    posts.forEach(post => {
+      const postPath = path.join(postsDetailDir, `${post.slug}.json`);
+      fs.writeFileSync(postPath, JSON.stringify(post, null, 2));
+    });
+    
+    console.log(`[Build] Generated ${posts.length} posts in posts.json`);
+    console.log(`[Build] Generated ${posts.length} individual post JSON files`);
     return posts;
   } catch (error) {
     console.error('[Build] Error generating posts.json:', error);

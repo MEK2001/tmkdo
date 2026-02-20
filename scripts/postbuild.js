@@ -52,6 +52,7 @@ const routesConfig = {
     '/_next/static/*',
     '/images/*',
     '/api/posts.json',
+    '/api/posts/*',
     '/favicon.ico',
     '/robots.txt',
     '/sitemap.xml',

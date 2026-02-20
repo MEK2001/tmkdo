@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import RelatedPosts from '@/components/RelatedPosts';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure';
 import { siteMetadata } from '@/lib/metadata';
-import { getAllPosts, getPostBySlug } from '@/lib/posts';
+import { getAllPostsFromJSON, getPostFromJSON } from '@/lib/posts-json';
 import styles from './page.module.css';
 
 // Static fallback posts for RelatedPosts (keeps current UX while CMS data powers content)
@@ -70,7 +70,7 @@ const staticRelatedPosts = [
 export async function generateStaticParams() {
   console.log('[Build] Generating static params for blog posts...');
   try {
-    const posts = await getAllPosts();
+    const posts = await getAllPostsFromJSON();
     console.log(`[Build] Found ${posts.length} posts to generate`);
     return posts.map((post) => {
       console.log(`[Build] Generating page for: ${post.slug}`);
@@ -92,7 +92,7 @@ export async function generateMetadata(
   try {
     const { slug } = await params;
     console.log(`[Metadata] Generating metadata for: ${slug}`);
-    const post = await getPostBySlug(slug);
+    const post = await getPostFromJSON(slug);
 
     if (!post || post.status !== 'published') {
       console.warn(`[Metadata] Post not found or not published: ${slug}`);
@@ -160,7 +160,7 @@ export default async function BlogPost(
   try {
     const { slug } = await params;
     console.log(`[Page] Rendering blog post: ${slug}`);
-    const post = await getPostBySlug(slug);
+    const post = await getPostFromJSON(slug);
 
     if (!post || post.status !== 'published') {
       console.warn(`[Page] Post not found or not published: ${slug}`);
@@ -253,7 +253,7 @@ export default async function BlogPost(
           </header>
 
           <div className={styles.featuredImage}>
-            <img src={post.image} alt={post.imageAlt || post.title} />
+            <img src={post.image} alt={post.title} />
           </div>
 
           <div
