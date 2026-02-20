@@ -81,9 +81,9 @@ export async function generateStaticParams() {
   }
 }
 
-// Force static generation for all blog posts
+// Force static generation but allow dynamic params as fallback
 export const dynamic = 'force-static';
-export const dynamicParams = false;
+export const revalidate = false;
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
@@ -271,7 +271,35 @@ export default async function BlogPost(
     );
   } catch (error) {
     console.error('[Page] Error rendering blog post:', error);
-    notFound();
+    // Return a simple error page instead of calling notFound()
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        flexDirection: 'column',
+        padding: '2rem',
+        textAlign: 'center'
+      }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#8B2635' }}>
+          Post Not Found
+        </h1>
+        <p style={{ marginBottom: '2rem' }}>
+          We couldn't find the blog post you're looking for.
+        </p>
+        <a href="/blog" style={{
+          display: 'inline-block',
+          padding: '0.75rem 1.5rem',
+          background: '#8B2635',
+          color: 'white',
+          textDecoration: 'none',
+          borderRadius: '8px'
+        }}>
+          ← Back to Blog
+        </a>
+      </div>
+    );
   }
 }
 
