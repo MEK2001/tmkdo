@@ -3,7 +3,7 @@
 const GITHUB_API = 'https://api.github.com';
 const REPO_OWNER = 'MEK2001';
 const REPO_NAME = 'tmkdo';
-const BRANCH = 'CMS-changes'; // Working branch
+const BRANCH = 'main'; // Working branch - CMS edits go directly to main
 
 export interface GitHubFile {
   path: string;
