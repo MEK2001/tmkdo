@@ -2,8 +2,8 @@
 # Updated: Force builds on all commits
 
 [build]
-command = "npm run build"
-publish = "out"
+command = "npm run deploy"
+publish = ".cloudflare"
 
 [build.environment]
 NODE_VERSION = "22"
