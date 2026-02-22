@@ -1,4 +1,5 @@
 # Cloudflare Pages Build Configuration
+# Updated: Force builds on all commits
 
 [build]
 command = "npm run build"
