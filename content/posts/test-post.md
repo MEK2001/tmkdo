@@ -4,10 +4,10 @@ excerpt: "test posting"
 date: "2026-02-22"
 author: "TMKDO Team"
 category: "Home Decor"
-tags: []
-image: ""
-status: "draft"
-published: false
+tags: [""]
+image: "/images/blog/1771789389098-Screenshot-2026-02-21-230913.png"
+status: "published"
+published: true
 ---
 
 # osgfgrdbffdf d
