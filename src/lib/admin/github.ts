@@ -49,7 +49,8 @@ export async function listFiles(path: string, token: string): Promise<any[]> {
     {
       headers: {
         'Authorization': `token ${token}`,
-        'Accept': 'application/vnd.github.v3+json'
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'TMKDO-CMS'
       }
     }
   );
@@ -62,7 +63,8 @@ export async function listFiles(path: string, token: string): Promise<any[]> {
       {
         headers: {
           'Authorization': `token ${token}`,
-          'Accept': 'application/vnd.github.v3+json'
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'TMKDO-CMS'
         }
       }
     );
@@ -80,7 +82,8 @@ export async function getFile(path: string, token: string): Promise<GitHubFile> 
     {
       headers: {
         'Authorization': `token ${token}`,
-        'Accept': 'application/vnd.github.v3+json'
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'TMKDO-CMS'
       }
     }
   );
@@ -93,7 +96,8 @@ export async function getFile(path: string, token: string): Promise<GitHubFile> 
       {
         headers: {
           'Authorization': `token ${token}`,
-          'Accept': 'application/vnd.github.v3+json'
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'TMKDO-CMS'
         }
       }
     );
@@ -135,7 +139,8 @@ export async function createOrUpdateFile(
       headers: {
         'Authorization': `token ${token}`,
         'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': 'TMKDO-CMS'
       },
       body: JSON.stringify(body)
     }
@@ -157,7 +162,8 @@ export async function deleteFile(
       headers: {
         'Authorization': `token ${token}`,
         'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': 'TMKDO-CMS'
       },
       body: JSON.stringify({
         message,
@@ -192,7 +198,8 @@ export async function uploadImage(
       headers: {
         'Authorization': `token ${token}`,
         'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': 'TMKDO-CMS'
       },
       body: JSON.stringify({
         message: `Upload image: ${filename}`,
