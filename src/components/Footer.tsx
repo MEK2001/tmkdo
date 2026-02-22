@@ -1,5 +1,6 @@
 'use client';
 
+// Updated: February 23, 2026
 import Link from 'next/link';
 import { FaInstagram, FaPinterest } from 'react-icons/fa';
 import AffiliateDisclosure from './AffiliateDisclosure';
