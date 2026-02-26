@@ -1,19 +1,6 @@
 {
   "posts": [
     {
-      "slug": "testing-post",
-      "title": "testing post",
-      "excerpt": "test blog for tmkdo",
-      "image": "/images/blog/1771616071419-WhatsApp-Image-2026-01-31-at-12.09.13-AM.jpeg",
-      "date": "2026-02-20",
-      "category": "DIY",
-      "readTime": "5 min read",
-      "content": "",
-      "author": "TMKDO Team",
-      "tags": [],
-      "status": "published"
-    },
-    {
       "slug": "2026-01-20-shagreen-desk-organizer",
       "title": "Elevate Your Desk with Shagreen: The Luxury Organizer Trend",
       "excerpt": "Discover how shagreen desk organizers bring luxury and sophistication to your workspace while maintaining minimalist principles.",

@@ -14,9 +14,9 @@
 }
 
 .header h1 {
-  font-family: 'Lora', serif;
+  font-family: Georgia, serif;
   font-size: 2.5rem;
-  color: #2a2622;
+  color: #4A3828;
   margin-bottom: 0.25rem;
 }
 
@@ -27,7 +27,7 @@
 
 .createBtn {
   padding: 0.875rem 1.5rem;
-  background: linear-gradient(135deg, #8B2635 0%, #6B1E2A 100%);
+  background: linear-gradient(135deg, #7A5638 0%, #5C3D24 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -42,7 +42,7 @@
 
 .createBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 38, 53, 0.3);
+  box-shadow: 0 8px 20px rgba(122, 86, 56, 0.3);
 }
 
 .filters {
@@ -66,13 +66,13 @@
 }
 
 .filterBtn:hover {
-  border-color: #8B2635;
-  color: #8B2635;
+  border-color: #7A5638;
+  color: #7A5638;
 }
 
 .filterBtn.active {
-  background: #8B2635;
-  border-color: #8B2635;
+  background: #7A5638;
+  border-color: #7A5638;
   color: white;
 }
 
@@ -92,8 +92,8 @@
 .spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid rgba(139, 38, 53, 0.1);
-  border-top-color: #8B2635;
+  border: 4px solid rgba(122, 86, 56, 0.1);
+  border-top-color: #7A5638;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -113,7 +113,7 @@
 .retryBtn {
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: #8B2635;
+  background: #7A5638;
   color: white;
   border: none;
   border-radius: 8px;
@@ -124,7 +124,7 @@
 }
 
 .retryBtn:hover {
-  background: #6B1E2A;
+  background: #5C3D24;
 }
 
 .emptyIcon {
@@ -159,8 +159,8 @@
 }
 
 .postCard:hover {
-  box-shadow: 0 8px 30px rgba(139, 38, 53, 0.12);
-  border-color: #8B2635;
+  box-shadow: 0 8px 30px rgba(122, 86, 56, 0.12);
+  border-color: #7A5638;
 }
 
 .postImage {
@@ -212,7 +212,7 @@
 }
 
 .postContent h3 {
-  font-family: 'Lora', serif;
+  font-family: Georgia, serif;
   font-size: 1.4rem;
   color: #2a2622;
   margin-bottom: 0.5rem;
@@ -268,12 +268,12 @@
 }
 
 .editBtn {
-  background: #8B2635;
+  background: #7A5638;
   color: white;
 }
 
 .editBtn:hover {
-  background: #6B1E2A;
+  background: #5C3D24;
 }
 
 .deleteBtn {

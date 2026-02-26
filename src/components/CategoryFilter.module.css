@@ -31,16 +31,16 @@
 }
 
 .categoryButton:hover {
-  color: #8B2635;
-  border-color: #8B2635;
+  color: #7A5638;
+  border-color: #7A5638;
   transform: translateY(-2px);
 }
 
 .categoryButton.active {
-  background: linear-gradient(135deg, #8B2635, #6B1E2A);
+  background: linear-gradient(135deg, #7A5638, #5C3D24);
   color: white;
-  border-color: #8B2635;
-  box-shadow: 0 4px 12px rgba(139, 38, 53, 0.3);
+  border-color: #7A5638;
+  box-shadow: 0 4px 12px rgba(122, 86, 56, 0.3);
 }
 
 [data-theme="dark"] .categoryButton.active {

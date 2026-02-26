@@ -4,6 +4,7 @@ import Script from 'next/script';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScroll from '@/components/SmoothScroll';
 import ConditionalLayout from '@/components/ConditionalLayout';
+import FloatingActions from '@/components/FloatingActions';
 import { siteMetadata } from '@/lib/metadata';
 import '@/styles/globals.css';
 
@@ -101,7 +102,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#8B2635" />
+        <meta name="theme-color" content="#7A5638" />
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
           strategy="beforeInteractive"
@@ -115,6 +116,7 @@ export default function RootLayout({
         <ThemeProvider>
           <SmoothScroll />
           <ConditionalLayout>{children}</ConditionalLayout>
+          <FloatingActions />
         </ThemeProvider>
       </body>
     </html>

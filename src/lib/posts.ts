@@ -20,14 +20,14 @@ function parseShortcodes(content: string): string {
     (_match, asin, title, image, price, rating) => {
       const affiliateTag = 'tmkdo-20';
       return `
-        <div class="amazon-card" style="border: 2px solid #FF9900; border-radius: 12px; padding: 20px; margin: 24px 0; background: #fff; box-shadow: 0 4px 20px rgba(139, 38, 53, 0.15);">
+        <div class="amazon-card" style="border: 2px solid #FF9900; border-radius: 12px; padding: 20px; margin: 24px 0; background: #fff; box-shadow: 0 4px 20px rgba(122, 86, 56, 0.15);">
           <div style="display: flex; gap: 20px; flex-wrap: wrap;">
             <img src="${image}" alt="${title}" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px;" />
             <div style="flex: 1; min-width: 200px;">
               <h3 style="margin: 0 0 8px 0; font-family: 'Lora', Georgia, serif;">${title}</h3>
               ${rating ? `<div style="color: #FFA41C; margin-bottom: 8px;">⭐ ${rating}</div>` : ''}
-              ${price ? `<p style="font-size: 24px; color: #8B2635; font-weight: bold; margin: 0 0 16px 0;">${price}</p>` : ''}
-              <a href="https://www.amazon.com/dp/${asin}?tag=${affiliateTag}" target="_blank" rel="nofollow noopener" style="display: inline-block; background: #8B2635; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">🛒 Buy on Amazon</a>
+              ${price ? `<p style="font-size: 24px; color: #7A5638; font-weight: bold; margin: 0 0 16px 0;">${price}</p>` : ''}
+              <a href="https://www.amazon.com/dp/${asin}?tag=${affiliateTag}" target="_blank" rel="nofollow noopener" style="display: inline-block; background: #7A5638; color: white; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600;">🛒 Buy on Amazon</a>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@ function parseShortcodes(content: string): string {
       return `
         <div style="margin: 24px 0;">
           ${title ? `<h4 style="margin: 0 0 12px 0; font-family: 'Lora', Georgia, serif;">${title}</h4>` : ''}
-          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 30px rgba(139, 38, 53, 0.2);">
+          <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 30px rgba(122, 86, 56, 0.2);">
             <iframe src="https://www.youtube.com/embed/${id}" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" frameborder="0" allowfullscreen></iframe>
           </div>
         </div>

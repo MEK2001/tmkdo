@@ -63,21 +63,28 @@
 
 .featuredGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .featuredGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
 }
 
 @media (max-width: 768px) {
   .featuredGrid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 24px;
   }
 }
 
 @media (max-width: 480px) {
   .featuredGrid {
-    gap: 1rem;
+    gap: 20px;
   }
 }
 
@@ -85,6 +92,45 @@
   display: flex;
   justify-content: center;
   margin-top: 3rem;
+}
+
+.categorySections {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+@media (max-width: 768px) {
+  .categorySections {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .categorySections {
+    gap: 40px;
+  }
+}
+
+.loadingText,
+.errorText,
+.emptyText {
+  text-align: center;
+  padding: 2rem;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+}
+
+.loadingText {
+  color: var(--text-secondary);
+}
+
+.errorText {
+  color: #d32f2f;
+}
+
+.emptyText {
+  color: var(--text-secondary);
 }
 
 .viewAllButton {

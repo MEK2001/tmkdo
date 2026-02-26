@@ -1,19 +1,19 @@
+/* BlogCard - Blesser House Design System */
+
 .blogCard {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
-  background: var(--card-background);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  background: transparent;
+  box-shadow: none;
+  transition: all 0.3s ease;
   height: 100%;
-  opacity: 1;
-  visibility: visible;
 }
 
 .blogCard:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(139, 38, 53, 0.2);
+  transform: translateY(-4px);
+  box-shadow: none;
 }
 
 .cardLink {
@@ -24,206 +24,127 @@
   height: 100%;
 }
 
+/* Image Container - 16:9 Aspect Ratio */
 .imageContainer {
   width: 100%;
-  height: 280px;
+  padding-top: 56.25%; /* 16:9 aspect ratio (9/16 * 100) */
   overflow: hidden;
   position: relative;
-}
-
-@media (max-width: 768px) {
-  .imageContainer {
-    height: 220px;
-  }
-}
-
-@media (max-width: 480px) {
-  .imageContainer {
-    height: 200px;
-  }
-}
-
-.imageContainer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(139, 38, 53, 0.12);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 1;
-}
-
-.blogCard:hover .imageContainer::after {
-  opacity: 1;
-}
-
-.categoryBadge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  padding: 0.375rem 0.875rem;
-  background: rgba(139, 38, 53, 0.85);
-  backdrop-filter: blur(8px);
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  border-radius: 20px;
-  z-index: 2;
-  text-transform: capitalize;
-  box-shadow: 0 4px 12px rgba(139, 38, 53, 0.25);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.blogCard:hover .categoryBadge {
-  background: rgba(139, 38, 53, 1);
-  box-shadow: 0 6px 16px rgba(139, 38, 53, 0.35);
-  transform: translateY(-2px);
+  border-radius: 0;
 }
 
 .imageContainer .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
 .blogCard:hover .imageContainer .image {
-  transform: scale(1.05);
+  transform: scale(1.03);
 }
 
+/* Content Container */
 .contentContainer {
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
+  padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0;
   flex: 1;
+  background: transparent;
 }
 
 @media (max-width: 768px) {
   .contentContainer {
-    padding: 1.25rem;
-    gap: 0.75rem;
+    padding: 16px;
   }
 }
 
-@media (max-width: 480px) {
-  .contentContainer {
-    padding: 1rem;
-  }
-}
-
-.date {
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  font-weight: 500;
-  margin: 0;
-}
-
-.title {
-  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
-  font-weight: 600;
-  color: var(--text-primary);
-  margin: 0;
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  transition: color 0.3s ease;
-}
-
-.blogCard:hover .title {
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.excerpt {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.6;
-  margin: 0;
-}
-
+/* Meta Information (Date & Category) */
 .cardMeta {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  color: var(--text-secondary);
-  margin-bottom: 0.5rem;
+  gap: 8px;
+  font-size: 13px;
+  font-family: Georgia, serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #A88F70;
 }
 
 .date,
-.readTime {
-  font-weight: 500;
+.category {
+  font-size: 13px;
+  color: #A88F70;
 }
 
 .metaDivider {
-  color: var(--text-secondary);
-  opacity: 0.5;
+  color: #A88F70;
+  opacity: 0.6;
 }
 
+/* Title */
+.title {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #4A3828;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  transition: color 0.2s ease;
+  text-align: center;
+}
+
+.blogCard:hover .title {
+  color: var(--primary-color, #7A5638);
+}
+
+/* Excerpt */
 .excerpt {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #A88F70;
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #A88F70;
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.readMoreButton {
-  align-self: flex-start;
-  margin-top: auto;
-  padding: 0.75rem 1.5rem;
-  background: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-}
-
-.readMoreButton:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.readMoreButton:active {
-  transform: scale(0.98);
-}
-
-.readMoreButton:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-}
-
-.arrow {
-  transition: transform 0.3s ease;
-  display: inline-block;
-}
-
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-  .imageContainer {
-    height: 220px;
-  }
-
-  .contentContainer {
-    padding: 1.25rem;
-  }
-
   .title {
-    font-size: 1.25rem;
+    font-size: 18px;
+  }
+
+  .excerpt {
+    font-size: 14px;
+  }
+
+  .cardMeta {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contentContainer {
+    padding: 14px;
+    gap: 10px;
   }
 }

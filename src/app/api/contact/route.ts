@@ -43,11 +43,11 @@ export async function POST(request: NextRequest) {
       replyTo: email,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #8B2635;">New Contact Form Submission</h2>
+          <h2 style="color: #7A5638;">New Contact Form Submission</h2>
           <div style="background: #f8f8f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <p><strong>Name:</strong> ${escapeHtml(name)}</p>
             <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-            <h3 style="color: #8B2635; margin-top: 20px;">Message:</h3>
+            <h3 style="color: #7A5638; margin-top: 20px;">Message:</h3>
             <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
           </div>
           <p style="color: #888; font-size: 12px;">Sent from TMKDO Contact Form</p>
@@ -70,16 +70,16 @@ export async function POST(request: NextRequest) {
       subject: 'We received your message - TMKDO',
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #8B2635;">Thank you for reaching out!</h2>
+          <h2 style="color: #7A5638;">Thank you for reaching out!</h2>
           <p>Hi ${escapeHtml(name)},</p>
           <p>We've received your message and will get back to you as soon as possible, typically within 24-48 hours.</p>
           <div style="background: #f8f8f8; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #8B2635;">Your message:</h3>
+            <h3 style="color: #7A5638;">Your message:</h3>
             <p style="white-space: pre-wrap;">${escapeHtml(message)}</p>
           </div>
           <p>Best regards,<br><strong>The Minimalist Kraft & DO Team</strong></p>
           <hr style="border: none; border-top: 1px solid #e5e5e5; margin: 30px 0;" />
-          <p style="color: #888; font-size: 12px;">TMKDO - Minimalist Home Decor & Curated Living<br>www.tmkdo.com</p>
+          <p style="color: #A88F70; font-size: 12px;">TMKDO - Minimalist Home Decor & Curated Living<br>www.tmkdo.com</p>
         </div>
       `,
     });

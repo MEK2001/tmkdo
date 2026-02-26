@@ -61,11 +61,11 @@ const AUTH_POPUP_HTML = `<!DOCTYPE html>
     .logo h1 {
       font-family: 'Lora', serif;
       font-size: 2rem;
-      color: #8B2635;
+      color: #7A5638;
       margin-bottom: 0.25rem;
     }
     .logo p {
-      color: #5c5650;
+      color: #A88F70;
       font-size: 0.9rem;
     }
     .alert {
@@ -85,13 +85,13 @@ const AUTH_POPUP_HTML = `<!DOCTYPE html>
       display: block;
       font-weight: 600;
       margin-bottom: 0.5rem;
-      color: #2a2622;
+      color: #4A3828;
       font-size: 0.9rem;
     }
     input {
       width: 100%;
       padding: 0.875rem 1rem;
-      border: 2px solid rgba(139, 38, 53, 0.15);
+      border: 2px solid rgba(122, 86, 56, 0.15);
       border-radius: 10px;
       font-size: 0.95rem;
       font-family: 'Inter', sans-serif;
@@ -99,13 +99,13 @@ const AUTH_POPUP_HTML = `<!DOCTYPE html>
     }
     input:focus {
       outline: none;
-      border-color: #8B2635;
-      box-shadow: 0 0 0 3px rgba(139, 38, 53, 0.1);
+      border-color: #7A5638;
+      box-shadow: 0 0 0 3px rgba(122, 86, 56, 0.1);
     }
     button {
       width: 100%;
       padding: 1rem;
-      background: linear-gradient(135deg, #8B2635 0%, #6B1E2A 100%);
+      background: linear-gradient(135deg, #7A5638 0%, #5C3D24 100%);
       color: white;
       border: none;
       border-radius: 10px;
@@ -122,7 +122,7 @@ const AUTH_POPUP_HTML = `<!DOCTYPE html>
     }
     button.google {
       background: white;
-      color: #2a2622;
+      color: #4A3828;
       border: 2px solid rgba(139, 38, 53, 0.15);
     }
     .spinner {
@@ -142,7 +142,7 @@ const AUTH_POPUP_HTML = `<!DOCTYPE html>
     .divider {
       text-align: center;
       margin: 1.5rem 0;
-      color: #5c5650;
+      color: #A88F70;
       font-size: 0.85rem;
       position: relative;
     }
@@ -343,15 +343,15 @@ export default {
       padding: 3rem;
       border-radius: 20px;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(139,38,53,0.15);
+      box-shadow: 0 20px 60px rgba(122,86,56,0.15);
       max-width: 400px;
     }
-    h1 { color: #8B2635; font-size: 1.5rem; margin: 1rem 0; }
+    h1 { color: #7A5638; font-size: 1.5rem; margin: 1rem 0; }
     .spinner {
       width: 48px;
       height: 48px;
-      border: 4px solid rgba(139, 38, 53, 0.1);
-      border-top-color: #8B2635;
+      border: 4px solid rgba(122, 86, 56, 0.1);
+      border-top-color: #7A5638;
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin: 1rem auto;
@@ -364,7 +364,7 @@ export default {
     <div style="font-size:3rem">📚</div>
     <h1>TMKDO CMS</h1>
     <div class="spinner"></div>
-    <p style="color:#5c5650;">Authenticating...</p>
+    <p style="color:#A88F70;">Authenticating...</p>
   </div>
 
   <script>
@@ -430,15 +430,15 @@ export default {
       padding: 3rem;
       border-radius: 20px;
       text-align: center;
-      box-shadow: 0 20px 60px rgba(139,38,53,0.15);
+      box-shadow: 0 20px 60px rgba(122,86,56,0.15);
       max-width: 400px;
     }
-    h1 { color: #8B2635; font-size: 1.5rem; margin: 1rem 0; }
+    h1 { color: #7A5638; font-size: 1.5rem; margin: 1rem 0; }
     .spinner {
       width: 48px;
       height: 48px;
-      border: 4px solid rgba(139, 38, 53, 0.1);
-      border-top-color: #8B2635;
+      border: 4px solid rgba(122, 86, 56, 0.1);
+      border-top-color: #7A5638;
       border-radius: 50%;
       animation: spin 1s linear infinite;
       margin: 1rem auto;
@@ -451,7 +451,7 @@ export default {
     <div style="font-size:3rem">📚</div>
     <h1>TMKDO CMS</h1>
     <div class="spinner"></div>
-    <p style="color:#5c5650;">Authenticating...</p>
+    <p style="color:#A88F70;">Authenticating...</p>
   </div>
 
   <script>

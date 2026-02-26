@@ -17,7 +17,7 @@
 }
 
 .skeletonCard {
-  border-radius: 12px;
+  border-radius: 0;
   overflow: hidden;
   background: var(--bg-secondary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -88,7 +88,7 @@
   );
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
-  border-radius: 8px;
+  border-radius: 0;
 }
 
 @media (max-width: 768px) {

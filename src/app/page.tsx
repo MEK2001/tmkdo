@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Hero from '@/components/Hero';
-import BlogCard from '@/components/BlogCard';
+import CategorySection from '@/components/CategorySection';
 import styles from './page.module.css';
 
 interface BlogPost {
@@ -17,7 +17,7 @@ interface BlogPost {
 }
 
 export default function HomePage() {
-  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
+  const [allPosts, setAllPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
@@ -38,19 +38,17 @@ export default function HomePage() {
         const data = await response.json();
         console.log(`[Homepage] Loaded ${data.posts.length} posts from API`);
         
-        // Format dates and get 6 most recent posts
-        const formatted = data.posts
-          .slice(0, 6)
-          .map((post: any) => ({
-            ...post,
-            date: new Date(post.date).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            }),
-          }));
+        // Format dates
+        const formatted = data.posts.map((post: any) => ({
+          ...post,
+          date: new Date(post.date).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
+        }));
         
-        setFeaturedPosts(formatted);
+        setAllPosts(formatted);
       } catch (err: any) {
         console.error('[Homepage] Error loading posts:', err);
         setError(err.message);
@@ -62,38 +60,44 @@ export default function HomePage() {
     loadPosts();
   }, []);
 
+  // Group posts by category
+  const categorizedPosts = {
+    'Living Room': allPosts.filter(post => post.category === 'Living Room'),
+    'Organization': allPosts.filter(post => post.category === 'Organization'),
+    'Natural Materials': allPosts.filter(post => post.category === 'Materials' || post.category === 'Natural Materials'),
+  };
+
   return (
     <main className={styles.homepage}>
       <Hero />
       
       <section className={styles.featuredSection}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>Latest From Our Blog</h2>
           {loading ? (
-            <p style={{ textAlign: 'center', padding: '2rem' }}>
+            <p className={styles.loadingText}>
               Loading blog posts...
             </p>
           ) : error ? (
-            <p style={{ textAlign: 'center', padding: '2rem', color: '#d32f2f' }}>
+            <p className={styles.errorText}>
               Error loading posts: {error}
             </p>
-          ) : featuredPosts.length === 0 ? (
-            <p style={{ textAlign: 'center', padding: '2rem' }}>
+          ) : allPosts.length === 0 ? (
+            <p className={styles.emptyText}>
               No blog posts yet. Check back soon!
             </p>
           ) : (
-            <>
-              <div className={styles.featuredGrid}>
-                {featuredPosts.map((post) => (
-                  <BlogCard key={post.slug} {...post} />
-                ))}
-              </div>
-              <div className={styles.viewAllContainer}>
-                <Link href="/blog" className={styles.viewAllButton}>
-                  View All Posts →
-                </Link>
-              </div>
-            </>
+            <div className={styles.categorySections}>
+              {Object.entries(categorizedPosts).map(([category, posts]) => (
+                posts.length > 0 && (
+                  <CategorySection 
+                    key={category}
+                    categoryName={category}
+                    posts={posts}
+                    maxPosts={4}
+                  />
+                )
+              ))}
+            </div>
           )}
         </div>
       </section>

@@ -1,7 +1,9 @@
+/* Header - Blesser House Design System */
+
 .header {
-  background-color: transparent;
+  background-color: #ffffff;
   backdrop-filter: none;
-  box-shadow: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   position: fixed;
   top: 0;
   left: 0;
@@ -10,30 +12,30 @@
   border-bottom: none;
   transition: all 0.3s var(--transition-smooth);
   opacity: 1;
+  padding: 24px 0;
 }
 
 /* Header Scroll States - Compact mode when scrolled */
 .header.scrolled {
-  padding: 0.75rem 2rem;
-  background-color: rgba(235, 229, 220, 0.82);
+  padding: 16px 0;
+  background-color: #ffffff;
   backdrop-filter: blur(16px) saturate(200%);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border-bottom: 1px solid rgba(201, 185, 165, 0.15);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-/* Header during active scrolling - increased transparency */
+/* Header during active scrolling - maintains white background */
 .header.scrolling {
-  background-color: transparent;
-  background-image: none;
-  box-shadow: none;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   border-bottom: none;
 }
 
 .header.scrolled.scrolling {
-  background-color: rgba(235, 229, 220, 0.60);
+  background-color: #ffffff;
   backdrop-filter: blur(12px) saturate(170%);
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
-  border-bottom: 1px solid rgba(201, 185, 165, 0.10);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .nav {
@@ -219,9 +221,10 @@
 
 /* Brand Name */
 .brandName {
-  font-size: clamp(1.1rem, 2.5vw, 1.8rem);
-  font-weight: 600;
-  color: var(--text-primary);
+  font-family: Georgia, serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #4A3828;
   letter-spacing: -0.01em;
   transition: font-size 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease;
   animation: slideInBrand 0.6s ease-out;
@@ -229,12 +232,12 @@
 }
 
 .header.scrolled .brandName {
-  font-size: clamp(1rem, 2.2vw, 1.5rem);
+  font-size: 24px;
 }
 
 .logoLink:hover .brandName {
   transform: translateY(-2px);
-  text-shadow: 0 4px 12px rgba(201, 144, 110, 0.2);
+  text-shadow: 0 4px 12px rgba(122, 86, 56, 0.2);
 }
 
 @keyframes slideInBrand {
@@ -292,17 +295,20 @@
 
 .navLinks a {
   text-decoration: none;
-  color: var(--text-tertiary);
-  font-weight: 500;
-  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
-  transition: color 0.3s ease;
+  color: #4A3828;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  transition: all 0.2s ease;
   position: relative;
   white-space: nowrap;
 }
 
 .navLinks a:hover,
 .navLink:hover {
-  color: var(--primary-color);
+  color: var(--primary-color, #7A5638);
 }
 
 .navLinks a::after {
@@ -312,8 +318,8 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary-color);
-  transition: width 0.3s ease;
+  background: var(--primary-color, #7A5638);
+  transition: width 0.2s ease;
 }
 
 .navLinks a:hover::after {

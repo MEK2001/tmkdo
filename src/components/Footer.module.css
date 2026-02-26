@@ -1,21 +1,23 @@
+/* Footer - Blesser House Design System */
+
 .footer {
-  background: var(--bg-tertiary);
-  padding: 4rem 2rem 2rem;
-  border-top: 2px solid var(--accent-color);
+  background: #f5f5f5;
+  padding: 48px 2rem;
+  border-top: 2px solid var(--accent-color, #7A5638);
   margin-top: 5rem;
   position: relative;
 }
 
 @media (max-width: 768px) {
   .footer {
-    padding: 3rem 1.5rem 1.5rem;
+    padding: 40px 1.5rem;
     margin-top: 3rem;
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 2rem 1rem 1rem;
+    padding: 32px 1rem;
     margin-top: 2rem;
   }
 }
@@ -35,29 +37,30 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 3rem;
+  gap: 2rem;
   margin-bottom: 3rem;
 }
 
 @media (max-width: 768px) {
   .footerContent {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .footerContent {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 }
 
 .footerSection h3 {
+  font-family: Georgia, serif;
   font-size: 1.2rem;
   margin-bottom: 1.5rem;
-  color: var(--text-primary);
-  font-weight: 600;
+  color: #4A3828;
+  font-weight: 700;
   position: relative;
   display: inline-block;
 }
@@ -69,18 +72,20 @@
   left: 0;
   width: 0;
   height: 3px;
-  background: var(--gradient-primary);
+  background: var(--primary-color, #7A5638);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
 
 .footerSection p {
-  color: var(--text-tertiary);
+  font-family: Georgia, serif;
+  color: #A88F70;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 14px;
   line-height: 1.8;
   display: block;
   margin-bottom: 0.75rem;
+  font-weight: 600;
 }
 
 .footerSection:first-child p {
@@ -101,23 +106,24 @@
 }
 
 .quickLinks a {
-  color: var(--text-color);
+  font-family: Georgia, serif;
+  color: #A88F70;
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
   transition: color 0.3s ease;
   display: block;
 }
 
 .quickLinks a:hover {
-  color: var(--primary-color);
+  color: var(--primary-color, #7A5638);
   text-decoration: underline;
   text-underline-offset: 4px;
-  text-decoration-color: var(--accent-color);
+  text-decoration-color: var(--primary-color, #7A5638);
 }
 
 .quickLinks a:focus {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--primary-color, #7A5638);
   outline-offset: 4px;
   border-radius: 2px;
 }
@@ -125,7 +131,7 @@
 /* Social Icons Styling */
 .socialIcons {
   display: flex;
-  gap: 1rem;
+  gap: 16px;
   align-items: center;
   flex-wrap: wrap;
 }
@@ -135,39 +141,33 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
-  font-size: 1.5rem;
+  font-size: 24px;
   transition: all 0.3s ease;
   text-decoration: none;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  background: var(--primary-color, #7A5638);
+  box-shadow: 0 2px 8px rgba(122, 86, 56, 0.3);
 }
 
 .socialIcon:hover {
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+  background: var(--primary-dark, #5C3D24);
+  box-shadow: 0 4px 12px rgba(122, 86, 56, 0.4);
 }
 
-/* Instagram Brand Gradient */
-.instagram {
-  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-}
-
+/* Instagram Icon */
 .instagram:hover {
   transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 8px 20px rgba(188, 24, 136, 0.4);
+  box-shadow: 0 8px 20px rgba(122, 86, 56, 0.5);
 }
 
-/* Pinterest Brand Color */
-.pinterest {
-  background: #E60023;
-}
-
+/* Pinterest Icon */
 .pinterest:hover {
-  background: #bd081c;
   transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 8px 20px rgba(189, 8, 28, 0.3);
+  box-shadow: 0 8px 20px rgba(122, 86, 56, 0.5);
 }
 
 .socialIcon:focus {
@@ -179,13 +179,14 @@
   max-width: 1400px;
   margin: 0 auto;
   padding-top: 2rem;
-  border-top: 1px solid var(--accent-color);
   text-align: center;
 }
 
 .footerBottom p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  font-family: Georgia, serif;
+  color: #A88F70;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* Category Links Styling */
@@ -200,24 +201,25 @@
 
 .categoryLink {
   display: block;
-  color: var(--text-tertiary);
+  font-family: Georgia, serif;
+  color: #A88F70;
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
   transition: all 0.3s ease;
   padding: 0.25rem 0;
 }
 
 .categoryLink:hover {
-  color: var(--primary-color);
+  color: var(--primary-color, #7A5638);
   text-decoration: underline;
   text-underline-offset: 4px;
   transform: translateX(4px);
-  text-decoration-color: var(--accent-color);
+  text-decoration-color: var(--primary-color, #7A5638);
 }
 
 .categoryLink:focus {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--primary-color, #7A5638);
   outline-offset: 2px;
   border-radius: 2px;
 }
