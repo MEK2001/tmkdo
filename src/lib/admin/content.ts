@@ -108,7 +108,7 @@ export async function listBlogPosts(token: string): Promise<BlogPost[]> {
         category: metadata.category || '',
         tags: metadata.tags || [],
         image: metadata.image || '',
-        published: metadata.published !== false,
+        published: metadata.published !== false || metadata.status === 'published',
         content: body
       });
     } catch (err) {
@@ -134,7 +134,7 @@ export async function getBlogPost(slug: string, token: string): Promise<BlogPost
     category: metadata.category || '',
     tags: metadata.tags || [],
     image: metadata.image || '',
-    published: metadata.published !== false,
+    published: metadata.published !== false || metadata.status === 'published',
     content
   };
 }
@@ -153,6 +153,7 @@ export async function saveBlogPost(
     category: post.category,
     tags: post.tags,
     image: post.image,
+    status: post.published ? 'published' : 'draft',
     published: post.published
   };
 

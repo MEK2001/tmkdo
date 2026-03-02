@@ -21,6 +21,30 @@ export default function AdminDashboard() {
   const { githubToken } = useAdmin();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
+  const [tokenStatus, setTokenStatus] = useState<any>(null);
+  const [testingToken, setTestingToken] = useState(false);
+
+  useEffect(() => {
+    async function testToken() {
+      if (!githubToken) return;
+      
+      setTestingToken(true);
+      try {
+        const res = await fetch('/api/admin/test-token', {
+          headers: { 'x-github-token': githubToken }
+        });
+        const data = await res.json();
+        setTokenStatus(data);
+        console.log('Token test result:', data);
+      } catch (error) {
+        console.error('Token test failed:', error);
+        setTokenStatus({ valid: false, error: 'Test failed' });
+      } finally {
+        setTestingToken(false);
+      }
+    }
+    testToken();
+  }, [githubToken]);
 
   useEffect(() => {
     async function loadPosts() {
@@ -56,6 +80,47 @@ export default function AdminDashboard() {
     <div className={styles.container}>
       <h1>Welcome to TMKDO CMS</h1>
       <p className={styles.subtitle}>Manage your content with ease</p>
+
+      {tokenStatus && !tokenStatus.valid && (
+        <div style={{ 
+          padding: '1rem', 
+          background: '#fee', 
+          border: '1px solid #fcc', 
+          borderRadius: '8px',
+          marginBottom: '1.5rem',
+          color: '#c33'
+        }}>
+          <strong>⚠️ GitHub Token Issue:</strong> {tokenStatus.error || 'Token is invalid'}
+          <br />
+          <small>This will prevent loading posts and uploading images.</small>
+        </div>
+      )}
+
+      {tokenStatus && tokenStatus.valid && !tokenStatus.hasRepoAccess && (
+        <div style={{ 
+          padding: '1rem', 
+          background: '#ffeaa7', 
+          border: '1px solid #fdcb6e', 
+          borderRadius: '8px',
+          marginBottom: '1.5rem',
+          color: '#d63031'
+        }}>
+          <strong>⚠️ Repository Access Issue:</strong> Token doesn't have access to MEK2001/tmkdo repo
+          <br />
+          <small>Please check token permissions.</small>
+        </div>
+      )}
+
+      {testingToken && (
+        <div style={{ 
+          padding: '1rem', 
+          background: '#dfe6e9', 
+          borderRadius: '8px',
+          marginBottom: '1.5rem'
+        }}>
+          Testing GitHub token...
+        </div>
+      )}
 
       <div className={styles.stats}>
         <div className={styles.stat}>

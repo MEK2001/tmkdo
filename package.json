@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "Minimalist Home Decor & Curated Living Blog - Next.js",
   "scripts": {
-    "dev": "next dev",
+    "prebuild": "node scripts/generate-posts-json.js",
+    "dev": "node scripts/generate-posts-json.js && next dev",
     "build": "next build",
     "pages:build": "opennextjs-cloudflare build && node scripts/postbuild.js",
     "preview": "npm run pages:build && opennextjs-cloudflare preview",
@@ -13,22 +14,22 @@
     "clean": "powershell -Command \"Remove-Item -Recurse -Force .next,.open-next,.cloudflare,out -ErrorAction SilentlyContinue\""
   },
   "dependencies": {
+    "@react-email/render": "^2.0.4",
     "gray-matter": "^4.0.3",
     "gsap": "^3.12.5",
     "lenis": "^1.3.17",
     "next": "^15.1.6",
-    "nodemailer": "^8.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-html": "^16.0.1",
+    "resend": "^6.9.2"
   },
   "devDependencies": {
     "@opennextjs/cloudflare": "^1.16.5",
     "@types/node": "^22.10.5",
     "@types/node-fetch": "^2.6.13",
-    "@types/nodemailer": "^7.0.9",
     "@types/react": "^19.0.9",
     "@types/react-dom": "^19.0.3",
     "dotenv": "^17.2.4",

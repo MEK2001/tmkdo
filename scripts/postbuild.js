@@ -33,7 +33,46 @@ if (fs.existsSync(workerSource)) {
   }
 });
 
+// Copy posts.json from public/api to cloudflare/api so it's served as a static asset
+const postsJsonSource = path.join('public', 'api', 'posts.json');
+const postsJsonTargetDir = path.join(targetDir, 'api');
+if (fs.existsSync(postsJsonSource)) {
+  if (!fs.existsSync(postsJsonTargetDir)) {
+    fs.mkdirSync(postsJsonTargetDir, { recursive: true });
+  }
+  fs.copyFileSync(postsJsonSource, path.join(postsJsonTargetDir, 'posts.json'));
+  console.log('✅ Copied posts.json to Cloudflare output');
+}
+
+// Create _routes.json to properly route static assets
+const routesConfig = {
+  version: 1,
+  include: ['/*'],
+  exclude: [
+    '/_next/static/*',
+    '/images/*',
+    '/api/posts.json',
+    '/favicon.ico',
+    '/robots.txt',
+    '/sitemap.xml',
+    '/manifest.json',
+    '/*.png',
+    '/*.jpg',
+    '/*.jpeg',
+    '/*.svg',
+    '/*.ico',
+    '/*.css',
+    '/*.js'
+  ]
+};
+
+fs.writeFileSync(
+  path.join(targetDir, '_routes.json'),
+  JSON.stringify(routesConfig, null, 2)
+);
+
 console.log('✅ Restructured OpenNext output for Cloudflare Pages');
+console.log('✅ Generated _routes.json for static asset handling');
 console.log(`📁 Deploy directory: ${targetDir}`);
 
 // Helper function to copy directories recursively

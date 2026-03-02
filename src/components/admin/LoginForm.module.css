@@ -54,6 +54,32 @@
   font-family: var(--font-inter), sans-serif;
 }
 
+.homeLink {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.backBtn {
+  display: inline-block;
+  color: #8B2635;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid rgba(139, 38, 53, 0.2);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-family: var(--font-inter), sans-serif;
+  font-weight: 500;
+}
+
+.backBtn:hover {
+  background-color: #8B2635;
+  color: white;
+  border-color: #8B2635;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(139, 38, 53, 0.2);
+}
+
 .alert {
   padding: 0.875rem 1rem;
   border-radius: 10px;

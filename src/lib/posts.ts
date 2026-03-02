@@ -84,8 +84,16 @@ export async function getAllPosts(): Promise<FrontendBlogPost[]> {
   let fileNames: string[] = [];
 
   try {
+    // Check if directory exists
+    if (!fs.existsSync(postsDirectory)) {
+      console.error('[Posts] Posts directory does not exist:', postsDirectory);
+      return [];
+    }
+
     fileNames = fs.readdirSync(postsDirectory);
-  } catch {
+    console.log(`[Posts] Found ${fileNames.length} files in posts directory`);
+  } catch (error) {
+    console.error('[Posts] Error reading posts directory:', error);
     return [];
   }
 
@@ -128,45 +136,53 @@ export async function getAllPosts(): Promise<FrontendBlogPost[]> {
 }
 
 export async function getPostBySlug(slug: string) {
-  const files = fs.readdirSync(postsDirectory);
-  const fileName = files.find(
-    (f) => f.endsWith(`${slug}.md`) || f.includes(slug)
-  );
+  try {
+    const files = fs.readdirSync(postsDirectory);
+    const fileName = files.find(
+      (f) => f.endsWith(`${slug}.md`) || f.includes(slug)
+    );
 
-  if (!fileName) return null;
+    if (!fileName) {
+      console.warn(`Post not found: ${slug}`);
+      return null;
+    }
 
-  const fullPath = path.join(postsDirectory, fileName);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+    const fullPath = path.join(postsDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
 
-  const processedContent = await remark()
-    .use(html, { sanitize: false })
-    .process(content);
+    const processedContent = await remark()
+      .use(html, { sanitize: false })
+      .process(content);
 
-  let contentHtml = processedContent.toString();
-  contentHtml = parseShortcodes(contentHtml);
+    let contentHtml = processedContent.toString();
+    contentHtml = parseShortcodes(contentHtml);
 
-  const frontmatter: any = data;
+    const frontmatter: any = data;
 
-  return {
-    slug,
-    title: frontmatter.title || 'Untitled',
-    date: frontmatter.date || new Date().toISOString(),
-    category: frontmatter.category || 'Uncategorized',
-    image:
-      frontmatter.image ||
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop&q=80',
-    imageAlt: frontmatter.imageAlt || frontmatter.title,
-    excerpt: frontmatter.excerpt || '',
-    readTime: frontmatter.readTime || '5 min read',
-    tags: frontmatter.tags || [],
-    author: frontmatter.author || 'TMKDO Team',
-    seoTitle: frontmatter.seo?.title || frontmatter.title,
-    seoDescription: frontmatter.seo?.description || frontmatter.excerpt,
-    status: frontmatter.status || 'published',
-    featured: frontmatter.featured || false,
-    content: contentHtml,
-  };
+    return {
+      slug,
+      title: frontmatter.title || 'Untitled',
+      date: frontmatter.date || new Date().toISOString(),
+      category: frontmatter.category || 'Uncategorized',
+      image:
+        frontmatter.image ||
+        'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop&q=80',
+      imageAlt: frontmatter.imageAlt || frontmatter.title,
+      excerpt: frontmatter.excerpt || '',
+      readTime: frontmatter.readTime || '5 min read',
+      tags: frontmatter.tags || [],
+      author: frontmatter.author || 'TMKDO Team',
+      seoTitle: frontmatter.seo?.title || frontmatter.title,
+      seoDescription: frontmatter.seo?.description || frontmatter.excerpt,
+      status: frontmatter.status || 'published',
+      featured: frontmatter.featured || false,
+      content: contentHtml,
+    };
+  } catch (error) {
+    console.error(`Error loading post ${slug}:`, error);
+    return null;
+  }
 }
 
 

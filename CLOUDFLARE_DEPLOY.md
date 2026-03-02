@@ -27,11 +27,7 @@ NODE_VERSION=22
 
 **Optional** (for email functionality):
 ```
-EMAIL_HOST=smtp.example.com
-EMAIL_PORT=587
-EMAIL_USER=your_email@example.com
-EMAIL_PASSWORD=your_password
-EMAIL_FROM=contact@tmkdo.com
+RESEND_API_KEY=re_YourApiKeyHere
 ```
 
 **Optional** (for GitHub CMS functionality):

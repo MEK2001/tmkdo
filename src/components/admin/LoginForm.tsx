@@ -2,6 +2,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { loginAdmin } from '@/lib/admin/auth';
 import styles from './LoginForm.module.css';
@@ -43,6 +44,12 @@ export default function LoginForm({ onLoginSuccess }: LoginFormProps) {
           />
           <h1>TMKDO CMS</h1>
           <p>Content Management System</p>
+        </div>
+
+        <div className={styles.homeLink}>
+          <Link href="/" className={styles.backBtn}>
+            ← Back to Website
+          </Link>
         </div>
 
         {error && (

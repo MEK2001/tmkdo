@@ -4,7 +4,19 @@
   padding: 2rem 0;
 }
 
+.blogContainer {
+  min-height: 100vh;
+  background: var(--background);
+  padding: 2rem 0;
+}
+
 .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.contentWrapper {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
@@ -33,6 +45,13 @@
 }
 
 .blogGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+.postsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2.5rem;
@@ -92,6 +111,22 @@
 }
 
 .loading {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+.errorState {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #d32f2f;
+  font-size: 1.1rem;
+}
+
+.emptyState {
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;

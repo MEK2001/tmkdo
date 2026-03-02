@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import RelatedPosts from '@/components/RelatedPosts';
@@ -67,119 +68,143 @@ const staticRelatedPosts = [
 ];
 
 export async function generateStaticParams() {
-  const posts = await getAllPosts();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
+  console.log('[Build] Generating static params for blog posts...');
+  try {
+    const posts = await getAllPosts();
+    console.log(`[Build] Found ${posts.length} posts to generate`);
+    return posts.map((post) => {
+      console.log(`[Build] Generating page for: ${post.slug}`);
+      return { slug: post.slug };
+    });
+  } catch (error) {
+    console.error('[Build] Error in generateStaticParams:', error);
+    return [];
+  }
 }
+
+// Force static generation but allow dynamic params as fallback
+export const dynamic = 'force-static';
+export const revalidate = false;
 
 export async function generateMetadata(
   { params }: { params: Promise<{ slug: string }> }
 ): Promise<Metadata> {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  try {
+    const { slug } = await params;
+    console.log(`[Metadata] Generating metadata for: ${slug}`);
+    const post = await getPostBySlug(slug);
 
-  if (!post || post.status !== 'published') {
+    if (!post || post.status !== 'published') {
+      console.warn(`[Metadata] Post not found or not published: ${slug}`);
+      return {
+        title: 'Post Not Found',
+      };
+    }
+
+    const publishedDate = new Date(post.date).toISOString();
+    const modifiedDate = publishedDate;
+    const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
+    const excerpt =
+      post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
+
+    return {
+      title: post.title,
+      description: excerpt,
+      keywords: [...siteMetadata.keywords],
+      authors: [
+        {
+          name: 'TMKDO Team',
+        },
+      ],
+      openGraph: {
+        type: 'article',
+        url: postUrl,
+        title: post.title,
+        description: excerpt,
+        images: [
+          {
+            url: post.image,
+            width: 1200,
+            height: 630,
+            alt: post.title,
+          },
+        ],
+        publishedTime: publishedDate,
+        modifiedTime: modifiedDate,
+        authors: ['TMKDO Team'],
+        section: 'Lifestyle',
+        tags: ['minimalist', 'home decor', post.category.toLowerCase()],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: post.title,
+        description: excerpt,
+        images: [post.image],
+        creator: siteMetadata.twitterHandle,
+      },
+      alternates: {
+        canonical: postUrl,
+      },
+    };
+  } catch (error) {
+    console.error('[Metadata] Error generating metadata:', error);
     return {
       title: 'Post Not Found',
     };
   }
-
-  const publishedDate = new Date(post.date).toISOString();
-  const modifiedDate = publishedDate;
-  const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
-  const excerpt =
-    post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
-
-  return {
-    title: post.title,
-    description: excerpt,
-    keywords: [...siteMetadata.keywords],
-    authors: [
-      {
-        name: 'TMKDO Team',
-      },
-    ],
-    openGraph: {
-      type: 'article',
-      url: postUrl,
-      title: post.title,
-      description: excerpt,
-      images: [
-        {
-          url: post.image,
-          width: 1200,
-          height: 630,
-          alt: post.title,
-        },
-      ],
-      publishedTime: publishedDate,
-      modifiedTime: modifiedDate,
-      authors: ['TMKDO Team'],
-      section: 'Lifestyle',
-      tags: ['minimalist', 'home decor', post.category.toLowerCase()],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: excerpt,
-      images: [post.image],
-      creator: siteMetadata.twitterHandle,
-    },
-    alternates: {
-      canonical: postUrl,
-    },
-  };
 }
 
 export default async function BlogPost(
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  const { slug } = await params;
-  const post = await getPostBySlug(slug);
+  try {
+    const { slug } = await params;
+    console.log(`[Page] Rendering blog post: ${slug}`);
+    const post = await getPostBySlug(slug);
 
-  if (!post || post.status !== 'published') {
-    notFound();
-  }
+    if (!post || post.status !== 'published') {
+      console.warn(`[Page] Post not found or not published: ${slug}`);
+      notFound();
+    }
 
-  const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
-  const excerpt =
-    post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
+    const postUrl = `${siteMetadata.url}/blog/${post.slug}`;
+    const excerpt =
+      post.excerpt || post.content.substring(0, 160).replace(/<[^>]*>/g, '');
 
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    headline: post.title,
-    image: [post.image],
-    datePublished: new Date(post.date).toISOString(),
-    dateModified: new Date(post.date).toISOString(),
-    author: {
-      '@type': 'Organization',
-      name: 'TMKDO',
-      url: siteMetadata.url,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: siteMetadata.siteName,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${siteMetadata.url}${siteMetadata.logo}`,
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.title,
+      image: [post.image],
+      datePublished: new Date(post.date).toISOString(),
+      dateModified: new Date(post.date).toISOString(),
+      author: {
+        '@type': 'Organization',
+        name: 'TMKDO',
+        url: siteMetadata.url,
       },
-    },
-    description: excerpt,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': postUrl,
-    },
-  };
+      publisher: {
+        '@type': 'Organization',
+        name: siteMetadata.siteName,
+        logo: {
+          '@type': 'ImageObject',
+          url: `${siteMetadata.url}${siteMetadata.logo}`,
+        },
+      },
+      description: excerpt,
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': postUrl,
+      },
+    };
 
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <div className={styles.blogPostContainer}>
+    return (
+      <>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <div className={styles.blogPostContainer}>
         <article className={styles.article}>
           <header className={styles.postHeader}>
             <h1 className={styles.postTitle}>{post.title}</h1>
@@ -244,7 +269,39 @@ export default async function BlogPost(
         </aside>
       </div>
     </>
-  );
+    );
+  } catch (error) {
+    console.error('[Page] Error rendering blog post:', error);
+    // Return a simple error page instead of calling notFound()
+    return (
+      <div style={{ 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        flexDirection: 'column',
+        padding: '2rem',
+        textAlign: 'center'
+      }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#8B2635' }}>
+          Post Not Found
+        </h1>
+        <p style={{ marginBottom: '2rem' }}>
+          We couldn't find the blog post you're looking for.
+        </p>
+        <Link href="/blog" style={{
+          display: 'inline-block',
+          padding: '0.75rem 1.5rem',
+          background: '#8B2635',
+          color: 'white',
+          textDecoration: 'none',
+          borderRadius: '8px'
+        }}>
+          Back to Blog
+        </Link>
+      </div>
+    );
+  }
 }
 
 
