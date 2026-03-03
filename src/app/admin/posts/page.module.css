@@ -14,7 +14,7 @@
 }
 
 .header h1 {
-  font-family: 'Lora', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2.5rem;
   color: #2a2622;
   margin-bottom: 0.25rem;
@@ -27,7 +27,7 @@
 
 .createBtn {
   padding: 0.875rem 1.5rem;
-  background: linear-gradient(135deg, #8B2635 0%, #6B1E2A 100%);
+  background: linear-gradient(135deg, #C9A99A 0%, #B5A49A 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -42,7 +42,7 @@
 
 .createBtn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(139, 38, 53, 0.3);
+  box-shadow: 0 8px 20px rgba(201, 169, 154, 0.3);
 }
 
 .filters {
@@ -54,7 +54,7 @@
 
 .filterBtn {
   padding: 0.625rem 1.25rem;
-  background: white;
+  background: #FAF7F2;
   border: 2px solid #e5e5e5;
   border-radius: 10px;
   font-weight: 500;
@@ -66,13 +66,13 @@
 }
 
 .filterBtn:hover {
-  border-color: #8B2635;
-  color: #8B2635;
+  border-color: #C9A99A;
+  color: #C9A99A;
 }
 
 .filterBtn.active {
-  background: #8B2635;
-  border-color: #8B2635;
+  background: #C9A99A;
+  border-color: #C9A99A;
   color: white;
 }
 
@@ -84,7 +84,7 @@
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  background: white;
+  background: #FAF7F2;
   border-radius: 16px;
   min-height: 300px;
 }
@@ -92,8 +92,8 @@
 .spinner {
   width: 48px;
   height: 48px;
-  border: 4px solid rgba(139, 38, 53, 0.1);
-  border-top-color: #8B2635;
+  border: 4px solid rgba(201, 169, 154, 0.1);
+  border-top-color: #C9A99A;
   border-radius: 50%;
   animation: spin 1s linear infinite;
   margin-bottom: 1rem;
@@ -113,7 +113,7 @@
 .retryBtn {
   margin-top: 1rem;
   padding: 0.75rem 1.5rem;
-  background: #8B2635;
+  background: #C9A99A;
   color: white;
   border: none;
   border-radius: 8px;
@@ -124,7 +124,7 @@
 }
 
 .retryBtn:hover {
-  background: #6B1E2A;
+  background: #B5A49A;
 }
 
 .emptyIcon {
@@ -149,7 +149,7 @@
 }
 
 .postCard {
-  background: white;
+  background: #FAF7F2;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #e5e5e5;
@@ -159,8 +159,8 @@
 }
 
 .postCard:hover {
-  box-shadow: 0 8px 30px rgba(139, 38, 53, 0.12);
-  border-color: #8B2635;
+  box-shadow: 0 8px 30px rgba(201, 169, 154, 0.12);
+  border-color: #C9A99A;
 }
 
 .postImage {
@@ -212,7 +212,7 @@
 }
 
 .postContent h3 {
-  font-family: 'Lora', serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.4rem;
   color: #2a2622;
   margin-bottom: 0.5rem;
@@ -268,12 +268,12 @@
 }
 
 .editBtn {
-  background: #8B2635;
+  background: #C9A99A;
   color: white;
 }
 
 .editBtn:hover {
-  background: #6B1E2A;
+  background: #B5A49A;
 }
 
 .deleteBtn {

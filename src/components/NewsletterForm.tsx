@@ -10,8 +10,9 @@ export default function NewsletterForm() {
 
   return (
     <form className={styles.newsletterForm} onSubmit={handleSubmit}>
-      <input type="email" placeholder="Enter your email address" required />
-      <button type="submit">Subscribe</button>
+      <label htmlFor="newsletter-email" className={styles.visuallyHidden}>Form</label>
+      <input id="newsletter-email" type="email" placeholder="Form" required />
+      <button type="submit">Sign-up</button>
     </form>
   );
 }

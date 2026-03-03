@@ -4,7 +4,6 @@
 import { usePathname } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Newsletter from '@/components/Newsletter';
 
 export default function ConditionalLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -20,7 +19,6 @@ export default function ConditionalLayout({ children }: { children: React.ReactN
     <>
       <Header />
       <main>{children}</main>
-      <Newsletter />
       <Footer />
     </>
   );
