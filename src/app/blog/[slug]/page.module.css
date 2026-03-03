@@ -1,47 +1,59 @@
+/* =============================================
+   BLOG POST PAGE  VINTAGE EDITORIAL ARTICLE
+   ============================================= */
+
+/*  Layout: article + sidebar  */
 .blogPostContainer {
-  max-width: 100%;
-  margin: 0;
-  padding: 3rem 2rem;
+  background: #F5EDD8;
+  min-height: 100vh;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
   display: grid;
-  grid-template-columns: 2fr minmax(300px, 850px) 1fr minmax(280px, 420px) 0.3fr;
-  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 4rem;
   align-items: start;
 }
 
+@media (max-width: 1100px) {
+  .blogPostContainer {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 3rem 1.5rem;
+  }
+}
+
 .article {
-  max-width: 100%;
   min-width: 0;
-  padding: 0;
-  background: transparent;
-  grid-column: 2;
 }
 
 .sidebarWrapper {
-  grid-column: 4;
   position: sticky;
   top: 100px;
-  margin-right: 0.5rem;
 }
 
-.articleHeader {
-  max-width: 800px;
-  margin: 4rem auto 0;
-  text-align: center;
+@media (max-width: 1100px) {
+  .sidebarWrapper {
+    position: static;
+  }
 }
 
+/*  Post header  */
 .postHeader {
-  max-width: 800px;
-  margin: 4rem auto 0;
+  max-width: 780px;
+  margin: 0 auto 3rem;
   text-align: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(122,86,56,0.2);
 }
 
 .postTitle {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 700;
   line-height: 1.2;
-  color: var(--text-primary);
-  margin: 0 0 1.5rem 0;
+  color: #2C1810;
+  margin: 0 0 1.25rem;
   letter-spacing: -0.02em;
 }
 
@@ -51,59 +63,49 @@
   justify-content: center;
   gap: 0.75rem;
   flex-wrap: wrap;
-  font-size: 0.875rem;
-  color: var(--text-secondary);
-  margin-top: 1rem;
+  font-family: var(--font-inter), Inter, sans-serif;
+  font-size: 0.78rem;
+  color: #7A5638;
 }
 
 .category {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.375rem 0.875rem;
-  background: #8B2635;
-  color: white;
-  border-radius: 20px;
-  font-weight: 600;
-  font-size: 0.8rem;
-  text-transform: capitalize;
-  letter-spacing: 0.02em;
+  padding: 0.3rem 0.85rem;
+  background: #7A5638;
+  color: #F5EDD8;
+  font-weight: 700;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
 }
 
 .metaDivider {
-  color: var(--text-secondary);
-  opacity: 0.5;
-  font-weight: 300;
+  color: #C4A882;
+  font-size: 0.7rem;
 }
 
 .date,
 .readTime {
   display: inline-flex;
   align-items: center;
-  gap: 0.375rem;
-  color: var(--text-secondary);
-  font-weight: 500;
+  gap: 0.3rem;
+  color: #A0845C;
+  font-size: 0.78rem;
 }
 
 .dateIcon,
 .timeIcon {
-  color: #8B2635;
-  opacity: 0.8;
+  color: #C97D60;
   flex-shrink: 0;
 }
 
-.articleHeader {
-  max-width: 800px;
-  margin: 4rem auto 0;
-  text-align: center;
-}
-
+/*  Featured image  */
 .featuredImage {
-  max-width: 1000px;
-  margin: 3rem auto 2rem;
-  position: relative;
-  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto 3rem;
+  border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(44,24,16,0.18);
 }
 
 .featuredImage img {
@@ -112,193 +114,129 @@
   display: block;
 }
 
+/*  Article body  */
 .articleContent {
-  max-width: 800px;
+  max-width: 720px;
   margin: 0 auto;
-  padding-top: 2rem;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #3E2A1A;
 }
 
 .articleContent p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: var(--text-tertiary);
-  margin-bottom: 1.8rem;
+  margin-bottom: 1.75rem;
 }
 
 .articleContent h2 {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 2rem;
-  color: var(--text-primary);
-  margin-top: 3rem;
-  margin-bottom: 1.5rem;
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  color: #2C1810;
+  margin: 3rem 0 1.25rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
+  border-bottom: 1px solid rgba(122,86,56,0.2);
+  padding-bottom: 0.5rem;
 }
 
 .articleContent h3 {
-  font-family: var(--font-playfair), 'Playfair Display', serif;
-  font-size: 1.6rem;
-  color: var(--text-primary);
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  font-weight: 600;
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: #2C1810;
+  margin: 2.5rem 0 1rem;
+  font-weight: 700;
 }
 
 .articleContent ul {
-  margin: 1.5rem 0 2rem 2rem;
+  margin: 1.5rem 0 2rem 0;
   list-style: none;
+  padding: 0;
 }
 
 .articleContent ul li {
-  font-size: 1.1rem;
-  line-height: 1.9;
-  color: var(--text-tertiary);
-  margin-bottom: 1rem;
-  padding-left: 1.5rem;
   position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: #3E2A1A;
 }
 
 .articleContent ul li::before {
-  content: '→';
+  content: '';
   position: absolute;
   left: 0;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-.articleContent strong {
-  color: var(--text-primary);
-  font-weight: 600;
+  color: #C97D60;
+  font-weight: 700;
 }
 
 .articleContent ol {
-  margin: 1.5rem 0 2rem 2rem;
-  counter-reset: item;
+  margin: 1.5rem 0 2rem 1.5rem;
 }
 
 .articleContent ol li {
-  font-size: 1.1rem;
-  line-height: 1.9;
-  color: var(--text-tertiary);
   margin-bottom: 1rem;
-  padding-left: 0.5rem;
-  counter-increment: item;
+  color: #3E2A1A;
 }
 
 .articleContent ol li::marker {
-  color: var(--primary-color);
-  font-weight: bold;
+  color: #C97D60;
+  font-weight: 700;
 }
 
-@media (max-width: 1400px) {
-  .blogPostContainer {
-    grid-template-columns: 1fr minmax(280px, 700px) 350px 1fr;
-    padding: 2.5rem 2rem;
-    gap: 2.5rem;
-  }
-
-  .sidebarWrapper {
-    margin-right: 1.5rem;
-  }
+.articleContent strong {
+  color: #2C1810;
+  font-weight: 700;
 }
 
-@media (max-width: 1200px) {
-  .blogPostContainer {
-    grid-template-columns: 1fr minmax(250px, 650px) 320px 1fr;
-    gap: 2rem;
-  }
-
-  .sidebarWrapper {
-    margin-right: 1rem;
-  }
+.articleContent em {
+  color: #7A5638;
 }
 
-@media (max-width: 1024px) {
-  .blogPostContainer {
-    grid-template-columns: 1fr;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem;
-    gap: 3rem;
-  }
-
-  .article {
-    grid-column: 1;
-  }
-
-  .sidebarWrapper {
-    grid-column: 1;
-    position: static;
-    margin-right: 0;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+.articleContent blockquote {
+  margin: 2.5rem 0;
+  padding: 1.5rem 2rem;
+  background: rgba(237,224,200,0.5);
+  border-left: 4px solid #C97D60;
+  border-radius: 0 4px 4px 0;
 }
 
-@media (max-width: 968px) {
+.articleContent blockquote p {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #5C3E28;
+  margin: 0;
+}
+
+.articleContent a {
+  color: #7A5638;
+  text-decoration: underline;
+  text-decoration-color: rgba(122,86,56,0.4);
+  transition: color 0.2s;
+}
+
+.articleContent a:hover {
+  color: #C97D60;
+}
+
+.articleContent img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1.5rem auto;
+  display: block;
+  box-shadow: 0 4px 18px rgba(44,24,16,0.12);
+}
+
+/*  Responsive  */
+@media (max-width: 768px) {
   .blogPostContainer {
-    padding: 1.5rem 1rem;
-    gap: 2rem;
+    padding: 2rem 1rem;
   }
 
-  .articleHeader {
-    margin: 3rem auto 0;
-  }
-
-  .articleHeader h1 {
-    font-size: 2.2rem;
-  }
-
-  .featuredImage {
-    margin: 2rem auto;
-    border-radius: 16px;
+  .postTitle {
+    font-size: 1.75rem;
   }
 
   .articleContent {
-    padding-top: 1.5rem;
-  }
-
-  .articleContent p,
-  .articleContent ul li,
-  .articleContent ol li {
-    font-size: 1.05rem;
-  }
-
-  .articleContent h2 {
-    font-size: 1.75rem;
-    margin-top: 2.5rem;
-  }
-
-  .articleContent h3 {
-    font-size: 1.4rem;
-    margin-top: 2rem;
-  }
-
-  .articleInfo {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .blogPostContainer {
-    padding: 1.5rem 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .blogPostContainer {
-    padding: 1rem 0.75rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .articleHeader h1 {
-    font-size: 1.8rem;
-  }
-
-  .articleContent ul,
-  .articleContent ol {
-    margin-left: 1rem;
+    font-size: 1rem;
   }
 }

@@ -283,7 +283,7 @@ export default async function BlogPost(
         padding: '2rem',
         textAlign: 'center'
       }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#8B2635' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '1rem', color: '#7A5638' }}>
           Post Not Found
         </h1>
         <p style={{ marginBottom: '2rem' }}>
@@ -292,7 +292,7 @@ export default async function BlogPost(
         <Link href="/blog" style={{
           display: 'inline-block',
           padding: '0.75rem 1.5rem',
-          background: '#8B2635',
+          background: '#7A5638',
           color: 'white',
           textDecoration: 'none',
           borderRadius: '8px'
