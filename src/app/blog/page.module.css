@@ -29,7 +29,7 @@
 }
 
 .pageTitle {
-  font-family: Georgia, serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   color: var(--text-primary);
@@ -46,40 +46,37 @@
 
 .blogGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
   margin-bottom: 4rem;
 }
 
 .postsGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
   margin-bottom: 4rem;
 }
 
 @media (max-width: 1024px) {
-  .blogGrid,
-  .postsGrid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 28px;
+  .blogGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
   }
 }
 
 @media (max-width: 768px) {
-  .blogGrid,
-  .postsGrid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .blogGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
     margin-bottom: 3rem;
   }
 }
 
 @media (max-width: 640px) {
-  .blogGrid,
-  .postsGrid {
+  .blogGrid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 1.25rem;
     margin-bottom: 2rem;
   }
 }
@@ -109,7 +106,7 @@
 }
 
 .searchInfo strong {
-  color: #7A5638;
+  color: #C9A99A;
   font-weight: 600;
 }
 

@@ -1,17 +1,17 @@
 /* Rich Markdown Editor Styles */
 
 .container {
-  border: 2px solid rgba(122, 86, 56, 0.15);
+  border: 2px solid rgba(201, 169, 154, 0.15);
   border-radius: 12px;
   overflow: hidden;
-  background: white;
+  background: #FAF7F2;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
 }
 
 .container:focus-within {
-  border-color: #7A5638;
-  box-shadow: 0 8px 24px rgba(122, 86, 56, 0.15);
+  border-color: #C9A99A;
+  box-shadow: 0 8px 24px rgba(201, 169, 154, 0.15);
 }
 
 .toolbar {
@@ -20,7 +20,7 @@
   gap: 0.5rem;
   padding: 0.75rem 1rem;
   background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
-  border-bottom: 1px solid rgba(122, 86, 56, 0.1);
+  border-bottom: 1px solid rgba(201, 169, 154, 0.1);
   flex-wrap: wrap;
 }
 
@@ -32,14 +32,14 @@
 
 .toolBtn {
   padding: 0.5rem 0.75rem;
-  background: white;
-  border: 1px solid rgba(122, 86, 56, 0.15);
+  background: #FAF7F2;
+  border: 1px solid rgba(201, 169, 154, 0.15);
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.85rem;
-  font-family: Georgia, serif;
+  font-family: 'Lato', sans-serif;
   transition: all 0.2s ease;
-  color: #4A3828;
+  color: #5c5650;
   font-weight: 500;
   height: 32px;
   display: flex;
@@ -48,11 +48,11 @@
 }
 
 .toolBtn:hover {
-  background: #7A5638;
+  background: #C9A99A;
   color: white;
-  border-color: #7A5638;
+  border-color: #C9A99A;
   transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(122, 86, 56, 0.25);
+  box-shadow: 0 2px 8px rgba(201, 169, 154, 0.25);
 }
 
 .toolBtn:active {
@@ -62,14 +62,14 @@
 .separator {
   width: 1px;
   height: 24px;
-  background: rgba(122, 86, 56, 0.15);
+  background: rgba(201, 169, 154, 0.15);
   margin: 0 0.25rem;
 }
 
 .tabs {
   display: flex;
-  background: white;
-  border-bottom: 1px solid rgba(122, 86, 56, 0.1);
+  background: #FAF7F2;
+  border-bottom: 1px solid rgba(201, 169, 154, 0.1);
 }
 
 .tab {
@@ -79,21 +79,21 @@
   border: none;
   border-bottom: 3px solid transparent;
   cursor: pointer;
-  font-family: Georgia, serif;
+  font-family: 'Lato', sans-serif;
   font-weight: 500;
   font-size: 0.9rem;
-  color: #4A3828;
+  color: #5c5650;
   transition: all 0.2s ease;
 }
 
 .tab:hover {
-  background: rgba(122, 86, 56, 0.05);
+  background: rgba(201, 169, 154, 0.05);
 }
 
 .activeTab {
-  color: #7A5638;
-  border-bottom-color: #7A5638;
-  background: rgba(122, 86, 56, 0.05);
+  color: #C9A99A;
+  border-bottom-color: #C9A99A;
+  background: rgba(201, 169, 154, 0.05);
 }
 
 .editor {
@@ -105,8 +105,8 @@
   font-size: 0.9rem;
   line-height: 1.7;
   resize: vertical;
-  background: white;
-  color: #4A3828;
+  background: #FAF7F2;
+  color: #2a2622;
 }
 
 .editor:focus {
@@ -116,31 +116,31 @@
 .preview {
   min-height: 400px;
   padding: 1.5rem;
-  background: white;
-  color: #4A3828;
+  background: #FAF7F2;
+  color: #2a2622;
   line-height: 1.7;
   overflow-y: auto;
-  font-family: Georgia, serif;
+  font-family: 'Lato', sans-serif;
 }
 
 .preview h1 {
-  font-family: Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: #7A5638;
+  color: #C9A99A;
   margin: 1.5rem 0 1rem;
 }
 
 .preview h2 {
-  font-family: Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.6rem;
-  color: #7A5638;
+  color: #C9A99A;
   margin: 1.25rem 0 0.75rem;
 }
 
 .preview h3 {
-  font-family: Georgia, serif;
+  font-family: 'Playfair Display', serif;
   font-size: 1.3rem;
-  color: #4A3828;
+  color: #5c5650;
   margin: 1rem 0 0.5rem;
 }
 
@@ -149,7 +149,7 @@
 }
 
 .preview a {
-  color: #7A5638;
+  color: #C9A99A;
   text-decoration: underline;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .preview code {
-  background: rgba(122, 86, 56, 0.1);
+  background: rgba(201, 169, 154, 0.1);
   padding: 0.2rem 0.4rem;
   border-radius: 4px;
   font-family: 'Monaco', 'Courier New', monospace;
@@ -179,7 +179,7 @@
 
 .preview strong {
   font-weight: 700;
-  color: #4A3828;
+  color: #2a2622;
 }
 
 .preview em {
@@ -192,10 +192,10 @@
   align-items: center;
   padding: 0.75rem 1rem;
   background: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 100%);
-  border-top: 1px solid rgba(122, 86, 56, 0.1);
+  border-top: 1px solid rgba(201, 169, 154, 0.1);
   font-size: 0.8rem;
-  color: #A88F70;
-  font-family: Georgia, serif;
+  color: #888;
+  font-family: 'Lato', sans-serif;
 }
 
 .wordCount, .charCount {
@@ -206,28 +206,28 @@
 @media (prefers-color-scheme: dark) {
   .container {
     background: #1a1a1a;
-    border-color: rgba(122, 86, 56, 0.3);
+    border-color: rgba(201, 169, 154, 0.3);
   }
 
   .toolbar {
     background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-    border-bottom-color: rgba(122, 86, 56, 0.3);
+    border-bottom-color: rgba(201, 169, 154, 0.3);
   }
 
   .toolBtn {
     background: #2a2a2a;
     color: #e0e0e0;
-    border-color: rgba(122, 86, 56, 0.3);
+    border-color: rgba(201, 169, 154, 0.3);
   }
 
   .toolBtn:hover {
-    background: #7A5638;
+    background: #C9A99A;
     color: white;
   }
 
   .tabs {
     background: #1a1a1a;
-    border-bottom-color: rgba(122, 86, 56, 0.3);
+    border-bottom-color: rgba(201, 169, 154, 0.3);
   }
 
   .tab {
@@ -235,7 +235,7 @@
   }
 
   .tab:hover {
-    background: rgba(122, 86, 56, 0.15);
+    background: rgba(201, 169, 154, 0.15);
   }
 
   .editor, .preview {
@@ -245,7 +245,7 @@
 
   .footer {
     background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
-    border-top-color: rgba(139, 38, 53, 0.3);
+    border-top-color: rgba(201, 169, 154, 0.3);
     color: #aaa;
   }
 }

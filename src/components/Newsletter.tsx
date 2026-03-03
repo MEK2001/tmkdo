@@ -7,8 +7,8 @@ export default function Newsletter() {
   return (
     <section className={styles.newsletter}>
       <div className={styles.newsletterContent}>
-        <h2>Join Our Community</h2>
-        <p>Get weekly inspiration, design tips, and exclusive decor finds delivered straight to your inbox.</p>
+        <h2>Newsletter Section</h2>
+        <p>Join Our Inner Circle</p>
         <NewsletterForm />
       </div>
     </section>
