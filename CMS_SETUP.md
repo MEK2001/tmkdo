@@ -55,7 +55,7 @@ These are automatically requested during OAuth flow.
 
 ### Error: "Unable to access identity settings"
 
-- ✅ **Fixed**: Changed backend from `git-gateway` to `github`
+- ✅ **Fixed**: Backend uses GitHub OAuth
 - Make sure GitHub OAuth App is configured correctly
 - Verify callback URL matches exactly: `https://www.tmkdo.com/admin/`
 

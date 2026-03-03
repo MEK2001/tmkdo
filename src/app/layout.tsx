@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter, Lora } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import Script from 'next/script';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import SmoothScroll from '@/components/SmoothScroll';
 import ConditionalLayout from '@/components/ConditionalLayout';
-import FloatingActions from '@/components/FloatingActions';
 import { siteMetadata } from '@/lib/metadata';
 import '@/styles/globals.css';
 
@@ -14,9 +13,9 @@ const inter = Inter({
   display: 'swap',
 });
 
-const lora = Lora({ 
+const playfair = Playfair_Display({ 
   subsets: ['latin'],
-  variable: '--font-lora',
+  variable: '--font-playfair',
   display: 'swap',
 });
 
@@ -94,15 +93,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="light" className={`${inter.variable} ${lora.variable}`}>
+    <html lang="en" data-theme="light" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
-        <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#7A5638" />
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" sizes="any" />
+        <link rel="shortcut icon" href="/logo.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/logo.svg" />
+        <meta name="theme-color" content="#8B2635" />
         <Script
           src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
           strategy="beforeInteractive"
@@ -116,7 +114,6 @@ export default function RootLayout({
         <ThemeProvider>
           <SmoothScroll />
           <ConditionalLayout>{children}</ConditionalLayout>
-          <FloatingActions />
         </ThemeProvider>
       </body>
     </html>
