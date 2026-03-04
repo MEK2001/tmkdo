@@ -1,15 +1,13 @@
 ---
 title: "Elevate Your Desk with Shagreen: The Luxury Organizer Trend"
-slug: "shagreen-desk-organizer"
+excerpt: "Discover how shagreen desk organizers bring luxury and sophistication to your workspace while maintaining minimalist principles."
 date: "2026-01-20T10:00:00"
 author: "TMKDO Team"
 category: "Organization"
 tags: ["organization", "desk", "shagreen"]
 image: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=1200&h=800&fit=crop&q=80"
-excerpt: "Discover how shagreen desk organizers bring luxury and sophistication to your workspace while maintaining minimalist principles."
-readTime: "4 min read"
 status: "published"
-featured: false
+published: true
 ---
 
 In the world of interior design, shagreen has emerged as a sophisticated material that bridges the gap between luxury and understated elegance. If you're looking to elevate your workspace without sacrificing minimalist principles, shagreen desk organizers might be exactly what you need.
@@ -40,7 +38,3 @@ A single shagreen desk organizer can transform your workspace. Pair it with slee
 One of the core principles of minimalist design is choosing quality over quantity. Shagreen organizers embody this philosophy perfectly. A single, well-chosen piece elevates your entire desk setup and brings daily joy through its texture and beauty.
 
 When you invest in a shagreen organizer, you're not just buying a functional item—you're adding a piece of craftsmanship and luxury to your space. In a minimalist environment, such thoughtful touches make all the difference.
-
-
-
-
