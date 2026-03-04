@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import styles from './BlogCard.module.css';
+import LikeButton from './LikeButton';
 
 interface BlogCardProps {
   slug: string;
@@ -35,7 +36,10 @@ export default function BlogCard({ slug, image, date, title, excerpt, category, 
           )}
         </div>
         <div className={styles.contentContainer}>
-          <h3 className={styles.title}>{title}</h3>
+          <div className={styles.cardHeader}>
+            <h3 className={styles.title}>{title}</h3>
+            <LikeButton postSlug={slug} />
+          </div>
           <p className={styles.excerpt}>{excerpt}</p>
           <div className={styles.cardMeta}>
             <span className={styles.date}>{date}</span>

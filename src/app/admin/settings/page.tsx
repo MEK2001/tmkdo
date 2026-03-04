@@ -18,6 +18,7 @@ export default function SettingsPage() {
     siteDescription: '',
     siteUrl: '',
     email: '',
+    amazonAffiliateId: '',
     socialLinks: {}
   });
 
@@ -41,7 +42,18 @@ export default function SettingsPage() {
       }
 
       const data = await response.json();
-      setSettings(data.settings);
+      setSettings({
+        siteTitle: data.settings?.siteTitle || '',
+        siteDescription: data.settings?.siteDescription || '',
+        siteUrl: data.settings?.siteUrl || '',
+        email: data.settings?.email || '',
+        amazonAffiliateId: data.settings?.amazonAffiliateId || '',
+        socialLinks: {
+          instagram: data.settings?.socialLinks?.instagram || '',
+          pinterest: data.settings?.socialLinks?.pinterest || '',
+          twitter: data.settings?.socialLinks?.twitter || ''
+        }
+      });
     } catch (err: any) {
       setError(err.message);
     } finally {
@@ -151,6 +163,16 @@ export default function SettingsPage() {
                 onChange={(e) => setSettings({ ...settings, email: e.target.value })}
                 placeholder="hello@example.com"
                 required
+              />
+            </div>
+
+            <div className={styles.formGroup}>
+              <label>Amazon Affiliate ID</label>
+              <input
+                type="text"
+                value={settings.amazonAffiliateId || ''}
+                onChange={(e) => setSettings({ ...settings, amazonAffiliateId: e.target.value })}
+                placeholder="tmkdo-20"
               />
             </div>
           </div>

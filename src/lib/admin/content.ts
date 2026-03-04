@@ -20,10 +20,26 @@ export interface SiteSettings {
   siteDescription: string;
   siteUrl: string;
   email: string;
+  amazonAffiliateId?: string;
   socialLinks: {
     instagram?: string;
     pinterest?: string;
     twitter?: string;
+  };
+}
+
+function normalizeSiteSettings(raw: any): SiteSettings {
+  return {
+    siteTitle: raw?.siteTitle || raw?.title || 'TMKDO',
+    siteDescription: raw?.siteDescription || raw?.description || 'Minimalist Home Decor & Curated Living',
+    siteUrl: raw?.siteUrl || 'https://www.tmkdo.com',
+    email: raw?.email || 'hello@tmkdo.com',
+    amazonAffiliateId: raw?.amazonAffiliateId || '',
+    socialLinks: {
+      instagram: raw?.socialLinks?.instagram || '',
+      pinterest: raw?.socialLinks?.pinterest || '',
+      twitter: raw?.socialLinks?.twitter || ''
+    }
   };
 }
 
@@ -199,23 +215,32 @@ export async function deleteBlogPost(slug: string, token: string): Promise<void>
 export async function getSiteSettings(token: string): Promise<SiteSettings> {
   try {
     const file = await getFile('content/settings/general.json', token);
-    return JSON.parse(file.content);
+    const parsed = JSON.parse(file.content);
+    return normalizeSiteSettings(parsed);
   } catch {
     // Return defaults if file doesn't exist
-    return {
-      siteTitle: 'TMKDO',
-      siteDescription: 'Minimalist Home Decor & Curated Living',
-      siteUrl: 'https://www.tmkdo.com',
-      email: 'hello@tmkdo.com',
-      socialLinks: {}
-    };
+    return normalizeSiteSettings({});
   }
 }
 
 // Save site settings
 export async function saveSiteSettings(settings: SiteSettings, token: string): Promise<void> {
+  const normalized = normalizeSiteSettings(settings);
   const path = 'content/settings/general.json';
-  const content = JSON.stringify(settings, null, 2);
+  const content = JSON.stringify(
+    {
+      title: normalized.siteTitle,
+      description: normalized.siteDescription,
+      siteTitle: normalized.siteTitle,
+      siteDescription: normalized.siteDescription,
+      siteUrl: normalized.siteUrl,
+      email: normalized.email,
+      amazonAffiliateId: normalized.amazonAffiliateId || '',
+      socialLinks: normalized.socialLinks
+    },
+    null,
+    2
+  );
 
   let sha: string | undefined;
   try {

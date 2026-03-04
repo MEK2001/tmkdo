@@ -11,9 +11,12 @@
 }
 
 .card {
-  background: #FAF7F2;
+  background: #F5EDD8;
   border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(201, 169, 154, 0.15);
+  border: 1px solid rgba(122, 86, 56, 0.35);
+  outline: 2px solid rgba(122, 86, 56, 0.2);
+  outline-offset: -1px;
+  box-shadow: 0 20px 60px rgba(122, 86, 56, 0.15);
   width: 100%;
   max-width: 440px;
   padding: 3rem;
@@ -44,12 +47,12 @@
 .logo h1 {
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
-  color: #C9A99A;
+  color: #7A5638;
   margin-bottom: 0.25rem;
 }
 
 .logo p {
-  color: #5c5650;
+  color: #5C3E28;
   font-size: 0.9rem;
   font-family: 'Lato', sans-serif;
 }
@@ -61,11 +64,11 @@
 
 .backBtn {
   display: inline-block;
-  color: #C9A99A;
+  color: #7A5638;
   text-decoration: none;
   font-size: 0.9rem;
   padding: 0.5rem 1rem;
-  border: 2px solid rgba(201, 169, 154, 0.2);
+  border: 2px solid rgba(122, 86, 56, 0.2);
   border-radius: 10px;
   transition: all 0.3s ease;
   font-family: 'Lato', sans-serif;
@@ -73,11 +76,11 @@
 }
 
 .backBtn:hover {
-  background-color: #C9A99A;
+  background-color: #7A5638;
   color: white;
-  border-color: #C9A99A;
+  border-color: #7A5638;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(201, 169, 154, 0.2);
+  box-shadow: 0 4px 12px rgba(122, 86, 56, 0.2);
 }
 
 .alert {
@@ -105,7 +108,7 @@
   display: block;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #2a2622;
+  color: #2C1A0E;
   font-size: 0.9rem;
   font-family: 'Lato', sans-serif;
 }
@@ -113,7 +116,7 @@
 .formGroup input {
   width: 100%;
   padding: 0.875rem 1rem;
-  border: 2px solid rgba(201, 169, 154, 0.15);
+  border: 2px solid rgba(122, 86, 56, 0.15);
   border-radius: 10px;
   font-size: 0.95rem;
   font-family: 'Lato', sans-serif;
@@ -122,8 +125,8 @@
 
 .formGroup input:focus {
   outline: none;
-  border-color: #C9A99A;
-  box-shadow: 0 0 0 3px rgba(201, 169, 154, 0.1);
+  border-color: #7A5638;
+  box-shadow: 0 0 0 3px rgba(122, 86, 56, 0.1);
 }
 
 .formGroup input:disabled {
@@ -134,7 +137,7 @@
 .submitBtn {
   width: 100%;
   padding: 1rem;
-  background: linear-gradient(135deg, #C9A99A 0%, #B5A49A 100%);
+  background: linear-gradient(135deg, #7A5638 0%, #5C3E28 100%);
   color: white;
   border: none;
   border-radius: 10px;
@@ -151,7 +154,7 @@
 
 .submitBtn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(201, 169, 154, 0.3);
+  box-shadow: 0 8px 20px rgba(122, 86, 56, 0.3);
 }
 
 .submitBtn:disabled {
@@ -179,17 +182,17 @@
   margin-top: 1.5rem;
   text-align: center;
   padding-top: 1.5rem;
-  border-top: 1px solid rgba(201, 169, 154, 0.1);
+  border-top: 1px solid rgba(122, 86, 56, 0.1);
 }
 
 .footer p {
-  color: #5c5650;
+  color: #5C3E28;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
 .link {
-  color: #C9A99A;
+  color: #7A5638;
   text-decoration: none;
   font-weight: 600;
   font-size: 0.95rem;
@@ -198,7 +201,7 @@
 }
 
 .link:hover {
-  color: #B5A49A;
+  color: #5C3E28;
   text-decoration: underline;
 }
 
@@ -206,7 +209,7 @@
   display: block;
   margin-top: 0.25rem;
   font-size: 0.8rem;
-  color: #888;
+  color: #7A5638;
 }
 
 .alertSuccess {
@@ -214,3 +217,4 @@
   color: #2d6f2d;
   border-color: #b3ffb3;
 }
+

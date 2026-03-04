@@ -44,6 +44,15 @@ if (fs.existsSync(postsJsonSource)) {
   console.log('✅ Copied posts.json to Cloudflare output');
 }
 
+const settingsJsonSource = path.join('public', 'api', 'settings.json');
+if (fs.existsSync(settingsJsonSource)) {
+  if (!fs.existsSync(postsJsonTargetDir)) {
+    fs.mkdirSync(postsJsonTargetDir, { recursive: true });
+  }
+  fs.copyFileSync(settingsJsonSource, path.join(postsJsonTargetDir, 'settings.json'));
+  console.log('✅ Copied settings.json to Cloudflare output');
+}
+
 // Create _routes.json to properly route static assets
 const routesConfig = {
   version: 1,
@@ -52,6 +61,7 @@ const routesConfig = {
     '/_next/static/*',
     '/images/*',
     '/api/posts.json',
+    '/api/settings.json',
     '/api/posts/*',
     '/favicon.ico',
     '/robots.txt',

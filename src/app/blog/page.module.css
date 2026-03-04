@@ -211,3 +211,91 @@
   border: 1px dashed rgba(122,86,56,0.25);
   border-radius: 6px;
 }
+
+/* Container and Page Header */
+.container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid rgba(122,86,56,0.15);
+}
+
+.pageTitle {
+  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 700;
+  color: #2C1810;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.pageDescription {
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  color: #7A5638;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Blog Grid - 3 columns */
+.blogGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 1024px) {
+  .blogGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .blogGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Loading and No Posts */
+.loading {
+  text-align: center;
+  padding: 3rem;
+  font-family: Georgia, serif;
+  color: #7A5638;
+}
+
+.noPosts {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 2rem;
+  font-family: Georgia, serif;
+  color: #7A5638;
+}
+
+.noPosts p {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.noPostsHint {
+  font-size: 0.9rem;
+  color: #A0845C;
+  font-style: italic;
+}

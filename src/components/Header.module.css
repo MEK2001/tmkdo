@@ -108,6 +108,11 @@
   list-style: none;
 }
 
+/* Backdrop overlay when mobile menu is open */
+.mobileBackdrop {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .nav {
     grid-template-columns: 1fr;
@@ -132,6 +137,28 @@
     display: inline-flex;
   }
 
+  .mobileBackdrop {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(44, 26, 14, 0.3);
+    z-index: 99;
+    animation: fadeIn 0.2s ease;
+    cursor: pointer;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   .mobileMenu {
     position: absolute;
     left: 1rem;
@@ -142,6 +169,7 @@
     border-radius: 10px;
     padding: 0.6rem;
     box-shadow: 0 12px 18px rgba(44, 26, 14, 0.12);
+    z-index: 100;
   }
 
   .mobileMenu.active {

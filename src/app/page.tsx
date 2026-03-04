@@ -20,7 +20,7 @@ export default function HomePage() {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [typingText, setTypingText] = useState('');
+  const [typingText, setTypingText] = useState('"Sanctuaries');
   const [isDeleting, setIsDeleting] = useState(false);
   const [typingIndex, setTypingIndex] = useState(0);
 
@@ -67,35 +67,49 @@ export default function HomePage() {
 
   useEffect(() => {
     const quotes = [
-      '“Sanctuaries of Timeless Kraft.”',
-      '“Where Texture Meets Intent.”',
-      '“Quiet Luxury, Daily.”',
+      { full: '"Sanctuaries of Timeless Kraft."', staticPart: '"Sanctuaries', color1: '#F5EDD8', color2: '#8B4513' },
+      { full: '"Where Texture Meets Intent."', staticPart: '"Where', color1: '#F5EDD8', color2: '#8B4513' },
+      { full: '"Quiet Luxury, Daily."', staticPart: '"Quiet', color1: '#F5EDD8', color2: '#8B4513' },
     ];
 
-    const active = quotes[typingIndex % quotes.length];
+    const activeQuote = quotes[typingIndex % quotes.length];
+    const active = activeQuote.full;
+    const staticPart = activeQuote.staticPart;
+    const dynamicStartIndex = staticPart.length;
     const speed = isDeleting ? 60 : 120;
 
     const timer = setTimeout(() => {
-      setTypingText((current) => {
-        if (!isDeleting) {
-          const next = active.slice(0, current.length + 1);
-          if (next === active) {
-            setTimeout(() => setIsDeleting(true), 1200);
-          }
-          return next;
+      if (!isDeleting) {
+        if (typingText.length < active.length) {
+          setTypingText(active.slice(0, typingText.length + 1));
+        } else {
+          // Text fully typed, wait before deleting
+          setTimeout(() => setIsDeleting(true), 1200);
         }
-
-        const next = active.slice(0, current.length - 1);
-        if (next.length === 0) {
+      } else {
+        if (typingText.length > dynamicStartIndex) {
+          setTypingText(typingText.slice(0, typingText.length - 1));
+        } else {
+          // Reset to static part, move to next quote
           setIsDeleting(false);
-          setTypingIndex((value) => value + 1);
+          setTypingIndex((prev) => prev + 1);
+          setTypingText(staticPart);
         }
-        return next;
-      });
+      }
     }, speed);
 
     return () => clearTimeout(timer);
-  }, [typingIndex, isDeleting]);
+  }, [typingText, typingIndex, isDeleting]);
+
+  const quotes = [
+    { full: '"Sanctuaries of Timeless Kraft."', staticPart: '"Sanctuaries', color1: '#F5EDD8', color2: '#8B4513' },
+    { full: '"Where Texture Meets Intent."', staticPart: '"Where', color1: '#F5EDD8', color2: '#8B4513' },
+    { full: '"Quiet Luxury, Daily."', staticPart: '"Quiet', color1: '#F5EDD8', color2: '#8B4513' },
+  ];
+  
+  const currentQuote = quotes[typingIndex % quotes.length];
+  const currentStaticPart = currentQuote.staticPart;
+  const displayedDynamic = typingText.length > currentStaticPart.length ? typingText.slice(currentStaticPart.length) : '';
 
   const heroPost = featuredPosts[0];
   const featuredPost = featuredPosts[1] || featuredPosts[0];
@@ -117,8 +131,12 @@ export default function HomePage() {
               priority
             />
             <div className={styles.heroOverlay}>
-              <p className={styles.heroMeta}>EST. 2026 | London & Berlin</p>
-              <h1 className={styles.heroTitle}>{typingText}<span className={styles.cursor}>|</span></h1>
+              <p className={styles.heroMeta}>EST. 2026</p>
+              <h1 className={styles.heroTitle}>
+                <span style={{ color: currentQuote.color1 }}>{currentStaticPart}</span>
+                <span style={{ color: currentQuote.color2 }}>{displayedDynamic}</span>
+                <span className={styles.cursor}>|</span>
+              </h1>
             </div>
           </div>
 

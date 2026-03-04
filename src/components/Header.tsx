@@ -6,6 +6,30 @@ import Image from 'next/image';
 import { useState } from 'react';
 import styles from './Header.module.css';
 
+const blogPosts = [
+  {
+    slug: 'natural-materials',
+  },
+  {
+    slug: 'decluttering-guide',
+  },
+  {
+    slug: 'minimalist-living-room',
+  },
+  {
+    slug: 'corner-tv-stand',
+  },
+  {
+    slug: 'throw-blanket-styling',
+  },
+  {
+    slug: 'pampas-grass-decor',
+  },
+  {
+    slug: 'shagreen-desk-organizer',
+  },
+];
+
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -19,6 +43,15 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
+      {/* Backdrop overlay for mobile menu */}
+      {mobileMenuOpen && (
+        <div 
+          className={styles.mobileBackdrop} 
+          onClick={closeMobileMenu}
+          aria-label="Close menu"
+        />
+      )}
+      
       <nav className={styles.nav}>
         <div className={styles.navGroupLeft}>
           <Link href="/" onClick={closeMobileMenu}>Home</Link>

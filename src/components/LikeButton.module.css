@@ -1,0 +1,53 @@
+.likeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(122, 86, 56, 0.08);
+  border: 1.5px solid rgba(122, 86, 56, 0.2);
+  color: #7A5638;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.likeBtn:hover:not(:disabled) {
+  background: rgba(201, 125, 96, 0.15);
+  border-color: rgba(201, 125, 96, 0.4);
+  color: #C97D60;
+  transform: scale(1.08);
+}
+
+.likeBtn.liked {
+  background: rgba(201, 125, 96, 0.25);
+  border-color: #C97D60;
+  color: #C97D60;
+  box-shadow: 0 4px 12px rgba(201, 125, 96, 0.2);
+}
+
+.likeBtn.liked:hover {
+  background: rgba(201, 125, 96, 0.35);
+  box-shadow: 0 6px 16px rgba(201, 125, 96, 0.3);
+}
+
+.likeBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.likeBtn svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.likeBtn span {
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1;
+  min-width: 16px;
+}

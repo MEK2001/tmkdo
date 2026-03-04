@@ -65,9 +65,44 @@ async function generatePostsJson() {
       const postPath = path.join(postsDetailDir, `${post.slug}.json`);
       fs.writeFileSync(postPath, JSON.stringify(post, null, 2));
     });
+
+    const settingsPath = path.join(process.cwd(), 'content', 'settings', 'general.json');
+    const settingsOutputPath = path.join(outputDir, 'settings.json');
+    const defaultSettings = {
+      siteTitle: 'TMKDO',
+      siteDescription: 'Minimalist Home Decor & Curated Living',
+      siteUrl: 'https://www.tmkdo.com',
+      email: 'hello@tmkdo.com',
+      amazonAffiliateId: '',
+      socialLinks: {
+        instagram: '',
+        pinterest: '',
+        twitter: ''
+      }
+    };
+
+    let normalizedSettings = defaultSettings;
+    if (fs.existsSync(settingsPath)) {
+      const rawSettings = JSON.parse(fs.readFileSync(settingsPath, 'utf-8'));
+      normalizedSettings = {
+        siteTitle: rawSettings.siteTitle || rawSettings.title || defaultSettings.siteTitle,
+        siteDescription: rawSettings.siteDescription || rawSettings.description || defaultSettings.siteDescription,
+        siteUrl: rawSettings.siteUrl || defaultSettings.siteUrl,
+        email: rawSettings.email || defaultSettings.email,
+        amazonAffiliateId: rawSettings.amazonAffiliateId || '',
+        socialLinks: {
+          instagram: rawSettings.socialLinks?.instagram || '',
+          pinterest: rawSettings.socialLinks?.pinterest || '',
+          twitter: rawSettings.socialLinks?.twitter || ''
+        }
+      };
+    }
+
+    fs.writeFileSync(settingsOutputPath, JSON.stringify({ settings: normalizedSettings }, null, 2));
     
     console.log(`[Build] Generated ${posts.length} posts in posts.json`);
     console.log(`[Build] Generated ${posts.length} individual post JSON files`);
+    console.log('[Build] Generated settings.json');
     return posts;
   } catch (error) {
     console.error('[Build] Error generating posts.json:', error);
