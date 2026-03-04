@@ -17,6 +17,10 @@ interface Post {
   status?: string;
 }
 
+function getSiteBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_SITE_URL || 'https://www.tmkdo.com';
+}
+
 // Read all posts from the generated JSON file
 export async function getAllPostsFromJSON(): Promise<Post[]> {
   try {
@@ -31,8 +35,23 @@ export async function getAllPostsFromJSON(): Promise<Post[]> {
     const { posts } = JSON.parse(data);
     return posts;
   } catch (error) {
-    console.error('[Posts JSON] Error reading posts.json:', error);
-    return [];
+    console.warn('[Posts JSON] Local file read failed, trying remote API fallback');
+
+    try {
+      const response = await fetch(`${getSiteBaseUrl()}/api/posts.json`, {
+        cache: 'no-store'
+      });
+
+      if (!response.ok) {
+        throw new Error(`Remote posts.json fetch failed (${response.status})`);
+      }
+
+      const data = await response.json();
+      return data.posts || [];
+    } catch (fallbackError) {
+      console.error('[Posts JSON] Error reading posts.json from both local and remote:', fallbackError);
+      return [];
+    }
   }
 }
 
@@ -50,7 +69,21 @@ export async function getPostFromJSON(slug: string): Promise<Post | null> {
     const post = JSON.parse(data);
     return post;
   } catch (error) {
-    console.error(`[Post JSON] Error reading post ${slug}:`, error);
-    return null;
+    console.warn(`[Post JSON] Local file read failed for ${slug}, trying remote API fallback`);
+
+    try {
+      const response = await fetch(`${getSiteBaseUrl()}/api/posts/${slug}.json`, {
+        cache: 'no-store'
+      });
+
+      if (!response.ok) {
+        throw new Error(`Remote post fetch failed (${response.status})`);
+      }
+
+      return await response.json();
+    } catch (fallbackError) {
+      console.error(`[Post JSON] Error reading post ${slug} from both local and remote:`, fallbackError);
+      return null;
+    }
   }
 }
