@@ -1,9 +1,8 @@
-'use client';
+﻿'use client';
 
 import { Suspense, useMemo, useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import BlogCard from '@/components/BlogCard';
-import SearchAndFilter from '@/components/SearchAndFilter';
 import styles from './page.module.css';
 
 interface BlogPost {
@@ -21,104 +20,132 @@ export default function BlogPageClient() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const searchParams = useSearchParams();
-  const selectedCategory = searchParams.get('category');
+  const router = useRouter();
+  const selectedCategory = searchParams.get('category') || 'all';
   const searchQuery = searchParams.get('search') || '';
 
   useEffect(() => {
     async function loadPosts() {
       try {
         setLoading(true);
-        console.log('[Blog Page] Loading posts...');
-        
         const response = await fetch('/api/blog/posts');
-        if (!response.ok) {
-          throw new Error('Failed to load posts');
-        }
-
+        if (!response.ok) throw new Error('Failed to load posts');
         const data = await response.json();
-        console.log(`[Blog Page] Loaded ${data.posts.length} posts`);
-        
-        // Format dates for display
-        const formatted = data.posts.map((post: any) => ({
+        const formatted = data.posts.map((post: BlogPost) => ({
           ...post,
           date: new Date(post.date).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
+            year: 'numeric', month: 'long', day: 'numeric',
           }),
         }));
-        
         setBlogPosts(formatted);
-      } catch (err: any) {
-        console.error('[Blog Page] Error loading posts:', err);
-        setError(err.message);
+      } catch (err: unknown) {
+        setError(err instanceof Error ? err.message : 'Unknown error');
       } finally {
         setLoading(false);
       }
     }
-
     loadPosts();
   }, []);
 
-  // Get unique categories
   const uniqueCategories = useMemo(() => {
-    const categories = new Set(blogPosts.map(post => post.category));
-    return Array.from(categories).sort();
+    const cats = new Set(blogPosts.map((p) => p.category).filter(Boolean));
+    return ['all', ...Array.from(cats).sort()];
   }, [blogPosts]);
 
-  // Filter posts by category and search query
   const filteredPosts = useMemo(() => {
-    return blogPosts.filter(post => {
-      const matchesCategory = !selectedCategory || post.category === selectedCategory;
-      const matchesSearch = !searchQuery || 
+    return blogPosts.filter((post) => {
+      const matchCat = selectedCategory === 'all' || post.category === selectedCategory;
+      const matchSearch =
+        !searchQuery ||
         post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-      
-      return matchesCategory && matchesSearch;
+      return matchCat && matchSearch;
     });
   }, [blogPosts, selectedCategory, searchQuery]);
 
+  const setCategory = (cat: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (cat === 'all') params.delete('category');
+    else params.set('category', cat);
+    router.push(`?${params.toString()}`);
+  };
+
   return (
-    <main className={styles.blogContainer}>
-      <div className={styles.pageHeader}>
-        <h1 className={styles.pageTitle}>Our Blog</h1>
-        <p className={styles.pageDescription}>
-          Explore our collection of articles on minimalist living, home decor, and sustainable designs.
+    <main className={styles.blogPage}>
+      {/*  Page banner  */}
+      <div className={styles.pageBanner}>
+        <p className={styles.bannerEyebrow}>The Journal</p>
+        <h1 className={styles.bannerTitle}>Stories &amp; Spaces</h1>
+        <p className={styles.bannerSubtitle}>
+          Essays on intentional living, natural materials, and the beauty of less.
         </p>
+        <div className={styles.bannerRule} />
       </div>
 
-      <div className={styles.contentWrapper}>
-        <SearchAndFilter />
+      <div className={styles.wrapper}>
+        {/*  Sidebar  */}
+        <aside className={styles.sidebar}>
+          <div className={styles.sideWidget}>
+            <h3 className={styles.widgetHeading}>Browse by Topic</h3>
+            <ul className={styles.categoryList}>
+              {uniqueCategories.map((cat) => (
+                <li key={cat}>
+                  <button
+                    className={`${styles.catBtn} ${selectedCategory === cat ? styles.catBtnActive : ''}`}
+                    onClick={() => setCategory(cat)}
+                  >
+                    {cat === 'all' ? 'All Articles' : cat}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-        {loading ? (
-          <div className={styles.loadingState}>
-            <p>Loading posts...</p>
+          <div className={styles.sideWidget}>
+            <h3 className={styles.widgetHeading}>Search</h3>
+            <form
+              className={styles.searchForm}
+              onSubmit={(e) => {
+                e.preventDefault();
+                const val = (e.currentTarget.elements.namedItem('q') as HTMLInputElement).value;
+                const params = new URLSearchParams(searchParams.toString());
+                if (val) params.set('search', val);
+                else params.delete('search');
+                router.push(`?${params.toString()}`);
+              }}
+            >
+              <input
+                name="q"
+                defaultValue={searchQuery}
+                placeholder="Type to search"
+                className={styles.searchInput}
+              />
+              <button type="submit" className={styles.searchBtn}>Go</button>
+            </form>
           </div>
-        ) : error ? (
-          <div className={styles.errorState}>
-            <p>⚠️ {error}</p>
-          </div>
-        ) : filteredPosts.length === 0 ? (
-          <div className={styles.emptyState}>
-            <p>No posts found. Try adjusting your filters.</p>
-          </div>
-        ) : (
-          <div className={styles.postsGrid}>
-            {filteredPosts.map(post => (
-              <Suspense key={post.slug} fallback={<div>Loading...</div>}>
-                <BlogCard
-                  slug={post.slug}
-                  image={post.image}
-                  date={post.date}
-                  readTime={post.readTime}
-                  title={post.title}
-                  excerpt={post.excerpt}
-                  category={post.category}
-                />
-              </Suspense>
-            ))}
-          </div>
-        )}
+        </aside>
+
+        {/*  Main grid  */}
+        <section className={styles.main}>
+          {searchQuery && (
+            <p className={styles.searchInfo}>
+              {filteredPosts.length} result{filteredPosts.length !== 1 ? 's' : ''} for &ldquo;{searchQuery}&rdquo;
+            </p>
+          )}
+          {loading ? (
+            <div className={styles.statusBox}>Loading articles</div>
+          ) : error ? (
+            <div className={styles.statusBox}> {error}</div>
+          ) : filteredPosts.length === 0 ? (
+            <div className={styles.statusBox}>No articles found. Try a different search.</div>
+          ) : (
+            <div className={styles.grid}>
+              {filteredPosts.map((post) => (
+                <BlogCard key={post.slug} {...post} />
+              ))}
+            </div>
+          )}
+        </section>
       </div>
     </main>
   );

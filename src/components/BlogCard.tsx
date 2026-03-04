@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,24 +15,40 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ slug, image, date, title, excerpt, category, readTime }: BlogCardProps) {
-  // Fallback image if none provided
   const imageUrl = image || 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&h=600&fit=crop';
 
   return (
     <article className={styles.blogCard}>
       <Link href={`/blog/${slug}`} className={styles.cardLink}>
         <div className={styles.imageContainer}>
-          <Image 
-            src={imageUrl} 
-            alt={title} 
+          <Image
+            src={imageUrl}
+            alt={title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className={styles.image}
             priority={false}
           />
+          <div className={styles.imageOverlay} />
+          {category && (
+            <span className={styles.categoryTag}>{category}</span>
+          )}
         </div>
         <div className={styles.contentContainer}>
           <h3 className={styles.title}>{title}</h3>
+          <p className={styles.excerpt}>{excerpt}</p>
+          <div className={styles.cardMeta}>
+            <span className={styles.date}>{date}</span>
+            {readTime && (
+              <>
+                <span className={styles.metaDot} />
+                <span className={styles.readTime}>{readTime}</span>
+              </>
+            )}
+          </div>
+          <span className={styles.readMore}>
+            Read Article <span className={styles.arrow}>&#8594;</span>
+          </span>
         </div>
       </Link>
     </article>
