@@ -19,7 +19,9 @@ async function generatePostsJson() {
       const fileContent = fs.readFileSync(filePath, 'utf-8');
       const { data, content } = matter(fileContent);
       
-      const slug = file.replace('.md', '');
+      const slug = file
+        .replace('.md', '')
+        .replace(/^\d{4}-\d{2}-\d{2}-/, '');
       
       // Convert markdown to HTML
       const processedContent = await remark()

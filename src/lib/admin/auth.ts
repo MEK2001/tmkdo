@@ -53,7 +53,13 @@ export async function getGitHubToken(accessToken: string): Promise<string> {
   }
 
   const data = await response.json();
-  return data.github_token || data.token;
+  const token = (data.github_token || data.token || '').trim();
+
+  if (!token) {
+    throw new Error('GitHub token is not configured on the auth worker');
+  }
+
+  return token;
 }
 
 // Session management (sessionStorage - expires on tab close)
