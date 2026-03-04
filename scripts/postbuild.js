@@ -34,23 +34,15 @@ if (fs.existsSync(workerSource)) {
 });
 
 // Copy posts.json from public/api to cloudflare/api so it's served as a static asset
-const postsJsonSource = path.join('public', 'api', 'posts.json');
-const postsJsonTargetDir = path.join(targetDir, 'api');
-if (fs.existsSync(postsJsonSource)) {
-  if (!fs.existsSync(postsJsonTargetDir)) {
-    fs.mkdirSync(postsJsonTargetDir, { recursive: true });
+const postsApiSource = path.join('public', 'api');
+const postsApiTargetDir = path.join(targetDir, 'api');
+if (fs.existsSync(postsApiSource)) {
+  if (!fs.existsSync(postsApiTargetDir)) {
+    fs.mkdirSync(postsApiTargetDir, { recursive: true });
   }
-  fs.copyFileSync(postsJsonSource, path.join(postsJsonTargetDir, 'posts.json'));
-  console.log('✅ Copied posts.json to Cloudflare output');
-}
-
-const settingsJsonSource = path.join('public', 'api', 'settings.json');
-if (fs.existsSync(settingsJsonSource)) {
-  if (!fs.existsSync(postsJsonTargetDir)) {
-    fs.mkdirSync(postsJsonTargetDir, { recursive: true });
-  }
-  fs.copyFileSync(settingsJsonSource, path.join(postsJsonTargetDir, 'settings.json'));
-  console.log('✅ Copied settings.json to Cloudflare output');
+  // Copy entire /api directory (posts.json, individual post files, settings.json)
+  copyRecursive(postsApiSource, postsApiTargetDir);
+  console.log('✅ Copied entire /api directory to Cloudflare output (posts.json, individual posts, settings.json)');
 }
 
 // Create _routes.json to properly route static assets

@@ -6,7 +6,7 @@
     "prebuild": "node scripts/generate-posts-json.js",
     "dev": "node scripts/generate-posts-json.js && next dev",
     "build": "next build",
-    "pages:build": "opennextjs-cloudflare build && node scripts/postbuild.js",
+    "pages:build": "node scripts/generate-posts-json.js && opennextjs-cloudflare build && node scripts/postbuild.js",
     "preview": "npm run pages:build && opennextjs-cloudflare preview",
     "deploy": "npm run pages:build",
     "start": "next start",
