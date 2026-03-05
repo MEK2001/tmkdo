@@ -19,7 +19,7 @@ export default function AffiliateDisclosure({ variant = 'subtle' }: AffiliateDis
   return (
     <div className={styles.inlineDisclosure}>
       <p className={styles.inlineText}>
-        💡 <strong>Disclosure:</strong> Some of the products mentioned in this post are affiliate links. 
+        <strong>Disclosure:</strong> Some of the products mentioned in this post are affiliate links. 
         If you purchase through them, we may earn a small commission at no extra cost to you.
       </p>
     </div>

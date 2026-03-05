@@ -3,41 +3,41 @@
    ============================================= */
 .contactPage {
   min-height: 100vh;
-  background: #F5EDD8;
+  background: #f0e8d8;
 }
 
 /*  Banner  */
 .banner {
   text-align: center;
   padding: 5rem 2rem 4rem;
-  background: #2C1810;
-  color: #F5EDD8;
+  background: #3b2a1a;
+  color: #f5edd8;
 }
 
 .bannerTag {
-  font-family: var(--font-inter), Inter, sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #C97D60;
+  color: #c4956a;
   margin-bottom: 0.85rem;
 }
 
 .bannerTitle {
-  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 700;
-  color: #F5EDD8;
+  color: #f5edd8;
   letter-spacing: -0.02em;
   margin-bottom: 0.9rem;
   line-height: 1.15;
 }
 
 .bannerSub {
-  font-family: Georgia, serif;
+  font-family: var(--font-lora), 'Lora', serif;
   font-size: 1rem;
-  color: #C4A882;
+  color: #d9c8a8;
   font-style: italic;
   max-width: 480px;
   margin: 0 auto 1.5rem;
@@ -45,9 +45,9 @@
 }
 
 .bannerRule {
-  width: 56px;
+  width: 60px;
   height: 2px;
-  background: #C97D60;
+  background: linear-gradient(to right, transparent, #c4956a, transparent);
   margin: 0 auto;
 }
 
@@ -83,17 +83,17 @@
 }
 
 .infoTitle {
-  font-family: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  font-family: var(--font-playfair), 'Playfair Display', serif;
   font-size: 1.6rem;
   font-weight: 700;
-  color: #2C1810;
+  color: #3b2a1a;
   margin-bottom: 0.9rem;
 }
 
 .infoSub {
-  font-family: Georgia, serif;
+  font-family: var(--font-lora), 'Lora', serif;
   font-size: 0.95rem;
-  color: #5C3E28;
+  color: #5c4b3a;
   line-height: 1.75;
   margin-bottom: 2rem;
 }
@@ -116,42 +116,42 @@
 .infoIcon {
   width: 32px;
   height: 32px;
-  background: #EDE0C8;
-  border: 1px solid rgba(122,86,56,0.2);
+  background: #ede5d1;
+  border: 1px solid rgba(107, 66, 38, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 0.65rem;
-  color: #7A5638;
+  color: #6b4226;
   flex-shrink: 0;
 }
 
 .infoLabel {
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #A0845C;
+  color: #6b4226;
   margin-bottom: 0.2rem;
 }
 
 .infoValue {
-  font-family: Georgia, serif;
+  font-family: var(--font-lora), 'Lora', serif;
   font-size: 0.95rem;
-  color: #2C1810;
+  color: #3b2a1a;
 }
 
 .social { margin-top: 0.5rem; }
 
 .socialLabel {
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
   font-size: 0.68rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #A0845C;
+  color: #6b4226;
   margin-bottom: 0.75rem;
 }
 
@@ -160,20 +160,20 @@
 .socialLink {
   width: 36px;
   height: 36px;
-  background: #EDE0C8;
-  border: 1px solid rgba(122,86,56,0.2);
+  background: #ede5d1;
+  border: 1px solid rgba(107, 66, 38, 0.2);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #7A5638;
+  color: #6b4226;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
 .socialLink:hover {
-  background: #7A5638;
-  color: #F5EDD8;
-  border-color: #7A5638;
+  background: #6b4226;
+  color: #f5edd8;
+  border-color: #6b4226;
 }
 
 /*  Form Column  */
@@ -190,23 +190,23 @@
 }
 
 .label {
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
   font-size: 0.7rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #7A5638;
+  color: #6b4226;
 }
 
 .input,
 .textarea {
   background: transparent;
   border: none;
-  border-bottom: 1px solid rgba(122,86,56,0.35);
+  border-bottom: 1px solid rgba(107, 66, 38, 0.35);
   padding: 0.65rem 0;
-  font-family: Georgia, serif;
+  font-family: var(--font-lora), 'Lora', serif;
   font-size: 1rem;
-  color: #2C1810;
+  color: #3b2a1a;
   outline: none;
   transition: border-color 0.2s;
   width: 100%;
@@ -215,33 +215,33 @@
 
 .input:focus,
 .textarea:focus {
-  border-bottom-color: #C97D60;
+  border-bottom-color: #c4956a;
 }
 
 .input::placeholder,
 .textarea::placeholder {
-  color: #C4A882;
+  color: #a89070;
   font-style: italic;
 }
 
 .submitBtn {
   align-self: flex-start;
   padding: 1rem 2.4rem;
-  background: #2C1810;
-  color: #F5EDD8;
+  background: #3b2a1a;
+  color: #f5edd8;
   border: none;
   cursor: pointer;
-  font-family: var(--font-inter), Inter, sans-serif;
+  font-family: var(--font-josefin), 'Josefin Sans', sans-serif;
   font-size: 0.78rem;
-  font-weight: 700;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  border-radius: 3px;
+  border-radius: 6px;
   transition: background 0.2s, transform 0.2s;
 }
 
 .submitBtn:hover:not(:disabled) {
-  background: #7A5638;
+  background: #6b4226;
   transform: translateY(-2px);
 }
 
@@ -251,21 +251,21 @@
 }
 
 .successMsg {
-  font-family: Georgia, serif;
+  font-family: var(--font-lora), 'Lora', serif;
   font-size: 0.95rem;
   color: #5C7A38;
   padding: 0.75rem 1rem;
   background: rgba(92,122,56,0.08);
   border-left: 3px solid #5C7A38;
-  border-radius: 2px;
+  border-radius: 6px;
 }
 
 .errorMsg {
-  font-family: Georgia, serif;
+  font-family: var(--font-lora), 'Lora', serif;
   font-size: 0.95rem;
   color: #7A3838;
   padding: 0.75rem 1rem;
   background: rgba(122,56,56,0.08);
   border-left: 3px solid #7A3838;
-  border-radius: 2px;
+  border-radius: 6px;
 }

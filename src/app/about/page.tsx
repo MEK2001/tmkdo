@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from 'next'
 import Link from 'next/link'
+import Newsletter from '@/components/Newsletter'
 import AffiliateDisclosure from '@/components/AffiliateDisclosure'
 import styles from './page.module.css'
 
@@ -11,24 +12,16 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   const values = [
     {
-      icon: '',
-      title: 'Simplicity',
-      body: 'We believe in the power of simplicity to create calm, functional spaces that serve your life.',
+      title: 'Quality over Quantity',
+      body: 'Embrace imperfecturities carefully crafted. Establish sophistication and concentrated presence.',
     },
     {
-      icon: '',
-      title: 'Sustainability',
-      body: 'We prioritize natural materials and eco-conscious choices that respect our planet.',
+      title: 'Embrace Imperfections',
+      body: 'Embrace imperfectted esotericities a tactfully petitocube superficiality and ambient easies.',
     },
     {
-      icon: '',
-      title: 'Timelessness',
-      body: 'We curate pieces that transcend trends, offering lasting beauty and value.',
-    },
-    {
-      icon: '',
-      title: 'Intentionality',
-      body: 'Every choice should be deliberate, meaningful, and aligned with your values.',
+      title: 'Sustainable Styling',
+      body: 'Sustainable typing sans enstuigner oe consomtible and socialist consatede st mindrel opacity.',
     },
   ]
 
@@ -44,15 +37,8 @@ export default function AboutPage() {
 
       {/*  Story  */}
       <section className={styles.storySection}>
-        <div className={styles.storySplit}>
-          <div className={styles.storyImage}>
-            <img
-              src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&h=1100&fit=crop"
-              alt="Minimalist interior"
-            />
-            <div className={styles.imageCaption}>Our design philosophy in practice</div>
-          </div>
-
+        <div className={styles.storyContent}>
+          <h2 className={styles.storyTitle}>Our Story</h2>
           <div className={styles.storyText}>
             <span className={styles.dropCap}>T</span>
             <p className={styles.storyPara}>
@@ -85,13 +71,21 @@ export default function AboutPage() {
         <div className={styles.valuesGrid}>
           {values.map((v) => (
             <div key={v.title} className={styles.valueCard}>
-              <span className={styles.valueIcon}>{v.icon}</span>
               <h3 className={styles.valueTitle}>{v.title}</h3>
+              <div className={styles.valueOrnament} />
               <p className={styles.valueBody}>{v.body}</p>
             </div>
           ))}
         </div>
       </section>
+
+      {/*  Section Divider  */}
+      <section className={styles.sectionDivider}>
+        <div className={styles.dividerLine} />
+      </section>
+
+      {/*  Newsletter  */}
+      <Newsletter />
 
       {/*  CTA  */}
       <section className={styles.cta}>

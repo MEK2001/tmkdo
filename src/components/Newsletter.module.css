@@ -1,8 +1,8 @@
 .newsletter {
   margin: 0;
   border-radius: 12px;
-  background: #e9e0d2;
-  border: 1px solid rgba(44, 26, 14, 0.14);
+  background: #f5efe5;
+  border: none;
   padding: 1.1rem;
   position: relative;
   overflow: visible;
@@ -19,7 +19,7 @@
   left: -6px;
   right: -6px;
   bottom: -6px;
-  background: #EDE5D1;
+  background: #f8f3eb;
   border-radius: 10px;
   z-index: -1;
   opacity: 1;

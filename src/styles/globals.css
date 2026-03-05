@@ -86,19 +86,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.3s var(--transition-smooth), color 0.3s var(--transition-smooth);
-  padding-top: 80px;
+  padding-top: 115px;
 }
 
 @media (max-width: 768px) {
   body {
-    padding-top: 70px;
+    padding-top: 105px;
     font-size: 16px;
   }
 }
 
 @media (max-width: 640px) {
   body {
-    padding-top: 64px;
+    padding-top: 95px;
   }
 }
 
